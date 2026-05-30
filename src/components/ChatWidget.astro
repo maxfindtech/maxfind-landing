@@ -7,7 +7,7 @@ const t = useTranslations(locale);
 
 // Sustituir placeholders en las respuestas (signupUrl, pricingUrl, contactUrl, contactEmail, docsUrl).
 const ctx = {
-  signupUrl: URLS.SIGNUP,
+  signupUrl: localizedPath('registro', locale),
   pricingUrl: localizedPath('precios', locale),
   contactUrl: localizedPath('contacto', locale),
   contactEmail: SITE.contactEmail,

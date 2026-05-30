@@ -556,4 +556,306 @@ export const es = {
     primary: 'Volver al inicio',
     secondary: 'Reportar problema',
   },
+  productoIndex: {
+    eyebrow: 'Producto',
+    title: 'Una API, todo lo que necesitás para verificar identidad',
+    description:
+      'Verificación de DNI contra RENIEC, validación física del documento, red de reputación entre negocios y un sandbox profesional gratis. Todo integrado en una sola API.',
+  },
+  verificacionDni: {
+    meta: {
+      title: 'Verificación de DNI rápida y confiable',
+      description:
+        'Consultá cualquier DNI peruano contra el padrón oficial RENIEC en menos de un segundo. API REST simple, documentación clara, sandbox profesional.',
+    },
+    eyebrow: 'Producto · Verificación DNI',
+    title: 'Verificá cualquier DNI peruano en milisegundos',
+    description:
+      'Consultá el padrón oficial de RENIEC con una sola llamada a la API. Datos reales, estructurados y al instante, para que tu producto valide identidad sin fricción.',
+    rows: [
+      {
+        title: 'Datos del padrón oficial',
+        description:
+          'Cada consulta resuelve contra el padrón oficial de RENIEC. Sin scraping, sin fuentes de dudosa procedencia.',
+        points: [
+          'Nombres y apellidos completos',
+          'Respuesta estructurada en JSON',
+          'Datos siempre actualizados',
+        ],
+      },
+      {
+        title: 'Menos de un segundo',
+        description:
+          'Latencia promedio por debajo de 200ms. Tu flujo de onboarding no se traba esperando una verificación.',
+        points: ['p95 bajo 400ms', 'Infraestructura en la nube', 'Caché inteligente'],
+      },
+      {
+        title: 'Una sola llamada HTTP',
+        description:
+          'API REST simple con autenticación por API key. Sin OAuth complejo, sin firmas raras, sin SDKs obligatorios.',
+        points: ['Auth con Bearer token', 'Documentación con ejemplos', 'SDKs opcionales para JS y Python'],
+      },
+    ],
+  },
+  validacionIdentidad: {
+    meta: {
+      title: 'Validación de identidad física',
+      description:
+        'Compará el DNI físico contra el padrón oficial de RENIEC en tiempo real. Detectá documentos alterados y frená el fraude antes de atender al cliente.',
+    },
+    eyebrow: 'Producto · Validación física',
+    title: '¿El DNI que te muestran es real?',
+    description:
+      'Compará el documento físico contra el padrón oficial de RENIEC en tiempo real. Detectá adulteraciones y suplantación antes de atender, abrir una cuenta o cerrar una venta.',
+    rows: [
+      {
+        title: 'Documento contra padrón',
+        description:
+          'Compará los datos del DNI físico que te muestra la persona contra el padrón oficial de RENIEC. Si no coinciden, lo sabés al instante.',
+        points: ['Match en tiempo real', 'Detección de datos alterados', 'Respuesta clara: válido o no'],
+      },
+      {
+        title: 'Frená el fraude en la puerta',
+        description:
+          'Antes de atender, abrir una cuenta o entregar un producto, confirmá que la persona es quien dice ser. Menos contracargos, menos riesgo.',
+        points: ['Previene suplantación', 'Reduce contracargos', 'Trazabilidad de cada validación'],
+      },
+      {
+        title: 'Integrable en tu flujo',
+        description:
+          'Sumá la validación física a tu admisión, onboarding o punto de venta con una llamada a la API. Sin hardware especial.',
+        points: ['Sin lector biométrico obligatorio', 'API REST simple', 'Funciona en web y mobile'],
+      },
+    ],
+  },
+  redReputacion: {
+    meta: {
+      title: 'Red de reputación cruzada',
+      description:
+        'Compartí alertas con otros negocios de tu industria. Si un cliente fue problemático en otro lugar, te enterás antes. Cumplimiento Ley 29733.',
+    },
+    eyebrow: 'Producto · Red de reputación',
+    title: 'Enterate antes, no después',
+    description:
+      'Una red de confianza entre negocios formales. Compartí y recibí alertas sobre personas problemáticas en tu industria, con privacidad por diseño y cumplimiento legal.',
+    rows: [
+      {
+        title: 'Alertas compartidas',
+        description:
+          'Si una persona generó un problema en otro negocio de tu industria, te enterás antes de atenderla. La red trabaja para todos los que participan.',
+        points: ['Señales entre pares', 'Categorías por tipo de incidente', 'Vos decidís qué hacer con la alerta'],
+      },
+      {
+        title: 'Privacidad por diseño',
+        description:
+          'No compartimos datos personales innecesarios. Las alertas se manejan bajo la Ley 29733, con base legal y auditoría de cada acceso.',
+        points: ['Cumplimiento Ley 29733', 'Acceso auditado', 'Mínimo dato necesario'],
+      },
+      {
+        title: 'Más fuerte mientras más crece',
+        description:
+          'Cada negocio que se suma aporta señales y recibe protección. Es una red de confianza entre comercios formales que se refuerza sola.',
+        points: ['Efecto de red', 'Sin costo adicional en Starter+', 'Participación opcional'],
+      },
+    ],
+  },
+  sandboxPage: {
+    meta: {
+      title: 'Sandbox profesional',
+      description:
+        'Desarrollá y testeá sin tocar datos reales. DNIs mock predecibles, gratis para siempre, con la misma API que producción.',
+    },
+    eyebrow: 'Producto · Sandbox',
+    title: 'Desarrollá sin tocar datos reales',
+    description:
+      'Un sandbox profesional con DNIs mock predecibles, gratis para siempre. Integrá MAXFIND, escribí tus tests y validá tu flujo antes de gastar una sola consulta real.',
+    rows: [
+      {
+        title: 'Gratis para siempre',
+        description:
+          'El sandbox no cuesta nada y no requiere tarjeta. Desarrollá e integrá todo el tiempo que necesites antes de pasar a producción.',
+        points: ['Sin tarjeta', 'Sin límite de tiempo', 'Sin gastar consultas reales'],
+      },
+      {
+        title: 'DNIs mock predecibles',
+        description:
+          'Un set de DNIs de prueba con respuestas deterministas. Ideal para escribir tests automatizados que no dependen de datos reales.',
+        points: ['Respuestas estables', 'Casos de éxito y error', 'Perfecto para CI/CD'],
+      },
+      {
+        title: 'Misma API que producción',
+        description:
+          'El sandbox usa exactamente los mismos endpoints y formatos que producción. Lo que funciona acá, funciona allá. Solo cambiás la API key.',
+        points: ['Mismos endpoints', 'Mismo formato de respuesta', 'Migración sin cambios de código'],
+      },
+    ],
+    readyTitle: '¿Listo para datos reales?',
+    readyBody:
+      'Cuando termines de integrar en sandbox, suscribite y obtené 30 días con 500 consultas reales contra RENIEC sin costo. Pasado el trial, pagás solo por lo que consumís.',
+    readyPrimary: 'Crear cuenta',
+    readySecondary: 'Ver planes',
+  },
+  solucionesIndex: {
+    meta: {
+      title: 'Soluciones por industria',
+      description:
+        'MAXFIND adaptado a tu industria: clínicas, edificios, fintechs y comercio formal.',
+    },
+    eyebrow: 'Soluciones',
+    title: 'Verificación de identidad para tu industria',
+    description:
+      'Cada industria tiene casos de uso únicos. Acá te mostramos cómo MAXFIND se adapta al tuyo.',
+  },
+  clinicas: {
+    meta: {
+      title: 'MAXFIND para clínicas y consultorios',
+      description:
+        'Validá la identidad de tus pacientes en admisión. Detectá DNIs falsos antes de atender y cumplí con la Ley 29733 de protección de datos.',
+    },
+    eyebrow: 'Soluciones · Clínicas',
+    title: 'Verificá la identidad de tus pacientes',
+    description:
+      'Confirmá quién es cada paciente en la admisión, detectá documentos falsos y protegé tu cobertura, sin agregar fricción a la atención.',
+    rows: [
+      {
+        title: 'Admisión sin fricción',
+        description:
+          'Validá la identidad del paciente en el momento de admisión con una sola consulta. Sin papeleo extra ni demoras en la cola.',
+        points: ['Verificación en segundos', 'Datos correctos en la historia clínica', 'Menos errores de tipeo'],
+      },
+      {
+        title: 'Detectá DNIs falsos',
+        description:
+          'Antes de atender, confirmá que el documento es real comparándolo contra el padrón oficial de RENIEC. Evitá suplantación y fraude a la aseguradora.',
+        points: ['Match contra RENIEC', 'Previene suplantación de cobertura', 'Trazabilidad por paciente'],
+      },
+      {
+        title: 'Cumplí con la ley',
+        description:
+          'Tratás datos sensibles de salud. MAXFIND opera bajo la Ley 29733, con banco de datos inscrito en MINJUS y auditoría completa de cada consulta.',
+        points: ['Cumplimiento Ley 29733', 'Auditoría de accesos', 'Datos cifrados'],
+      },
+    ],
+  },
+  edificios: {
+    meta: {
+      title: 'MAXFIND para edificios y condominios',
+      description:
+        'Identificá visitantes y controlá accesos a tu edificio. Confirmá la identidad real de cada persona que entra a tu propiedad.',
+    },
+    eyebrow: 'Soluciones · Edificios',
+    title: 'Identificá a quién entra a tu edificio',
+    description:
+      'Verificá la identidad de visitantes y proveedores en la recepción. Control de accesos con datos reales, no con un número anotado a mano.',
+    rows: [
+      {
+        title: 'Sabé quién entra',
+        description:
+          'Registrá y verificá la identidad de cada visitante en la recepción. Conocé quién accede a tu edificio y cuándo, con datos reales.',
+        points: ['Verificación en recepción', 'Registro con identidad confirmada', 'Historial de visitas'],
+      },
+      {
+        title: 'Control de accesos real',
+        description:
+          'No alcanza con anotar un número de DNI en un cuaderno. Confirmá que el documento existe y corresponde a la persona que tenés enfrente.',
+        points: ['Match contra RENIEC', 'Previene ingresos con datos falsos', 'Integrable con tu sistema de acceso'],
+      },
+      {
+        title: 'Tranquilidad para residentes',
+        description:
+          'Un edificio que verifica identidades es un edificio más seguro. Dales a los residentes la certeza de que sabés quién entra.',
+        points: ['Mayor seguridad percibida', 'Respuesta rápida ante incidentes', 'Datos protegidos por ley'],
+      },
+    ],
+  },
+  fintechPage: {
+    meta: {
+      title: 'MAXFIND para fintechs',
+      description:
+        'KYC simplificado para tu producto financiero. Onboarding rápido contra el padrón RENIEC sin sacrificar seguridad ni compliance.',
+    },
+    eyebrow: 'Soluciones · Fintech',
+    title: 'KYC que no frena tu onboarding',
+    description:
+      'Verificá identidad durante el alta de usuarios con una API simple. Onboarding rápido, compliance respaldado y la velocidad de integración que tu equipo necesita.',
+    rows: [
+      {
+        title: 'KYC sin fricción',
+        description:
+          'Verificá la identidad de tus usuarios durante el onboarding con una llamada a la API. Menos abandono en el registro, más cuentas activadas.',
+        points: ['Onboarding más rápido', 'Menos drop-off', 'Verificación contra RENIEC'],
+      },
+      {
+        title: 'Cumplí sin fricción regulatoria',
+        description:
+          'La verificación de identidad es la base de tu compliance. MAXFIND te da datos oficiales y auditoría completa para respaldar cada alta.',
+        points: ['Trazabilidad por usuario', 'Auditoría de cada consulta', 'Cumplimiento Ley 29733'],
+      },
+      {
+        title: 'Hecho para developers',
+        description:
+          'API REST, sandbox profesional y SDKs. Tu equipo integra MAXFIND en una tarde, no en un trimestre de reuniones.',
+        points: ['Sandbox gratis', 'Docs con ejemplos', 'Webhooks para eventos'],
+      },
+    ],
+  },
+  comercioPage: {
+    meta: {
+      title: 'MAXFIND para comercio formal',
+      description:
+        'Verificá compradores en operaciones de valor y reducí el fraude en tus ventas. Verificación contra RENIEC y red de reputación entre comercios.',
+    },
+    eyebrow: 'Soluciones · Comercio',
+    title: 'Vendé con la identidad confirmada',
+    description:
+      'Verificá a tus compradores en operaciones de valor, reducí contracargos por suplantación y sumate a una red de reputación entre comercios formales.',
+    rows: [
+      {
+        title: 'Verificá en operaciones de valor',
+        description:
+          'En ventas a crédito, entregas grandes o pagos diferidos, confirmá la identidad del comprador antes de cerrar. Menos sorpresas después.',
+        points: ['Verificación en el punto de venta', 'Ideal para ventas a crédito', 'Match contra RENIEC'],
+      },
+      {
+        title: 'Reducí el fraude',
+        description:
+          'La suplantación de identidad es una de las principales causas de pérdida en comercio. Detectala antes de que se convierta en un contracargo.',
+        points: ['Previene suplantación', 'Menos contracargos', 'Trazabilidad de cada operación'],
+      },
+      {
+        title: 'Sumate a la red',
+        description:
+          'Compartí alertas con otros comercios formales. Si un comprador generó problemas en otro lado, lo sabés antes de venderle.',
+        points: ['Red de reputación', 'Señales entre comercios', 'Participación opcional'],
+      },
+    ],
+  },
+  sobre: {
+    meta: {
+      title: 'Sobre MAXFIND',
+      description:
+        'MAXFIND es una infraestructura de verificación de identidad construida para los negocios formales de Perú.',
+    },
+    eyebrow: 'Sobre MAXFIND',
+    title: 'Infraestructura de verificación de identidad para Perú',
+    description:
+      'Construimos lo que nos hubiera gustado tener cuando trabajábamos en fintech, comercio y salud: una API simple para confirmar quién es realmente la persona del otro lado.',
+    sections: [
+      {
+        title: '¿Por qué existimos?',
+        body:
+          'En Perú, validar la identidad de un cliente sigue siendo lento, manual y reservado a quien tiene un convenio con RENIEC. Eso deja afuera a la mayoría: clínicas, edificios, fintechs nuevas y comercios formales que necesitan certeza sin pasar por meses de trámite. MAXFIND es la capa que cierra ese gap.',
+      },
+      {
+        title: 'Cómo trabajamos',
+        body:
+          'Operamos como una infraestructura: respondemos rápido, somos predecibles, y tomamos en serio la protección de datos personales. Nuestro banco de datos está inscrito en MINJUS y diseñamos cada feature pensando en la Ley 29733 desde el primer día.',
+      },
+      {
+        title: 'Hacia dónde vamos',
+        body:
+          'El roadmap está enfocado en tres ejes: ampliar la red de reputación a más industrias, sumar validación biométrica opcional y abrir SDKs para más lenguajes. Si tu negocio necesita verificar identidades y querés sumarte a la red, escribinos.',
+      },
+    ],
+  },
 };

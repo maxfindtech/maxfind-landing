@@ -552,4 +552,302 @@ export const en: typeof es = {
     primary: 'Back to home',
     secondary: 'Report issue',
   },
+  productoIndex: {
+    eyebrow: 'Product',
+    title: 'One API, everything you need to verify identity',
+    description:
+      'DNI verification against RENIEC, physical document validation, reputation network across businesses, and a free professional sandbox. All bundled into a single API.',
+  },
+  verificacionDni: {
+    meta: {
+      title: 'Fast and reliable DNI verification',
+      description:
+        'Query any Peruvian DNI against the official RENIEC registry in under a second. Simple REST API, clear docs, professional sandbox.',
+    },
+    eyebrow: 'Product · DNI verification',
+    title: 'Verify any Peruvian DNI in milliseconds',
+    description:
+      'Query the official RENIEC registry with a single API call. Real, structured data, instantly, so your product validates identity without friction.',
+    rows: [
+      {
+        title: 'Official registry data',
+        description:
+          'Every query resolves against the official RENIEC registry. No scraping, no dubious sources.',
+        points: ['Full names and surnames', 'Structured JSON response', 'Always up-to-date data'],
+      },
+      {
+        title: 'Under a second',
+        description:
+          'Average latency under 200ms. Your onboarding flow does not stall waiting on a verification.',
+        points: ['p95 below 400ms', 'Cloud infrastructure', 'Smart caching'],
+      },
+      {
+        title: 'One HTTP call',
+        description:
+          'Simple REST API with API-key auth. No complex OAuth, no weird signatures, no mandatory SDKs.',
+        points: ['Bearer token auth', 'Docs with examples', 'Optional SDKs for JS and Python'],
+      },
+    ],
+  },
+  validacionIdentidad: {
+    meta: {
+      title: 'Physical identity validation',
+      description:
+        'Compare the physical DNI against the official RENIEC registry in real time. Catch tampered documents and stop fraud before serving the customer.',
+    },
+    eyebrow: 'Product · Physical validation',
+    title: 'Is the DNI they are showing you real?',
+    description:
+      'Compare the physical document against the official RENIEC registry in real time. Catch tampering and impersonation before you serve, open an account, or close a sale.',
+    rows: [
+      {
+        title: 'Document against registry',
+        description:
+          'Compare the data on the physical DNI the person is showing you against the official RENIEC registry. If it does not match, you know instantly.',
+        points: ['Real-time match', 'Tampered-data detection', 'Clear answer: valid or not'],
+      },
+      {
+        title: 'Stop fraud at the door',
+        description:
+          'Before you serve, open an account, or hand over a product, confirm the person is who they claim to be. Fewer chargebacks, less risk.',
+        points: ['Prevents impersonation', 'Reduces chargebacks', 'Audit trail for every validation'],
+      },
+      {
+        title: 'Drops into your flow',
+        description:
+          'Add physical validation to your admissions, onboarding, or point of sale with one API call. No special hardware required.',
+        points: ['No mandatory biometric reader', 'Simple REST API', 'Works on web and mobile'],
+      },
+    ],
+  },
+  redReputacion: {
+    meta: {
+      title: 'Cross-business reputation network',
+      description:
+        'Share alerts with other businesses in your industry. If a customer was a problem elsewhere, you find out first. Law 29733 compliant.',
+    },
+    eyebrow: 'Product · Reputation network',
+    title: 'Find out first, not later',
+    description:
+      'A trust network across formal businesses. Share and receive alerts about problematic individuals in your industry, with privacy by design and legal compliance built in.',
+    rows: [
+      {
+        title: 'Shared alerts',
+        description:
+          'If someone caused a problem at another business in your industry, you hear about it before serving them. The network works for everyone who joins.',
+        points: ['Peer-to-peer signals', 'Categories per incident type', 'You decide what to do with each alert'],
+      },
+      {
+        title: 'Privacy by design',
+        description:
+          'We do not share unnecessary personal data. Alerts are handled under Law 29733, with a legal basis and audit log on every access.',
+        points: ['Law 29733 compliance', 'Audited access', 'Minimum data needed'],
+      },
+      {
+        title: 'Stronger as it grows',
+        description:
+          'Every business that joins contributes signals and receives protection. It is a self-reinforcing trust network across formal merchants.',
+        points: ['Network effect', 'No extra cost on Starter+', 'Optional participation'],
+      },
+    ],
+  },
+  sandboxPage: {
+    meta: {
+      title: 'Professional sandbox',
+      description:
+        'Build and test without touching real data. Predictable mock DNIs, free forever, same API as production.',
+    },
+    eyebrow: 'Product · Sandbox',
+    title: 'Build without touching real data',
+    description:
+      'A professional sandbox with predictable mock DNIs, free forever. Integrate MAXFIND, write your tests, and validate your flow before spending a single real query.',
+    rows: [
+      {
+        title: 'Free forever',
+        description:
+          'The sandbox costs nothing and does not need a card. Build and integrate for as long as you need before going to production.',
+        points: ['No card required', 'No time limit', 'No real queries spent'],
+      },
+      {
+        title: 'Predictable mock DNIs',
+        description:
+          'A set of test DNIs with deterministic responses. Perfect for automated tests that should not depend on real data.',
+        points: ['Stable responses', 'Success and error cases', 'Great for CI/CD'],
+      },
+      {
+        title: 'Same API as production',
+        description:
+          'The sandbox uses the exact same endpoints and formats as production. What works here works there — just swap the API key.',
+        points: ['Same endpoints', 'Same response shape', 'Migrate without code changes'],
+      },
+    ],
+    readyTitle: 'Ready for real data?',
+    readyBody:
+      'Once you are done integrating in sandbox, subscribe and get 30 days with 500 real RENIEC queries at no cost. After the trial, you only pay for what you use.',
+    readyPrimary: 'Create account',
+    readySecondary: 'See plans',
+  },
+  solucionesIndex: {
+    meta: {
+      title: 'Industry solutions',
+      description:
+        'MAXFIND adapted to your industry: clinics, buildings, fintechs, and retail.',
+    },
+    eyebrow: 'Solutions',
+    title: 'Identity verification for your industry',
+    description:
+      'Each industry has unique use cases. Here is how MAXFIND adapts to yours.',
+  },
+  clinicas: {
+    meta: {
+      title: 'MAXFIND for clinics and medical offices',
+      description:
+        'Verify patient identity at admissions. Catch fake DNIs before treatment and stay compliant with Law 29733.',
+    },
+    eyebrow: 'Solutions · Clinics',
+    title: 'Verify your patients’ identity',
+    description:
+      'Confirm who each patient is at admissions, catch fake documents, and protect your coverage without adding friction to care.',
+    rows: [
+      {
+        title: 'Frictionless admissions',
+        description:
+          'Validate the patient’s identity at admissions with a single query. No extra paperwork or delays at the desk.',
+        points: ['Verification in seconds', 'Correct data in the medical record', 'Fewer typing errors'],
+      },
+      {
+        title: 'Catch fake DNIs',
+        description:
+          'Before treating anyone, confirm the document is real by comparing it against the official RENIEC registry. Avoid impersonation and insurance fraud.',
+        points: ['Match against RENIEC', 'Prevents coverage impersonation', 'Per-patient audit trail'],
+      },
+      {
+        title: 'Stay compliant',
+        description:
+          'You handle sensitive health data. MAXFIND runs under Law 29733, with a data bank registered at MINJUS and full audit logs on every query.',
+        points: ['Law 29733 compliance', 'Access audit logs', 'Encrypted data'],
+      },
+    ],
+  },
+  edificios: {
+    meta: {
+      title: 'MAXFIND for buildings and condominiums',
+      description:
+        'Identify visitors and control access to your building. Confirm the real identity of everyone entering your property.',
+    },
+    eyebrow: 'Solutions · Buildings',
+    title: 'Know who walks into your building',
+    description:
+      'Verify visitor and vendor identity at reception. Real access control, not a number jotted down by hand.',
+    rows: [
+      {
+        title: 'Know who enters',
+        description:
+          'Register and verify the identity of every visitor at reception. Know who enters your building and when, with real data.',
+        points: ['Verification at reception', 'Registration with confirmed identity', 'Visit history'],
+      },
+      {
+        title: 'Real access control',
+        description:
+          'Jotting down a DNI in a notebook is not enough. Confirm that the document exists and matches the person in front of you.',
+        points: ['Match against RENIEC', 'Prevents entry with fake data', 'Integrates with your access system'],
+      },
+      {
+        title: 'Peace of mind for residents',
+        description:
+          'A building that verifies identities is a safer building. Give residents certainty that you know who comes in.',
+        points: ['Higher perceived safety', 'Faster response to incidents', 'Legally protected data'],
+      },
+    ],
+  },
+  fintechPage: {
+    meta: {
+      title: 'MAXFIND for fintechs',
+      description:
+        'Simplified KYC for your financial product. Fast onboarding against the RENIEC registry without sacrificing security or compliance.',
+    },
+    eyebrow: 'Solutions · Fintech',
+    title: 'KYC that does not slow down your onboarding',
+    description:
+      'Verify identity during user signup with a simple API. Fast onboarding, solid compliance, and the integration speed your team needs.',
+    rows: [
+      {
+        title: 'Frictionless KYC',
+        description:
+          'Verify your users’ identity during onboarding with a single API call. Less drop-off at signup, more activated accounts.',
+        points: ['Faster onboarding', 'Less drop-off', 'Verification against RENIEC'],
+      },
+      {
+        title: 'Compliance without the drag',
+        description:
+          'Identity verification is the foundation of your compliance. MAXFIND gives you official data and full audit logs to back every signup.',
+        points: ['Per-user audit trail', 'Per-query audit log', 'Law 29733 compliance'],
+      },
+      {
+        title: 'Built for developers',
+        description:
+          'REST API, professional sandbox, and SDKs. Your team integrates MAXFIND in an afternoon, not in a quarter of meetings.',
+        points: ['Free sandbox', 'Docs with examples', 'Webhooks for events'],
+      },
+    ],
+  },
+  comercioPage: {
+    meta: {
+      title: 'MAXFIND for retail and commerce',
+      description:
+        'Verify buyers on high-value transactions and reduce fraud in your sales. RENIEC verification and a reputation network across merchants.',
+    },
+    eyebrow: 'Solutions · Retail',
+    title: 'Sell with the identity confirmed',
+    description:
+      'Verify your buyers on high-value transactions, reduce chargebacks from impersonation, and join a reputation network across formal merchants.',
+    rows: [
+      {
+        title: 'Verify on high-value transactions',
+        description:
+          'On credit sales, large deliveries, or deferred payments, confirm the buyer’s identity before closing. Fewer surprises later.',
+        points: ['Verification at point of sale', 'Great for credit sales', 'Match against RENIEC'],
+      },
+      {
+        title: 'Reduce fraud',
+        description:
+          'Identity impersonation is one of the top causes of retail loss. Catch it before it turns into a chargeback.',
+        points: ['Prevents impersonation', 'Fewer chargebacks', 'Per-transaction audit trail'],
+      },
+      {
+        title: 'Join the network',
+        description:
+          'Share alerts with other formal merchants. If a buyer caused trouble somewhere else, you know before selling to them.',
+        points: ['Reputation network', 'Cross-merchant signals', 'Optional participation'],
+      },
+    ],
+  },
+  sobre: {
+    meta: {
+      title: 'About MAXFIND',
+      description:
+        'MAXFIND is an identity verification infrastructure built for Peru’s formal businesses.',
+    },
+    eyebrow: 'About MAXFIND',
+    title: 'Identity verification infrastructure for Peru',
+    description:
+      'We built what we wished we had when we worked in fintech, retail, and healthcare: a simple API to confirm who is really on the other side.',
+    sections: [
+      {
+        title: 'Why we exist',
+        body:
+          'In Peru, validating a customer’s identity is still slow, manual, and limited to those with a RENIEC partnership. That leaves out most of the market: clinics, buildings, new fintechs, and formal merchants that need certainty without months of paperwork. MAXFIND is the layer that closes that gap.',
+      },
+      {
+        title: 'How we work',
+        body:
+          'We operate as infrastructure: we respond fast, we are predictable, and we take personal-data protection seriously. Our data bank is registered with MINJUS and we design every feature around Law 29733 from day one.',
+      },
+      {
+        title: 'Where we are going',
+        body:
+          'The roadmap focuses on three axes: expanding the reputation network into more industries, adding optional biometric validation, and shipping SDKs for more languages. If your business needs identity verification and wants to join the network, get in touch.',
+      },
+    ],
+  },
 };

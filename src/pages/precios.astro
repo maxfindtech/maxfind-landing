@@ -12,7 +12,7 @@ const t = useTranslations(locale);
 const plans = t.pricing.plans.map((p, i) => ({
   ...p,
   highlight: i === 1,
-  ctaHref: i === 3 ? localizedPath('demo', locale) : URLS.SIGNUP,
+  ctaHref: i === 3 ? localizedPath('demo', locale) : localizedPath('registro', locale),
 }));
 
 // values flag: true / false / string

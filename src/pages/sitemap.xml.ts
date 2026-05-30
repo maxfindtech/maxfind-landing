@@ -26,7 +26,18 @@ const ES_ROUTES: Entry[] = [
 // Paths que tienen contraparte en inglés (las que duplicamos a /en/).
 const EN_ROUTES: Entry[] = [
   { path: '/en/', changefreq: 'weekly', priority: 1.0 },
+  { path: '/en/producto', changefreq: 'monthly', priority: 0.9 },
+  { path: '/en/producto/verificacion-dni', changefreq: 'monthly', priority: 0.8 },
+  { path: '/en/producto/validacion-identidad', changefreq: 'monthly', priority: 0.8 },
+  { path: '/en/producto/red-reputacion', changefreq: 'monthly', priority: 0.8 },
+  { path: '/en/producto/sandbox', changefreq: 'monthly', priority: 0.8 },
+  { path: '/en/soluciones', changefreq: 'monthly', priority: 0.9 },
+  { path: '/en/soluciones/clinicas', changefreq: 'monthly', priority: 0.7 },
+  { path: '/en/soluciones/edificios', changefreq: 'monthly', priority: 0.7 },
+  { path: '/en/soluciones/fintech', changefreq: 'monthly', priority: 0.7 },
+  { path: '/en/soluciones/comercio', changefreq: 'monthly', priority: 0.7 },
   { path: '/en/precios', changefreq: 'monthly', priority: 0.9 },
+  { path: '/en/sobre', changefreq: 'monthly', priority: 0.5 },
   { path: '/en/contacto', changefreq: 'monthly', priority: 0.5 },
   { path: '/en/demo', changefreq: 'monthly', priority: 0.6 },
 ];

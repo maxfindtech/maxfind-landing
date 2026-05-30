@@ -1,5 +1,5 @@
 ---
-import { URLS } from '@lib/constants';
+import { localizedPath, type Locale } from '@i18n/ui';
 
 type Props = {
   eyebrow: string;
@@ -9,11 +9,16 @@ type Props = {
   secondaryCta?: { label: string; href: string };
 };
 
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+
 const {
   eyebrow,
   title,
   description,
-  primaryCta = { label: 'Empezar gratis', href: URLS.SIGNUP },
+  primaryCta = {
+    label: locale === 'en' ? 'Get started' : 'Empezar gratis',
+    href: localizedPath('registro', locale),
+  },
   secondaryCta,
 } = Astro.props;
 ---

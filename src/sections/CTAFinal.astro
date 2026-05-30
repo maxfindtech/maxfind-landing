@@ -20,7 +20,7 @@ const t = useTranslations(locale);
         <p class="mt-4 text-lg text-white/80 text-pretty">{t.ctaFinal.description}</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
-            href={URLS.SIGNUP}
+            href={localizedPath('registro', locale)}
             class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-primary transition-all hover:bg-white/90 active:scale-[0.98]"
           >
             {t.ctaFinal.primary}

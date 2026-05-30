@@ -44,8 +44,8 @@ const primary: NavLink[] = [
     <div class="hidden lg:flex items-center gap-2">
       <LanguageSwitcher />
       <ThemeToggle />
-      <a href={URLS.LOGIN} class="btn-ghost">{t.nav.login}</a>
-      <a href={URLS.SIGNUP} class="btn-primary">{t.nav.signup}</a>
+      <a href={localizedPath('login', locale)} class="btn-ghost">{t.nav.login}</a>
+      <a href={localizedPath('registro', locale)} class="btn-primary">{t.nav.signup}</a>
     </div>
 
     <div class="lg:hidden flex items-center gap-1">
@@ -86,8 +86,8 @@ const primary: NavLink[] = [
         ))
       }
       <li class="mt-2 flex flex-col gap-2 border-t border-surface-border pt-4 dark:border-primary-900">
-        <a href={URLS.LOGIN} class="btn-secondary w-full">{t.nav.login}</a>
-        <a href={URLS.SIGNUP} class="btn-primary w-full">{t.nav.signup}</a>
+        <a href={localizedPath('login', locale)} class="btn-secondary w-full">{t.nav.login}</a>
+        <a href={localizedPath('registro', locale)} class="btn-primary w-full">{t.nav.signup}</a>
       </li>
     </ul>
   </div>
