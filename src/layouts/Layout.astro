@@ -134,5 +134,26 @@ const xDefault = `${SITE.url}${switchLocaleUrl(Astro.url.pathname, DEFAULT_LOCAL
     </main>
     {!hideFooter && <Footer />}
     {!hideNav && <ChatWidget />}
+
+    <script>
+      // Reveal-on-scroll: respeta prefers-reduced-motion automáticamente via CSS.
+      const els = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      if ('IntersectionObserver' in window && els.length) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-revealed'));
+      }
+    </script>
   </body>
 </html>

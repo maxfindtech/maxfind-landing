@@ -86,7 +86,15 @@ const c = t.forms.contact;
                 placeholder={c.fieldMessagePh}
               ></textarea>
             </div>
-            <button type="submit" class="btn-primary w-full">{c.submit}</button>
+            <button type="submit" data-submit-btn class="btn-primary w-full">
+              <span data-label>{c.submit}</span>
+              <span data-spinner class="hidden">
+                <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
+                  <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </span>
+            </button>
             <p class="text-xs text-ink-tertiary">
               {c.legal} <a href="/legal/privacidad" class="underline">{c.legalLink}</a>.
             </p>
@@ -96,3 +104,18 @@ const c = t.forms.contact;
     </div>
   </section>
 </Layout>
+
+<script>
+  // Spinner durante el submit nativo del form (la página se va a navegar tras el POST).
+  document.querySelectorAll<HTMLFormElement>('form[action^="/api/"]').forEach((form) => {
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit-btn]');
+      const label = btn?.querySelector<HTMLElement>('[data-label]');
+      const spinner = btn?.querySelector<HTMLElement>('[data-spinner]');
+      if (!btn) return;
+      btn.disabled = true;
+      label?.classList.add('hidden');
+      spinner?.classList.remove('hidden');
+    });
+  });
+</script>

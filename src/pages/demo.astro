@@ -96,10 +96,32 @@ const d = t.forms.demo;
                 class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-secondary px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
               ></textarea>
             </div>
-            <button type="submit" class="btn-primary w-full">{d.submit}</button>
+            <button type="submit" data-submit-btn class="btn-primary w-full">
+              <span data-label>{d.submit}</span>
+              <span data-spinner class="hidden">
+                <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
+                  <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </span>
+            </button>
           </form>
         </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[action^="/api/"]').forEach((form) => {
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit-btn]');
+      const label = btn?.querySelector<HTMLElement>('[data-label]');
+      const spinner = btn?.querySelector<HTMLElement>('[data-spinner]');
+      if (!btn) return;
+      btn.disabled = true;
+      label?.classList.add('hidden');
+      spinner?.classList.remove('hidden');
+    });
+  });
+</script>
