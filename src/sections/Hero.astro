@@ -42,16 +42,19 @@ import { URLS } from '@lib/constants';
       </div>
 
       <div class="relative">
-        <img
-          src="/images/hero.jpg"
-          alt="Red abstracta de identidades conectadas, símbolo de verificación MAXFIND"
-          width="1200"
-          height="800"
-          loading="eager"
-          fetchpriority="high"
-          class="w-full h-auto"
-          style="mix-blend-mode: multiply;"
-        />
+        <picture>
+          <source srcset="/images/hero.webp" type="image/webp" />
+          <img
+            src="/images/hero.jpg"
+            alt="Red abstracta de identidades conectadas, símbolo de verificación MAXFIND"
+            width="1600"
+            height="1073"
+            loading="eager"
+            fetchpriority="high"
+            class="w-full h-auto"
+            style="mix-blend-mode: multiply;"
+          />
+        </picture>
 
         <div
           class="absolute bottom-4 left-2 sm:bottom-8 sm:left-0 max-w-[18rem] rounded-2xl bg-white p-4 shadow-2xl ring-1 ring-surface-border"

@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { sendEmail, escapeHtml } from '@lib/resend';
+import { sendEmail } from '@lib/resend';
+import { renderEmail } from '@lib/email';
 import { SITE } from '@lib/constants';
 
 export const prerender = false;
@@ -19,15 +20,21 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return redirect('/demo?status=invalid', 303);
   }
 
-  const html = `
-    <h2>Nueva solicitud de demo</h2>
-    <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
-    ${role ? `<p><strong>Cargo:</strong> ${escapeHtml(role)}</p>` : ''}
-    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Empresa:</strong> ${escapeHtml(company)}</p>
-    ${volume ? `<p><strong>Volumen estimado:</strong> ${escapeHtml(volume)}</p>` : ''}
-    ${message ? `<p><strong>Caso de uso:</strong><br/>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>` : ''}
-  `;
+  const fields = [
+    { label: 'Nombre', value: name },
+    ...(role ? [{ label: 'Cargo', value: role }] : []),
+    { label: 'Email', value: email },
+    { label: 'Empresa', value: company },
+    ...(volume ? [{ label: 'Volumen', value: volume }] : []),
+    ...(message ? [{ label: 'Caso de uso', value: message, multiline: true }] : []),
+  ];
+
+  const html = renderEmail({
+    title: 'Nueva solicitud de demo',
+    intro: `${name} de ${company} pidió una demo.`,
+    fields,
+    preheader: `Demo solicitada por ${company} (${name})`,
+  });
 
   const result = await sendEmail({
     to: contactEmail,

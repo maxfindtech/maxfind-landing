@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { sendEmail, escapeHtml } from '@lib/resend';
+import { sendEmail } from '@lib/resend';
+import { renderEmail } from '@lib/email';
 import { SITE } from '@lib/constants';
 
 export const prerender = false;
@@ -17,14 +18,19 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return redirect('/contacto?status=invalid', 303);
   }
 
-  const html = `
-    <h2>Nuevo mensaje de contacto</h2>
-    <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    ${company ? `<p><strong>Empresa:</strong> ${escapeHtml(company)}</p>` : ''}
-    <p><strong>Mensaje:</strong></p>
-    <p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>
-  `;
+  const fields = [
+    { label: 'Nombre', value: name },
+    { label: 'Email', value: email },
+    ...(company ? [{ label: 'Empresa', value: company }] : []),
+    { label: 'Mensaje', value: message, multiline: true },
+  ];
+
+  const html = renderEmail({
+    title: 'Nuevo mensaje de contacto',
+    intro: `Te escribió ${name} desde el formulario de contacto.`,
+    fields,
+    preheader: `Nuevo contacto de ${name} (${email})`,
+  });
 
   const result = await sendEmail({
     to: contactEmail,
