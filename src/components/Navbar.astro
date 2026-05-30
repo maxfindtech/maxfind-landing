@@ -97,8 +97,23 @@ const primary: NavLink[] = [
   const toggle = document.querySelector<HTMLButtonElement>('[data-mobile-toggle]');
   const menu = document.querySelector<HTMLDivElement>('[data-mobile-menu]');
 
+  const closeMenu = () => {
+    menu?.classList.add('hidden');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
   toggle?.addEventListener('click', () => {
     const isOpen = menu?.classList.toggle('hidden') === false;
     toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Cerrar al clickear cualquier link dentro del menú (evita flash de menú abierto al navegar).
+  menu?.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Cerrar con Escape.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) closeMenu();
   });
 </script>

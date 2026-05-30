@@ -1,23 +1,26 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
+
+// Astro no siempre detecta locale en /404 — fallback al referer si está en /en/*.
+const referer = Astro.request.headers.get('referer') ?? '';
+const isEn = /\/en(\/|$)/.test(Astro.url.pathname) || /\/en(\/|$)/.test(referer);
+const locale: Locale = isEn ? 'en' : (Astro.currentLocale as Locale) ?? 'es';
+const t = useTranslations(locale);
+const p = t.notFound;
 ---
 
-<Layout title="Página no encontrada" description="La página que buscás no existe." noindex>
+<Layout title={p.title} description={p.description} noindex>
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
     <div class="container-page relative grid min-h-[60vh] place-items-center py-20">
       <div class="text-center">
-        <p class="font-mono text-sm font-medium text-accent">Error 404</p>
-        <h1 class="mt-4 text-hero-mobile md:text-h2 font-display text-balance">
-          Esta página no existe
-        </h1>
-        <p class="mt-4 max-w-md mx-auto text-ink-secondary">
-          La URL que escribiste no corresponde a ninguna página. Revisá la barra de
-          direcciones o volvé al inicio.
-        </p>
+        <p class="font-mono text-sm font-medium text-accent">{p.code}</p>
+        <h1 class="mt-4 text-hero-mobile md:text-h2 font-display text-balance">{p.title}</h1>
+        <p class="mt-4 max-w-md mx-auto text-ink-secondary">{p.description}</p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <a href="/" class="btn-primary">Volver al inicio</a>
-          <a href="/contacto" class="btn-secondary">Reportar problema</a>
+          <a href={localizedPath('', locale)} class="btn-primary">{p.primary}</a>
+          <a href={localizedPath('contacto', locale)} class="btn-secondary">{p.secondary}</a>
         </div>
       </div>
     </div>

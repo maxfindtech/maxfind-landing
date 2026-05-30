@@ -544,6 +544,26 @@ export const en: typeof es = {
     primary: 'Get started',
     secondary: 'Back to home',
   },
+  notify: {
+    blog: {
+      eyebrow: 'Blog',
+      title: 'Coming soon',
+      description:
+        'We will write about identity verification, KYC in Peru, integrations, and behind-the-scenes at MAXFIND. Leave your email and we will tell you when the first post is up.',
+    },
+    changelog: {
+      eyebrow: 'Changelog',
+      title: 'No updates yet',
+      description:
+        'When we ship new features, improvements, or important changes, we will announce them here. Drop your email if you want the monthly recap.',
+    },
+    emailLabel: 'Email',
+    emailPh: 'you@company.com',
+    submit: 'Notify me',
+    successOk: 'Done! We will let you know as soon as we publish.',
+    successError: 'We could not save your subscription. Try again or email us at',
+    invalid: 'Enter a valid email.',
+  },
   notFound: {
     code: 'Error 404',
     title: 'This page does not exist',

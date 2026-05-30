@@ -1,0 +1,100 @@
+---
+import { SITE } from '@lib/constants';
+import { useTranslations, type Locale } from '@i18n/ui';
+
+type Props = {
+  topic: 'blog' | 'changelog';
+};
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+const { topic } = Astro.props;
+const content = t.notify[topic];
+---
+
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-radial-fade" aria-hidden="true"></div>
+
+  <div class="container-page relative py-24 md:py-32">
+    <div class="max-w-2xl" data-reveal>
+      <span class="pill">{content.eyebrow}</span>
+      <h1 class="mt-6 text-hero-mobile md:text-h2 text-balance">{content.title}</h1>
+      <p class="mt-6 text-lg text-ink-secondary text-pretty">{content.description}</p>
+
+      <div
+        data-notify-status
+        class="mt-6 hidden rounded-xl border border-success/30 bg-success/10 px-4 py-3 text-sm text-ink-primary"
+        role="status"
+        data-success-msg={t.notify.successOk}
+        data-error-msg={`${t.notify.successError} ${SITE.contactEmail}`}
+        data-invalid-msg={t.notify.invalid}
+      >
+      </div>
+
+      <form action="/api/notify" method="POST" class="mt-8 flex flex-col gap-3 sm:flex-row" data-notify-form>
+        <input type="hidden" name="topic" value={topic} />
+        <label class="sr-only" for={`notify-email-${topic}`}>{t.notify.emailLabel}</label>
+        <input
+          type="email"
+          id={`notify-email-${topic}`}
+          name="email"
+          required
+          autocomplete="email"
+          placeholder={t.notify.emailPh}
+          class="min-w-0 flex-1 rounded-full border border-surface-border bg-white dark:bg-surface-secondary px-5 py-3 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+        />
+        <button type="submit" data-notify-submit class="btn-primary">
+          <span data-label>{t.notify.submit}</span>
+          <span data-spinner class="hidden">
+            <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
+              <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Banner desde ?status= y spinner durante el submit (igual patrón que /contacto).
+  const form = document.querySelector<HTMLFormElement>('[data-notify-form]');
+  const status = document.querySelector<HTMLElement>('[data-notify-status]');
+
+  if (status) {
+    const param = new URLSearchParams(window.location.search).get('status');
+    if (param === 'ok' || param === 'error' || param === 'invalid') {
+      const msg =
+        param === 'ok'
+          ? status.dataset.successMsg
+          : param === 'invalid'
+            ? status.dataset.invalidMsg
+            : status.dataset.errorMsg;
+      if (msg) {
+        status.textContent = msg;
+        status.classList.remove('hidden');
+        if (param === 'error') {
+          status.classList.remove('border-success/30', 'bg-success/10');
+          status.classList.add('border-error/30', 'bg-error/10');
+        } else if (param === 'invalid') {
+          status.classList.remove('border-success/30', 'bg-success/10');
+          status.classList.add('border-warning/30', 'bg-warning/10');
+        }
+      }
+      const url = new URL(window.location.href);
+      url.searchParams.delete('status');
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+  }
+
+  form?.addEventListener('submit', () => {
+    const btn = form.querySelector<HTMLButtonElement>('[data-notify-submit]');
+    const label = btn?.querySelector<HTMLElement>('[data-label]');
+    const spinner = btn?.querySelector<HTMLElement>('[data-spinner]');
+    if (btn) btn.disabled = true;
+    label?.classList.add('hidden');
+    spinner?.classList.remove('hidden');
+  });
+</script>

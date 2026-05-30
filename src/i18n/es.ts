@@ -548,6 +548,26 @@ export const es = {
     primary: 'Empezar gratis',
     secondary: 'Volver al inicio',
   },
+  notify: {
+    blog: {
+      eyebrow: 'Blog',
+      title: 'Pronto vamos a publicar',
+      description:
+        'Vamos a escribir sobre verificación de identidad, KYC en Perú, integraciones y el detrás de escena de MAXFIND. Dejá tu email y te avisamos cuando salga el primer post.',
+    },
+    changelog: {
+      eyebrow: 'Changelog',
+      title: 'Sin novedades por ahora',
+      description:
+        'Cuando lancemos nuevas features, mejoras o cambios importantes, los anunciamos acá. Dejá tu email si querés recibir el resumen mensual.',
+    },
+    emailLabel: 'Email',
+    emailPh: 'tu@empresa.com',
+    submit: 'Avisame',
+    successOk: '¡Listo! Te avisamos en cuanto publiquemos algo nuevo.',
+    successError: 'No pudimos guardar tu suscripción. Probá de nuevo o escribinos a',
+    invalid: 'Ingresá un email válido.',
+  },
   notFound: {
     code: 'Error 404',
     title: 'Esta página no existe',
