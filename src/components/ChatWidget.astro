@@ -1,66 +1,35 @@
 ---
 import { SITE, URLS } from '@lib/constants';
+import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
 
-// Respuestas programadas. El matching es por keywords (sin backend).
-// Si nada matchea, cae al fallback de contacto por correo.
-const faqs = [
-  {
-    label: '¿Qué es MAXFIND?',
-    keywords: ['que es', 'qué es', 'maxfind', 'producto', 'sirve', 'hacen'],
-    answer:
-      'MAXFIND es una API de verificación de identidad por DNI en Perú. Consultás datos contra el padrón oficial de RENIEC, validás identidad física y accedés a una red de reputación entre negocios.',
-  },
-  {
-    label: '¿El sandbox es gratis?',
-    keywords: ['sandbox', 'gratis', 'prueba', 'free', 'testear', 'probar'],
-    answer:
-      'Sí. El sandbox profesional con DNIs mock es gratis para siempre y no requiere tarjeta. Usalo para integrar y testear sin gastar consultas reales.',
-  },
-  {
-    label: '¿Cómo empiezo?',
-    keywords: ['empezar', 'empiezo', 'comenzar', 'arrancar', 'cuenta', 'registr'],
-    answer:
-      'Creás tu cuenta gratis y hacés tu primera consulta en menos de 5 minutos. <a href="/registro" class="font-medium text-accent underline">Empezá gratis acá</a>.',
-  },
-  {
-    label: '¿Cuánto cuesta?',
-    keywords: ['precio', 'cuesta', 'plan', 'planes', 'cobran', 'cuanto', 'cuánto', 'tarifa'],
-    answer:
-      'Los planes arrancan en S/ 19/mes. Al suscribirte tenés 30 días con 500 consultas reales sin costo. <a href="/precios" class="font-medium text-accent underline">Ver todos los planes</a>.',
-  },
-  {
-    label: '¿De dónde salen los datos?',
-    keywords: ['datos', 'fuente', 'reniec', 'padron', 'padrón', 'oficial', 'sunat'],
-    answer:
-      'Cada consulta resuelve contra el padrón oficial de RENIEC. Datos reales y estructurados, sin scraping.',
-  },
-  {
-    label: '¿Es legal? ¿Protegen los datos?',
-    keywords: ['legal', 'ley', 'datos personales', 'privacidad', 'seguro', 'proteccion', 'protección', '29733'],
-    answer:
-      'Sí. Operamos bajo la Ley 29733, con banco de datos inscrito en MINJUS y auditoría completa de cada consulta. Los datos viajan cifrados.',
-  },
-  {
-    label: '¿Necesito convenio con RENIEC?',
-    keywords: ['convenio', 'reniec', 'tramite', 'trámite', 'requisito', 'juridica', 'jurídica'],
-    answer:
-      'No. Esa es la idea de MAXFIND: verificás identidad sin gestionar convenios, certificados ni trámites de persona jurídica.',
-  },
-  {
-    label: '¿Tienen documentación?',
-    keywords: ['documentacion', 'documentación', 'docs', 'api', 'integrar', 'endpoint'],
-    answer: `Sí, todo está en <a href="${URLS.DOCS}" target="_blank" rel="noopener noreferrer" class="font-medium text-accent underline">docs.maxfind.app</a> con ejemplos en cURL, JS y Python.`,
-  },
-];
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+
+// Sustituir placeholders en las respuestas (signupUrl, pricingUrl, contactUrl, contactEmail, docsUrl).
+const ctx = {
+  signupUrl: URLS.SIGNUP,
+  pricingUrl: localizedPath('precios', locale),
+  contactUrl: localizedPath('contacto', locale),
+  contactEmail: SITE.contactEmail,
+  docsUrl: URLS.DOCS,
+};
+const interpolate = (s: string) =>
+  s.replace(/\{(\w+)\}/g, (_, k) => (ctx as Record<string, string>)[k] ?? `{${k}}`);
+
+const faqs = t.chat.faqs.map((f) => ({
+  label: f.label,
+  keywords: f.keywords,
+  answer: interpolate(f.answer),
+}));
+const fallback = interpolate(t.chat.fallback);
 ---
 
 <div data-chat class="fixed bottom-5 right-5 z-50">
-  <!-- Toggle -->
   <button
     type="button"
     data-chat-toggle
     class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
-    aria-label="Abrir ayuda"
+    aria-label={t.chat.openAria}
     aria-expanded="false"
     aria-controls="chat-panel"
   >
@@ -72,27 +41,26 @@ const faqs = [
     </svg>
   </button>
 
-  <!-- Panel -->
   <div
     id="chat-panel"
     data-chat-panel
     class="absolute bottom-[4.5rem] right-0 hidden w-[360px] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary shadow-2xl"
     role="dialog"
-    aria-label="Ayuda de MAXFIND"
+    aria-label={t.chat.title}
   >
     <div class="flex items-center gap-3 bg-primary px-4 py-3.5 text-white">
       <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
         <span class="h-2.5 w-2.5 rounded-full bg-accent"></span>
       </span>
       <div>
-        <p class="text-sm font-medium">Ayuda de MAXFIND</p>
-        <p class="text-xs text-white/70">Respondemos al instante</p>
+        <p class="text-sm font-medium">{t.chat.title}</p>
+        <p class="text-xs text-white/70">{t.chat.subtitle}</p>
       </div>
     </div>
 
     <div data-chat-messages class="flex max-h-[340px] flex-col gap-3 overflow-y-auto px-4 py-4">
       <div class="max-w-[85%] rounded-2xl rounded-tl-sm bg-surface-secondary px-3.5 py-2.5 text-sm text-ink-primary">
-        ¡Hola! 👋 ¿En qué te ayudo? Elegí una pregunta o escribí la tuya.
+        {t.chat.greeting}
       </div>
       <div data-chat-chips class="flex flex-col gap-2">
         {
@@ -114,13 +82,13 @@ const faqs = [
         type="text"
         data-chat-input
         autocomplete="off"
-        placeholder="Escribí tu pregunta…"
+        placeholder={t.chat.placeholder}
         class="min-w-0 flex-1 rounded-full border border-surface-border bg-white dark:bg-surface-secondary px-4 py-2 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
       />
       <button
         type="submit"
         class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary-900"
-        aria-label="Enviar"
+        aria-label={t.chat.send}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M2 8h11m0 0L8.5 3.5M13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -129,7 +97,7 @@ const faqs = [
     </form>
   </div>
 
-  <script type="application/json" data-chat-data set:html={JSON.stringify({ faqs, contactEmail: SITE.contactEmail })} />
+  <script type="application/json" data-chat-data set:html={JSON.stringify({ faqs, fallback })} />
 </div>
 
 <script>
@@ -138,9 +106,9 @@ const faqs = [
   const root = document.querySelector<HTMLElement>('[data-chat]');
   if (root) {
     const dataEl = root.querySelector<HTMLScriptElement>('[data-chat-data]');
-    const { faqs, contactEmail } = JSON.parse(dataEl?.textContent ?? '{}') as {
+    const { faqs, fallback } = JSON.parse(dataEl?.textContent ?? '{}') as {
       faqs: Faq[];
-      contactEmail: string;
+      fallback: string;
     };
 
     const toggle = root.querySelector<HTMLButtonElement>('[data-chat-toggle]');
@@ -186,16 +154,6 @@ const faqs = [
     const escapeHtml = (s: string) =>
       s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-    const fallback = () => {
-      const mailto = `mailto:${contactEmail}`;
-      addBubble(
-        `No encontré una respuesta exacta para eso. Te puede ayudar una persona: ` +
-          `<a href="/contacto" class="font-medium text-accent underline">escribinos por el formulario</a> ` +
-          `o mandá un correo a <a href="${mailto}" class="font-medium text-accent underline">${contactEmail}</a>.`,
-        'bot',
-      );
-    };
-
     const answerFor = (query: string): string | null => {
       const norm = (s: string) =>
         s
@@ -231,7 +189,7 @@ const faqs = [
       addBubble(escapeHtml(value), 'user');
       if (input) input.value = '';
       const ans = answerFor(value);
-      setTimeout(() => (ans ? addBubble(ans, 'bot') : fallback()), 250);
+      setTimeout(() => (ans ? addBubble(ans, 'bot') : addBubble(fallback, 'bot')), 250);
     });
   }
 </script>

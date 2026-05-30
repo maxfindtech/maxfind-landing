@@ -9,6 +9,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const contactEmail = import.meta.env.CONTACT_EMAIL ?? 'hola@maxfind.app';
   const form = await request.formData();
 
+  const referer = request.headers.get('referer') ?? '';
+  const isEn = /\/en(\/|$)/.test(new URL(referer || request.url).pathname);
+  const basePath = isEn ? '/en/demo' : '/demo';
+
   const name = String(form.get('name') ?? '').trim();
   const role = String(form.get('role') ?? '').trim();
   const email = String(form.get('email') ?? '').trim();
@@ -17,7 +21,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const message = String(form.get('message') ?? '').trim();
 
   if (!name || !email || !company) {
-    return redirect('/demo?status=invalid', 303);
+    return redirect(`${basePath}?status=invalid`, 303);
   }
 
   const fields = [
@@ -46,8 +50,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
   if (!result.ok) {
     console.error('[demo] send failed:', result.error);
-    return redirect('/demo?status=error', 303);
+    return redirect(`${basePath}?status=error`, 303);
   }
 
-  return redirect('/demo?status=ok', 303);
+  return redirect(`${basePath}?status=ok`, 303);
 };

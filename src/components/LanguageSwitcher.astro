@@ -1,0 +1,90 @@
+---
+import { switchLocaleUrl, type Locale, LOCALES, useTranslations } from '@i18n/ui';
+
+const currentLocale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(currentLocale);
+
+const items = LOCALES.map((loc) => ({
+  code: loc,
+  label: loc.toUpperCase(),
+  href: switchLocaleUrl(Astro.url.pathname, loc),
+  current: loc === currentLocale,
+}));
+---
+
+<div class="relative" data-lang-switcher>
+  <button
+    type="button"
+    data-lang-toggle
+    class="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-medium text-ink-secondary transition-colors hover:bg-surface-secondary hover:text-ink-primary dark:text-ink-tertiary dark:hover:bg-primary-900 dark:hover:text-white"
+    aria-label={t.nav.changeLanguage}
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-controls="lang-menu"
+  >
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <circle cx="7" cy="7" r="5.75" stroke="currentColor" stroke-width="1.3" />
+      <path
+        d="M1.25 7h11.5M7 1.25c1.5 1.7 2.3 3.7 2.3 5.75S8.5 11 7 12.75M7 1.25c-1.5 1.7-2.3 3.7-2.3 5.75S5.5 11 7 12.75"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+    </svg>
+    <span class="uppercase">{currentLocale}</span>
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+      <path d="M2.5 4l2.5 2.5L7.5 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <div
+    id="lang-menu"
+    data-lang-menu
+    class="absolute right-0 top-full mt-1 hidden min-w-[7rem] overflow-hidden rounded-xl border border-surface-border bg-surface-secondary shadow-lg dark:border-primary-800 dark:bg-primary-900"
+    role="menu"
+  >
+    {
+      items.map((item) => (
+        <a
+          href={item.href}
+          role="menuitem"
+          class:list={[
+            'block px-3 py-2 text-sm transition-colors hover:bg-surface dark:hover:bg-primary-800',
+            item.current
+              ? 'font-medium text-ink-primary'
+              : 'text-ink-secondary dark:text-ink-tertiary',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-lang-switcher]').forEach((wrap) => {
+    const btn = wrap.querySelector<HTMLButtonElement>('[data-lang-toggle]');
+    const menu = wrap.querySelector<HTMLElement>('[data-lang-menu]');
+    if (!btn || !menu) return;
+
+    const close = () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    };
+    const toggle = () => {
+      const open = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!open));
+    };
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggle();
+    });
+    document.addEventListener('click', (e) => {
+      if (!wrap.contains(e.target as Node)) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+  });
+</script>

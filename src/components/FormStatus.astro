@@ -1,13 +1,14 @@
 ---
 import { SITE } from '@lib/constants';
+import { useTranslations, type Locale } from '@i18n/ui';
 
 type Props = {
   successMessage?: string;
 };
 
-const {
-  successMessage = 'Listo, recibimos tu mensaje. Te respondemos dentro de las próximas 24 horas hábiles.',
-} = Astro.props;
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+const { successMessage = t.forms.status.successDefault } = Astro.props;
 ---
 
 <div data-form-status class="hidden">
@@ -36,7 +37,7 @@ const {
         <path d="M9 5v4.5M9 12.5h.01" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round" />
       </svg>
       <span>
-        No pudimos enviar tu mensaje. Probá de nuevo o escribinos directo a
+        {t.forms.status.error}
         <a href={`mailto:${SITE.contactEmail}`} class="font-medium underline">{SITE.contactEmail}</a>.
       </span>
     </div>
@@ -52,7 +53,7 @@ const {
         <circle cx="9" cy="9" r="8" stroke="#F59E0B" stroke-width="1.5" />
         <path d="M9 5v4.5M9 12.5h.01" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" />
       </svg>
-      <span>Faltan algunos campos obligatorios. Revisá el formulario e intentá de nuevo.</span>
+      <span>{t.forms.status.invalid}</span>
     </div>
   </div>
 </div>
@@ -68,7 +69,6 @@ const {
       wrap.classList.remove('hidden');
       panel.classList.remove('hidden');
       wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      // Clean the URL so a refresh doesn't re-show the banner.
       const url = new URL(window.location.href);
       url.searchParams.delete('status');
       window.history.replaceState({}, '', url.pathname + url.search + url.hash);

@@ -16,7 +16,7 @@ for (const file of files) {
   let out = src;
   let changes = 0;
   for (const { pattern, replacement } of REPLACEMENTS) {
-    out = out.replace(pattern, (match) => {
+    out = out.replace(pattern, () => {
       changes++;
       return replacement;
     });

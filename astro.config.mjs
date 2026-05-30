@@ -9,6 +9,13 @@ export default defineConfig({
     webAnalytics: { enabled: true },
   }),
   integrations: [tailwind({ applyBaseStyles: false })],
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   build: {
     inlineStylesheets: 'auto',
   },

@@ -1,0 +1,555 @@
+import type { es } from './es';
+
+// Inglés: misma forma que el diccionario es, validado por TypeScript.
+export const en: typeof es = {
+  meta: {
+    home: {
+      title: 'MAXFIND — Identity verification by DNI in Peru',
+      description:
+        'Identity verification API for businesses in Peru. Query DNIs in milliseconds, validate physical identity, access a reputation network. Free sandbox.',
+    },
+    precios: {
+      title: 'Pricing',
+      description:
+        'Plans from S/ 19/month. Professional sandbox free forever. 30-day production trial with 500 real queries. No long-term commitment.',
+    },
+    productoOverview: {
+      title: 'Product',
+      description:
+        'Explore what MAXFIND does in detail: DNI verification against RENIEC, physical validation, reputation network, and a professional sandbox.',
+    },
+  },
+  nav: {
+    producto: 'Product',
+    soluciones: 'Solutions',
+    precios: 'Pricing',
+    docs: 'Docs',
+    blog: 'Blog',
+    login: 'Sign in',
+    signup: 'Get started',
+    openMenu: 'Open menu',
+    homeAria: 'MAXFIND home',
+    changeTheme: 'Toggle theme',
+    changeLanguage: 'Change language',
+  },
+  hero: {
+    eyebrow: 'Identity verification API · Peru',
+    headline: 'Find the real identity behind every DNI',
+    description:
+      'Identity verification API for serious businesses in Peru. Real data in milliseconds, professional sandbox included for free.',
+    primaryCta: 'Get started',
+    secondaryCta: 'Read the docs',
+    trust: 'No card required · Unlimited sandbox · 30-day trial with 500 real queries',
+    mockup: {
+      responseIn: 'Responded in',
+      padronTag: 'RENIEC registry',
+    },
+  },
+  socialProof: {
+    heading: 'Businesses already verifying identity with MAXFIND',
+    stats: {
+      latency: 'Average latency',
+      uptime: 'Guaranteed uptime',
+      official: 'Official data',
+      compliance: 'Legal compliance',
+    },
+  },
+  problem: {
+    eyebrow: 'The problem',
+    title: 'Validating identity in Peru today is painful',
+    subtitle:
+      'Without developer-friendly tools, every verification turns into a manual, slow, error-prone process.',
+    items: [
+      { title: 'Tedious', description: 'Checking DNIs manually, one customer at a time.' },
+      {
+        title: 'Slow',
+        description: 'Waiting on public services that take days to respond.',
+      },
+      { title: 'Unsafe', description: 'No way to spot tampered or fake DNIs.' },
+      {
+        title: 'Expensive',
+        description:
+          'RENIEC partnerships require a legal entity and months of paperwork.',
+      },
+    ],
+  },
+  solution: {
+    eyebrow: 'The solution',
+    title: 'MAXFIND solves it in 3 steps',
+    subtitle:
+      'Designed so your first "hello world" hits real data, not hours of paperwork.',
+    steps: [
+      {
+        title: 'Create your free account',
+        description:
+          'Instant access to the professional sandbox, free forever. No card, no paperwork.',
+      },
+      {
+        title: 'Make your first call',
+        description: 'In under 5 minutes following the docs. cURL, JS, or Python.',
+      },
+      {
+        title: 'Go to production',
+        description:
+          '30 days free with 500 real RENIEC queries. After that, you only pay for what you use.',
+      },
+    ],
+    ctaPrimary: 'Create account',
+    ctaSecondary: 'Read the quickstart',
+  },
+  features: {
+    eyebrow: 'Features',
+    title: 'Everything you need to verify identity',
+    subtitle: 'A single API with it all baked in. Built to scale with your business.',
+    more: 'Learn more',
+    items: [
+      {
+        title: 'Fast verification',
+        description:
+          'Query any Peruvian DNI in under a second. Data straight from the official RENIEC registry.',
+      },
+      {
+        title: 'Physical validation',
+        description:
+          'Is the DNI the customer is showing real? We compare the physical document against the official registry in real time.',
+      },
+      {
+        title: 'Reputation network',
+        description:
+          'Share alerts with other businesses in your industry. If a customer was a problem somewhere else, you hear about it first.',
+      },
+      {
+        title: 'Professional sandbox',
+        description:
+          'Build and test without touching real data. Predictable mock DNIs so you can automate your tests.',
+      },
+      {
+        title: 'Webhooks',
+        description:
+          'Receive real-time events when things happen. Plug MAXFIND into your stack without polling.',
+      },
+      {
+        title: 'Guaranteed SLA',
+        description:
+          '99.9% uptime on production plans. Monitored latency and a public status page.',
+      },
+    ],
+  },
+  codeExample: {
+    eyebrow: 'Developer experience',
+    title: 'It is this simple',
+    subtitle: 'A single HTTP call. No required SDK, no complex OAuth, no weird signatures.',
+  },
+  pricing: {
+    eyebrow: 'Pricing',
+    title: 'Simple plans, no surprises',
+    subtitle:
+      'You pay for what you use. No annual commitments. Professional sandbox free forever.',
+    model: {
+      step1Title: 'Free sandbox',
+      step1Description:
+        'Unlimited mock DNIs to develop and test. Free forever, no card required.',
+      step2Title: '30-day trial',
+      step2Description:
+        'On any subscription, 500 real RENIEC queries at no cost during the first 30 days.',
+      step3Title: 'Then you start paying',
+      step3Description:
+        'After the trial, your chosen plan activates. You only pay for what you use.',
+    },
+    viewAll: 'See all plans and FAQ',
+    mostPopular: 'Most popular',
+    perMonth: '/mo',
+    noteAfterCards: 'All prices in Peruvian soles (PEN), VAT excluded. Cancel any time.',
+    compareTitle: 'Compare plans in detail',
+    compareHeaderFeature: 'Feature',
+    included: 'Included',
+    notIncluded: 'Not included',
+    pageHeroTitle: 'Simple plans, no surprises',
+    pageHeroDescription:
+      'You only pay for what you use. No annual commitments. Professional sandbox free forever and a 30-day trial with 500 real queries on signup.',
+    plans: [
+      {
+        name: 'Micro',
+        price: 'S/ 19',
+        description: 'To start testing at low volume.',
+        cta: 'Get started',
+        features: ['500 queries/mo', 'Unlimited sandbox', 'DNI validation', 'Email support'],
+      },
+      {
+        name: 'Starter',
+        price: 'S/ 79',
+        description: 'For teams already validating in production.',
+        cta: 'Get started',
+        features: [
+          '5,000 queries/mo',
+          'Physical validation',
+          'Reputation network',
+          'Webhooks',
+          'Priority support',
+        ],
+      },
+      {
+        name: 'Pro',
+        price: 'S/ 249',
+        description: 'For high volume and critical operations.',
+        cta: 'Get started',
+        features: [
+          '25,000 queries/mo',
+          'Everything in Starter',
+          '99.9% SLA',
+          'Dedicated account',
+          'Guided onboarding',
+        ],
+      },
+      {
+        name: 'Enterprise',
+        price: 'Custom',
+        description: 'Unlimited volume and specific requirements.',
+        cta: 'Talk to sales',
+        features: [
+          'Unlimited queries',
+          'Custom SLA',
+          'Dedicated infrastructure',
+          '24/7 support',
+          'Custom contract and billing',
+        ],
+      },
+    ],
+    comparisonRows: [
+      'Real queries / month',
+      'Professional sandbox',
+      'DNI verification (RENIEC)',
+      'Physical validation',
+      'Reputation network',
+      'Webhooks',
+      '99.9% SLA',
+      'Dedicated account',
+      'Support',
+    ],
+    comparisonValues: {
+      unlimited: 'Unlimited',
+      supportEmail: 'Email',
+      supportPriority: 'Priority',
+      support247: '24/7',
+    },
+    faqs: [
+      {
+        q: 'Is the sandbox really free?',
+        a: 'Yes. The professional sandbox with mock DNIs is free forever and does not require a card. Use it to build and integrate without touching real data or burning queries.',
+      },
+      {
+        q: 'How does the 30-day trial work?',
+        a: 'When you subscribe to any plan, you get 30 days with up to 500 real RENIEC queries at no cost. It is so you can validate in production before paying. After 30 days or 500 queries, billing for your chosen plan kicks in.',
+      },
+      {
+        q: 'What happens if I go over my plan limit?',
+        a: 'We warn you before you hit the limit. You can upgrade at any time or pay for overage queries at your plan rate. We never cut service without notice.',
+      },
+      {
+        q: 'Are there commitments or annual contracts?',
+        a: 'No. Every plan is month-to-month and you can cancel at any time from the dashboard. Only Enterprise can have a custom contract if you need one.',
+      },
+      {
+        q: 'Do I need a RENIEC partnership?',
+        a: 'No. That is exactly why MAXFIND exists: we give you identity verification access without you having to set up partnerships, certificates, or legal-entity paperwork.',
+      },
+      {
+        q: 'Is the data legally protected?',
+        a: 'Yes. We operate under Peru’s Personal Data Protection Law 29733, with a data bank registered at MINJUS and full audit logs on every query.',
+      },
+      {
+        q: 'What payment methods do you accept?',
+        a: 'Credit or debit card for monthly plans. Enterprise can be billed by invoice and bank transfer per contract.',
+      },
+    ],
+  },
+  industries: {
+    eyebrow: 'Solutions',
+    title: 'Built for any business that needs to verify',
+    subtitle:
+      'Real use cases, not generic templates. Each solution ships with integration examples specific to your industry.',
+    viewCase: 'See use case',
+    items: [
+      {
+        title: 'Clinics and medical offices',
+        description:
+          'Verify patient identity at admissions. Catch fake DNIs before treating them.',
+      },
+      {
+        title: 'Buildings and condominiums',
+        description: 'Identify visitors and control access. Know who enters your property.',
+      },
+      {
+        title: 'Fintechs',
+        description:
+          'Streamlined KYC for your financial product. Fast onboarding without sacrificing security.',
+      },
+      {
+        title: 'Retail and commerce',
+        description:
+          'Verify buyers on high-value transactions. Reduce fraud across your sales channels.',
+      },
+    ],
+  },
+  trust: {
+    eyebrow: 'Security and compliance',
+    title: 'Built to comply with Peruvian law',
+    subtitle:
+      'Personal data protection is not an afterthought. It is at the core of how we designed the API.',
+    cta: 'View privacy policy',
+    items: [
+      {
+        title: 'Data bank registered with MINJUS',
+        description:
+          'The "maxfind_users" personal data bank is formally registered with Peru’s National Personal Data Protection Authority.',
+      },
+      {
+        title: 'Law 29733 compliance',
+        description:
+          'We process personal data under the current Peruvian legal framework, with a specific legal basis for every operation.',
+      },
+      {
+        title: 'Full audit log',
+        description:
+          'Every query is logged with timestamp, IP, and purpose. Full log access from your dashboard.',
+      },
+      {
+        title: 'End-to-end encryption',
+        description:
+          'TLS 1.3 in transit, AES-256 at rest. Per-tenant isolation for sensitive data.',
+      },
+    ],
+  },
+  testimonials: {
+    eyebrow: 'Testimonials',
+    title: 'What teams already verifying with MAXFIND say',
+    items: [
+      {
+        quote:
+          'We integrated MAXFIND into onboarding in an afternoon. KYC stopped being our signup bottleneck and we dropped abandonment significantly.',
+        name: 'Daniela Reyes',
+        role: 'CTO at FinPe',
+      },
+      {
+        quote:
+          'At admissions, we now confirm patient identity in seconds. We caught several attempts at insurance fraud that used to slip by.',
+        name: 'Marco Salinas',
+        role: 'Head of systems at Clínica Aurora',
+      },
+      {
+        quote:
+          'The sandbox let us test everything without touching real data. When we moved to production, we did not have to change a single line of code.',
+        name: 'Lucía Ferrer',
+        role: 'Founder at ComercioSeguro',
+      },
+    ],
+  },
+  ctaFinal: {
+    title: 'Ready to start?',
+    description: 'Create your free account and make your first call in under 5 minutes.',
+    primary: 'Create free account',
+    secondary: 'Talk to sales',
+  },
+  footer: {
+    tagline: 'Identity verification API for serious businesses in Peru.',
+    sections: {
+      Producto: 'Product',
+      Soluciones: 'Solutions',
+      Empresa: 'Company',
+      Recursos: 'Resources',
+      Legal: 'Legal',
+    },
+    copyright: 'All rights reserved.',
+    madeIn: 'Made in Peru',
+  },
+  faq: {
+    title: 'Frequently asked questions',
+    contact: 'Cannot find what you need? Email us at',
+  },
+  chat: {
+    title: 'MAXFIND help',
+    subtitle: 'We reply instantly',
+    greeting: 'Hi! 👋 How can I help? Pick a question or type your own.',
+    placeholder: 'Type your question…',
+    send: 'Send',
+    fallback:
+      'I did not find an exact answer. A person can help: <a href="{contactUrl}" class="font-medium text-accent underline">use the contact form</a> or email <a href="mailto:{contactEmail}" class="font-medium text-accent underline">{contactEmail}</a>.',
+    openAria: 'Open help',
+    closeAria: 'Close',
+    faqs: [
+      {
+        label: 'What is MAXFIND?',
+        keywords: ['what is', 'maxfind', 'product', 'do', 'about'],
+        answer:
+          'MAXFIND is an identity verification API for DNIs in Peru. You can query the official RENIEC registry, validate physical identity, and tap into a reputation network across businesses.',
+      },
+      {
+        label: 'Is the sandbox free?',
+        keywords: ['sandbox', 'free', 'trial', 'test'],
+        answer:
+          'Yes. The professional sandbox with mock DNIs is free forever and does not require a card. Use it to integrate and test without spending real queries.',
+      },
+      {
+        label: 'How do I start?',
+        keywords: ['start', 'begin', 'sign up', 'account', 'register'],
+        answer:
+          'Create your free account and make your first call in under 5 minutes. <a href="{signupUrl}" class="font-medium text-accent underline">Get started here</a>.',
+      },
+      {
+        label: 'How much does it cost?',
+        keywords: ['price', 'cost', 'plan', 'plans', 'pricing'],
+        answer:
+          'Plans start at S/ 19/month. On signup you get 30 days with 500 real queries at no cost. <a href="{pricingUrl}" class="font-medium text-accent underline">See all plans</a>.',
+      },
+      {
+        label: 'Where does the data come from?',
+        keywords: ['data', 'source', 'reniec', 'registry', 'official'],
+        answer:
+          'Every query resolves against the official RENIEC registry. Real, structured data, no scraping.',
+      },
+      {
+        label: 'Is it legal? Is data protected?',
+        keywords: ['legal', 'law', 'personal data', 'privacy', 'secure', 'protection', '29733'],
+        answer:
+          'Yes. We operate under Peru’s Law 29733, with a data bank registered at MINJUS and full audit logs on every query. Data is encrypted in transit and at rest.',
+      },
+      {
+        label: 'Do I need a RENIEC partnership?',
+        keywords: ['partnership', 'reniec', 'paperwork', 'requirement', 'legal entity'],
+        answer:
+          'No. That is the whole point of MAXFIND: you verify identity without setting up partnerships, certificates, or legal-entity paperwork.',
+      },
+      {
+        label: 'Is there documentation?',
+        keywords: ['documentation', 'docs', 'api', 'integrate', 'endpoint'],
+        answer:
+          'Yes, everything is at <a href="{docsUrl}" target="_blank" rel="noopener noreferrer" class="font-medium text-accent underline">docs.maxfind.app</a> with cURL, JS, and Python examples.',
+      },
+    ],
+  },
+  forms: {
+    status: {
+      successDefault: 'Got it, your message reached us. We reply within 24 business hours.',
+      successDemo:
+        'We received your demo request. We will reach out within 24 business hours to coordinate.',
+      error: 'We could not send your message. Try again or email us directly at',
+      invalid: 'Some required fields are missing. Review the form and try again.',
+    },
+    contact: {
+      eyebrow: 'Contact',
+      title: 'Let’s talk',
+      description: 'Questions about the API, integration, or pricing? Write to us.',
+      emailLabel: 'Email',
+      devNoticeTitle: 'Are you a developer?',
+      devNoticeBody: 'Most likely',
+      devNoticeLink: 'the documentation',
+      devNoticeAfter: 'will answer your question faster.',
+      fieldName: 'Name',
+      fieldNamePh: 'Your name',
+      fieldEmail: 'Email',
+      fieldEmailPh: 'you@company.com',
+      fieldCompany: 'Company',
+      fieldOptional: '(optional)',
+      fieldCompanyPh: 'Company name',
+      fieldMessage: 'Message',
+      fieldMessagePh: 'Tell us how we can help',
+      submit: 'Send message',
+      legal: 'By submitting, you accept our',
+      legalLink: 'privacy policy',
+    },
+    demo: {
+      eyebrow: 'Enterprise',
+      title: 'Request a personalized demo',
+      description:
+        'For teams with high volume or specific needs. We show you how MAXFIND fits your stack in 30 minutes.',
+      bullets: [
+        'Walkthrough of features and use cases for your industry',
+        'Custom pricing for high volume',
+        'Extended sandbox and integration support',
+      ],
+      fieldName: 'Name',
+      fieldRole: 'Role',
+      fieldEmail: 'Work email',
+      fieldCompany: 'Company',
+      fieldVolume: 'Estimated query volume',
+      fieldVolumeOptions: [
+        'Under 5,000/mo',
+        '5,000 — 25,000/mo',
+        '25,000 — 100,000/mo',
+        'More than 100,000/mo',
+      ],
+      fieldUseCase: 'Use case',
+      submit: 'Request demo',
+    },
+  },
+  auth: {
+    login: {
+      title: 'Sign in',
+      subtitle: 'Welcome back to MAXFIND.',
+      email: 'Email',
+      emailPh: 'you@company.com',
+      password: 'Password',
+      passwordPh: '••••••••',
+      forgot: 'Forgot it?',
+      submit: 'Sign in',
+      noAccount: 'Don’t have an account?',
+      signup: 'Get started for free',
+      legalBefore: 'By continuing you accept the',
+      legalTerms: 'terms',
+      legalAnd: 'and the',
+      legalPrivacy: 'privacy policy',
+      errorBoth: 'Enter both email and password.',
+    },
+    register: {
+      title: 'Create your free account',
+      subtitle: 'Instant sandbox access, no card.',
+      sideTitle: 'Start verifying identity in minutes',
+      sideBenefits: [
+        'Professional sandbox free forever',
+        '30 days with 500 real RENIEC queries',
+        'No card required to start',
+      ],
+      name: 'Full name',
+      namePh: 'Your name',
+      email: 'Email',
+      emailPh: 'you@company.com',
+      company: 'Company',
+      companyPh: 'Company name',
+      password: 'Password',
+      passwordPh: 'At least 8 characters',
+      submit: 'Create free account',
+      hasAccount: 'Already have an account?',
+      login: 'Sign in',
+      legalBefore: 'By creating your account you accept the',
+      legalTerms: 'terms',
+      legalAnd: 'and the',
+      legalPrivacy: 'privacy policy',
+      errorRequired: 'Enter your name, email, and password.',
+      errorPasswordShort: 'Password must be at least 8 characters.',
+    },
+    recover: {
+      title: 'Recover password',
+      subtitle: 'We will email you a link to set a new password.',
+      email: 'Email',
+      emailPh: 'you@company.com',
+      submit: 'Send link',
+      back: 'Back to sign in',
+      okMessage:
+        'If that email exists at MAXFIND, we sent a recovery link. Check your inbox.',
+      errorEmail: 'Enter your email.',
+    },
+  },
+  comingSoon: {
+    eyebrow: 'Coming soon',
+    primary: 'Get started',
+    secondary: 'Back to home',
+  },
+  notFound: {
+    code: 'Error 404',
+    title: 'This page does not exist',
+    description:
+      'The URL you typed does not match any page. Check the address bar or go back home.',
+    primary: 'Back to home',
+    secondary: 'Report issue',
+  },
+};

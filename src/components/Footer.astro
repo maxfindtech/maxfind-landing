@@ -1,21 +1,72 @@
 ---
-import { NAV, SOCIAL, SITE } from '@lib/constants';
+import { SOCIAL, SITE, URLS } from '@lib/constants';
+import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
 import Logo from './Logo.astro';
 
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
 const year = new Date().getFullYear();
-const sections = Object.entries(NAV.footer);
+const lp = (path: string) => localizedPath(path, locale);
+
+type Link = { label: string; href: string; external?: boolean };
+
+const sections: { title: string; links: Link[] }[] = [
+  {
+    title: t.footer.sections.Producto,
+    links: [
+      { label: t.features.items[0].title, href: lp('producto/verificacion-dni') },
+      { label: t.features.items[1].title, href: lp('producto/validacion-identidad') },
+      { label: t.features.items[2].title, href: lp('producto/red-reputacion') },
+      { label: t.features.items[3].title, href: lp('producto/sandbox') },
+      { label: t.nav.precios, href: lp('precios') },
+    ],
+  },
+  {
+    title: t.footer.sections.Soluciones,
+    links: [
+      { label: t.industries.items[0].title, href: lp('soluciones/clinicas') },
+      { label: t.industries.items[1].title, href: lp('soluciones/edificios') },
+      { label: t.industries.items[2].title, href: lp('soluciones/fintech') },
+      { label: t.industries.items[3].title, href: lp('soluciones/comercio') },
+    ],
+  },
+  {
+    title: t.footer.sections.Empresa,
+    links: [
+      { label: locale === 'en' ? 'About MAXFIND' : 'Sobre MAXFIND', href: lp('sobre') },
+      { label: t.nav.blog, href: lp('blog') },
+      { label: locale === 'en' ? 'Contact' : 'Contacto', href: lp('contacto') },
+      { label: locale === 'en' ? 'Request demo' : 'Pedir demo', href: lp('demo') },
+    ],
+  },
+  {
+    title: t.footer.sections.Recursos,
+    links: [
+      { label: locale === 'en' ? 'Documentation' : 'Documentación', href: URLS.DOCS, external: true },
+      { label: 'Status', href: URLS.STATUS, external: true },
+      { label: 'Changelog', href: lp('changelog') },
+    ],
+  },
+  {
+    title: t.footer.sections.Legal,
+    links: [
+      { label: locale === 'en' ? 'Terms' : 'Términos', href: lp('legal/terminos') },
+      { label: locale === 'en' ? 'Privacy' : 'Privacidad', href: lp('legal/privacidad') },
+    ],
+  },
+];
 ---
 
-<footer class="border-t border-surface-border bg-white dark:border-primary-900 dark:bg-primary-950">
+<footer
+  class="border-t border-surface-border bg-white dark:border-primary-900 dark:bg-primary-950 dark:bg-surface-secondary"
+>
   <div class="container-page py-16">
     <div class="grid grid-cols-2 gap-10 md:grid-cols-6 lg:grid-cols-12">
       <div class="col-span-2 md:col-span-6 lg:col-span-4">
-        <a href="/" aria-label="Inicio MAXFIND">
+        <a href={lp('')} aria-label={t.nav.homeAria}>
           <Logo class="h-7 w-auto" />
         </a>
-        <p class="mt-4 max-w-xs text-sm text-ink-secondary">
-          API de verificación de identidad para negocios serios en Perú.
-        </p>
+        <p class="mt-4 max-w-xs text-sm text-ink-secondary">{t.footer.tagline}</p>
         <div class="mt-6 flex items-center gap-3">
           <a
             href={SOCIAL.x}
@@ -54,13 +105,13 @@ const sections = Object.entries(NAV.footer);
       </div>
 
       {
-        sections.map(([title, links]) => (
+        sections.map((section) => (
           <div class="lg:col-span-2">
-            <h2 class="text-xs font-medium uppercase tracking-wider text-ink-tertiary dark:text-ink-tertiary">
-              {title}
+            <h2 class="text-xs font-medium uppercase tracking-wider text-ink-tertiary">
+              {section.title}
             </h2>
             <ul class="mt-4 flex flex-col gap-3">
-              {links.map((link) => (
+              {section.links.map((link) => (
                 <li>
                   <a
                     href={link.href}
@@ -77,11 +128,11 @@ const sections = Object.entries(NAV.footer);
       }
     </div>
 
-    <div class="mt-14 flex flex-col gap-4 border-t border-surface-border pt-8 md:flex-row md:items-center md:justify-between dark:border-primary-900">
-      <p class="text-sm text-ink-tertiary">
-        © {year} {SITE.name}. Todos los derechos reservados.
-      </p>
-      <p class="text-sm text-ink-tertiary">Hecho en Perú</p>
+    <div
+      class="mt-14 flex flex-col gap-4 border-t border-surface-border pt-8 md:flex-row md:items-center md:justify-between dark:border-primary-900"
+    >
+      <p class="text-sm text-ink-tertiary">© {year} {SITE.name}. {t.footer.copyright}</p>
+      <p class="text-sm text-ink-tertiary">{t.footer.madeIn}</p>
     </div>
   </div>
 </footer>

@@ -8,6 +8,7 @@ import {
   websiteSchema,
   type SeoProps,
 } from '@lib/seo';
+import { LOCALES, DEFAULT_LOCALE, switchLocaleUrl, type Locale } from '@i18n/ui';
 import Navbar from '@components/Navbar.astro';
 import Footer from '@components/Footer.astro';
 import ChatWidget from '@components/ChatWidget.astro';
@@ -29,6 +30,10 @@ const {
   jsonLd,
 } = Astro.props;
 
+const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
+const htmlLang = locale === 'en' ? 'en' : 'es';
+const ogLocale = locale === 'en' ? 'en_US' : 'es_PE';
+
 const pageTitle = buildTitle(title);
 const pageOgImage = buildOgImage(ogImage);
 const canonicalUrl = canonical ?? Astro.url.href;
@@ -36,10 +41,17 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
 
 const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 const schemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
+
+// hreflang: para cada locale, qué URL le corresponde a esta página.
+const altLinks = LOCALES.map((loc) => ({
+  hreflang: loc,
+  href: `${SITE.url}${switchLocaleUrl(Astro.url.pathname, loc)}`,
+}));
+const xDefault = `${SITE.url}${switchLocaleUrl(Astro.url.pathname, DEFAULT_LOCALE)}`;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,7 +64,6 @@ const schemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
     <meta name="theme-color" content="#1E1B4B" />
 
     <script is:inline>
-      // Aplicar tema antes del primer paint (evita el flash blanco en dark mode).
       (function () {
         try {
           var stored = localStorage.getItem('mfx-theme');
@@ -79,6 +90,8 @@ const schemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    {altLinks.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {!noindex && <meta name="robots" content="index, follow" />}
 
@@ -88,18 +101,14 @@ const schemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
     <meta property="og:image" content={pageOgImage} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:locale" content={ogLocale} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={pageOgImage} />
 
-    {
-      schemas.map((schema) => (
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-      ))
-    }
+    {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
 
     {
       plausibleDomain && (
@@ -117,7 +126,7 @@ const schemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
     >
-      Saltar al contenido
+      {locale === 'en' ? 'Skip to content' : 'Saltar al contenido'}
     </a>
     {!hideNav && <Navbar />}
     <main id="main" class="flex-1">

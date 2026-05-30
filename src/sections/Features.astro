@@ -1,74 +1,41 @@
 ---
-const features = [
-  {
-    icon: '/icons/features/dni-rapida.png',
-    title: 'Verificación rápida',
-    description:
-      'Consultá cualquier DNI peruano en menos de un segundo. Datos directos del padrón oficial RENIEC.',
-    href: '/producto/verificacion-dni',
-  },
-  {
-    icon: '/icons/features/validation.png',
-    title: 'Validación física',
-    description:
-      '¿El DNI que te muestra el cliente es real? Comparamos el documento físico contra el padrón oficial en tiempo real.',
-    href: '/producto/validacion-identidad',
-  },
-  {
-    icon: '/icons/features/network.png',
-    title: 'Red de reputación',
-    description:
-      'Compartí alertas con otros negocios de tu industria. Si un cliente fue problemático en otra clínica, vos te enterás antes.',
-    href: '/producto/red-reputacion',
-  },
-  {
-    icon: '/icons/features/sandbox.png',
-    title: 'Sandbox profesional',
-    description:
-      'Desarrollá y testeá sin tocar datos reales. DNIs mock predecibles para automatizar tus tests.',
-    href: '/producto/sandbox',
-  },
-  {
-    icon: '/icons/features/webhooks.png',
-    title: 'Webhooks',
-    description:
-      'Recibí eventos en tiempo real cuando algo pasa. Integrá MAXFIND con tu stack sin hacer polling.',
-    href: '/producto',
-  },
-  {
-    icon: '/icons/features/sla.png',
-    title: 'SLA garantizado',
-    description:
-      'Uptime de 99.9% en planes de producción. Latencia monitoreada y status page pública.',
-    href: '/precios',
-  },
+import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+
+const icons = [
+  { src: '/icons/features/dni-rapida.png', href: 'producto/verificacion-dni' },
+  { src: '/icons/features/validation.png', href: 'producto/validacion-identidad' },
+  { src: '/icons/features/network.png', href: 'producto/red-reputacion' },
+  { src: '/icons/features/sandbox.png', href: 'producto/sandbox' },
+  { src: '/icons/features/webhooks.png', href: 'producto' },
+  { src: '/icons/features/sla.png', href: 'precios' },
 ];
 ---
 
 <section class="section">
   <div class="container-page">
     <div class="max-w-3xl">
-      <span class="pill">Features</span>
-      <h2 class="mt-4 section-title">Todo lo que necesitás para verificar identidad</h2>
-      <p class="section-subtitle">
-        Una sola API con todo integrado. Construida para escalar con tu negocio.
-      </p>
+      <span class="pill">{t.features.eyebrow}</span>
+      <h2 class="mt-4 section-title">{t.features.title}</h2>
+      <p class="section-subtitle">{t.features.subtitle}</p>
     </div>
 
     <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
-        features.map((feature) => (
+        t.features.items.map((feature, i) => (
           <a
-            href={feature.href}
+            href={localizedPath(icons[i].href, locale)}
             class="group relative overflow-hidden rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-6 transition-all hover:border-accent/40 hover:shadow-lg"
           >
             <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-surface-secondary">
-              <img src={feature.icon} alt="" width="36" height="36" loading="lazy" class="h-9 w-9" />
+              <img src={icons[i].src} alt="" width="36" height="36" loading="lazy" class="h-9 w-9" />
             </div>
             <h3 class="mt-5 text-h3-mobile md:text-h3">{feature.title}</h3>
             <p class="mt-2 text-sm text-ink-secondary">{feature.description}</p>
             <span class="mt-5 inline-flex items-center gap-1 text-sm font-medium text-accent">
-              Conocé más
+              {t.features.more}
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">
                 <path d="M2.5 6h7m0 0L6.5 3m3 3l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>

@@ -1,40 +1,22 @@
 ---
-// NOTA: testimonios ilustrativos. Reemplazar por reales (con consentimiento) antes del launch.
-const testimonials = [
-  {
-    quote:
-      'Integramos MAXFIND en el onboarding en una tarde. El KYC dejó de ser el cuello de botella del registro y bajamos el abandono notablemente.',
-    name: 'Daniela Reyes',
-    role: 'CTO en FinPe',
-    initials: 'DR',
-  },
-  {
-    quote:
-      'En admisión ahora confirmamos la identidad del paciente en segundos. Detectamos varios intentos de usar cobertura ajena que antes se nos pasaban.',
-    name: 'Marco Salinas',
-    role: 'Jefe de sistemas en Clínica Aurora',
-    initials: 'MS',
-  },
-  {
-    quote:
-      'El sandbox nos dejó probar todo sin tocar datos reales. Cuando pasamos a producción, no tuvimos que cambiar una línea de código.',
-    name: 'Lucía Ferrer',
-    role: 'Founder en ComercioSeguro',
-    initials: 'LF',
-  },
-];
+import { useTranslations, type Locale } from '@i18n/ui';
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+
+const initials = ['DR', 'MS', 'LF'];
 ---
 
 <section class="section bg-white dark:bg-surface-secondary">
   <div class="container-page">
     <div class="max-w-3xl">
-      <span class="pill">Testimonios</span>
-      <h2 class="mt-4 section-title">Lo que dicen quienes ya verifican con MAXFIND</h2>
+      <span class="pill">{t.testimonials.eyebrow}</span>
+      <h2 class="mt-4 section-title">{t.testimonials.title}</h2>
     </div>
 
     <div class="mt-14 grid gap-4 md:grid-cols-3">
       {
-        testimonials.map((t) => (
+        t.testimonials.items.map((item, i) => (
           <figure class="flex flex-col rounded-2xl border border-surface-border bg-surface-secondary/40 p-6">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" class="text-accent">
               <path
@@ -43,14 +25,14 @@ const testimonials = [
                 opacity="0.9"
               />
             </svg>
-            <blockquote class="mt-4 flex-1 text-ink-secondary text-pretty">{t.quote}</blockquote>
+            <blockquote class="mt-4 flex-1 text-ink-secondary text-pretty">{item.quote}</blockquote>
             <figcaption class="mt-6 flex items-center gap-3">
               <span class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-medium text-white">
-                {t.initials}
+                {initials[i]}
               </span>
               <span>
-                <span class="block text-sm font-medium text-ink-primary">{t.name}</span>
-                <span class="block text-sm text-ink-tertiary">{t.role}</span>
+                <span class="block text-sm font-medium text-ink-primary">{item.name}</span>
+                <span class="block text-sm text-ink-tertiary">{item.role}</span>
               </span>
             </figcaption>
           </figure>

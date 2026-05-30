@@ -1,4 +1,9 @@
 ---
+import { useTranslations, type Locale } from '@i18n/ui';
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+
 const snippets = {
   curl: `curl -H "Authorization: Bearer mfx_live_xxxxxxxxxx" \\
   https://api.maxfind.app/v1/dni/12345678
@@ -34,20 +39,15 @@ print(persona.nombres)
 
 <section class="section bg-primary text-white relative overflow-hidden">
   <div class="absolute inset-0 bg-grid opacity-[0.04]" aria-hidden="true"></div>
-  <div
-    class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-accent/20 blur-3xl"
-    aria-hidden="true"
-  ></div>
+  <div class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-accent/20 blur-3xl" aria-hidden="true"></div>
 
   <div class="container-page relative">
     <div class="max-w-3xl">
       <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur">
-        Developer experience
+        {t.codeExample.eyebrow}
       </span>
-      <h2 class="mt-4 section-title !text-white">Es así de simple</h2>
-      <p class="section-subtitle !text-white/70">
-        Una llamada HTTP. Sin SDKs obligatorios, sin OAuth complejo, sin firmas raras.
-      </p>
+      <h2 class="mt-4 section-title !text-white">{t.codeExample.title}</h2>
+      <p class="section-subtitle !text-white/70">{t.codeExample.subtitle}</p>
     </div>
 
     <div class="mt-12 overflow-hidden rounded-2xl border border-white/10 bg-[#0B0B2C] shadow-2xl">
@@ -57,7 +57,7 @@ print(persona.nombres)
           <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
         </div>
-        <div class="flex items-center gap-1" role="tablist" aria-label="Lenguaje">
+        <div class="flex items-center gap-1" role="tablist" aria-label="Language">
           {
             (['curl', 'js', 'python'] as const).map((lang, i) => (
               <button

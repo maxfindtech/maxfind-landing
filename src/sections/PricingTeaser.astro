@@ -1,68 +1,39 @@
 ---
-const plans = [
-  {
-    name: 'Micro',
-    price: 'S/ 19',
-    period: '/mes',
-    description: 'Para empezar a probar con bajo volumen.',
-    features: ['500 consultas/mes', 'Sandbox ilimitado', 'Soporte por email'],
-  },
-  {
-    name: 'Starter',
-    price: 'S/ 79',
-    period: '/mes',
-    description: 'Para equipos que ya validan en producción.',
-    features: ['5,000 consultas/mes', 'Validación física', 'Red de reputación', 'Soporte priority'],
-    highlight: true,
-  },
-  {
-    name: 'Pro',
-    price: 'S/ 249',
-    period: '/mes',
-    description: 'Para volumen alto y operaciones críticas.',
-    features: ['25,000 consultas/mes', 'SLA 99.9%', 'Webhooks', 'Cuenta dedicada'],
-  },
-];
+import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+
+const plans = t.pricing.plans.slice(0, 3).map((p, i) => ({
+  ...p,
+  highlight: i === 1,
+}));
 ---
 
 <section class="section">
   <div class="container-page">
     <div class="max-w-3xl">
-      <span class="pill">Precios</span>
-      <h2 class="mt-4 section-title">Planes simples, sin sorpresas</h2>
-      <p class="section-subtitle">
-        Pagás por lo que usás. Sin compromisos anuales. Sandbox profesional gratis para siempre.
-      </p>
+      <span class="pill">{t.pricing.eyebrow}</span>
+      <h2 class="mt-4 section-title">{t.pricing.title}</h2>
+      <p class="section-subtitle">{t.pricing.subtitle}</p>
     </div>
 
     <div class="mt-10 grid gap-4 rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-6 sm:grid-cols-3 sm:p-8">
-      <div class="flex gap-4">
-        <span class="font-mono text-sm font-medium text-accent">01</span>
-        <div>
-          <h3 class="font-display text-base font-medium text-ink-primary">Sandbox gratis</h3>
-          <p class="mt-1 text-sm text-ink-secondary">
-            DNIs mock ilimitados para desarrollar y testear. Gratis para siempre, sin tarjeta.
-          </p>
-        </div>
-      </div>
-      <div class="flex gap-4 sm:border-l sm:border-surface-border sm:pl-6">
-        <span class="font-mono text-sm font-medium text-accent">02</span>
-        <div>
-          <h3 class="font-display text-base font-medium text-ink-primary">30 días de prueba</h3>
-          <p class="mt-1 text-sm text-ink-secondary">
-            Al suscribirte, 500 consultas reales contra RENIEC sin costo durante 30 días.
-          </p>
-        </div>
-      </div>
-      <div class="flex gap-4 sm:border-l sm:border-surface-border sm:pl-6">
-        <span class="font-mono text-sm font-medium text-accent">03</span>
-        <div>
-          <h3 class="font-display text-base font-medium text-ink-primary">Después, facturás</h3>
-          <p class="mt-1 text-sm text-ink-secondary">
-            Pasado el trial, se activa el plan que elijas. Pagás solo por lo que consumís.
-          </p>
-        </div>
-      </div>
+      {
+        [
+          { title: t.pricing.model.step1Title, description: t.pricing.model.step1Description },
+          { title: t.pricing.model.step2Title, description: t.pricing.model.step2Description },
+          { title: t.pricing.model.step3Title, description: t.pricing.model.step3Description },
+        ].map((step, i) => (
+          <div class:list={['flex gap-4', i > 0 && 'sm:border-l sm:border-surface-border sm:pl-6']}>
+            <span class="font-mono text-sm font-medium text-accent">0{i + 1}</span>
+            <div>
+              <h3 class="font-display text-base font-medium text-ink-primary">{step.title}</h3>
+              <p class="mt-1 text-sm text-ink-secondary">{step.description}</p>
+            </div>
+          </div>
+        ))
+      }
     </div>
 
     <div class="mt-4 grid gap-4 md:grid-cols-3">
@@ -78,7 +49,7 @@ const plans = [
           >
             {plan.highlight && (
               <span class="absolute -top-3 left-6 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-medium text-primary">
-                Más popular
+                {t.pricing.mostPopular}
               </span>
             )}
             <h3 class:list={['font-display text-xl font-medium', plan.highlight && '!text-white']}>
@@ -92,17 +63,12 @@ const plans = [
                 {plan.price}
               </span>
               <span class:list={['text-sm', plan.highlight ? 'text-white/70' : 'text-ink-secondary']}>
-                {plan.period}
+                {t.pricing.perMonth}
               </span>
             </div>
             <ul class="mt-6 space-y-2.5">
-              {plan.features.map((feature) => (
-                <li
-                  class:list={[
-                    'flex items-start gap-2 text-sm',
-                    plan.highlight ? 'text-white/90' : 'text-ink-secondary',
-                  ]}
-                >
+              {plan.features.slice(0, 4).map((feature) => (
+                <li class:list={['flex items-start gap-2 text-sm', plan.highlight ? 'text-white/90' : 'text-ink-secondary']}>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="mt-0.5 flex-shrink-0">
                     <path
                       d="M3.5 8.5l2.5 2.5L12.5 5"
@@ -122,9 +88,7 @@ const plans = [
     </div>
 
     <div class="mt-10 text-center">
-      <a href="/precios" class="btn-secondary">
-        Ver todos los planes y FAQ
-      </a>
+      <a href={localizedPath('precios', locale)} class="btn-secondary">{t.pricing.viewAll}</a>
     </div>
   </div>
 </section>

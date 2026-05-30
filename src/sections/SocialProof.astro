@@ -1,5 +1,10 @@
 ---
-// NOTA: logos y nombres ilustrativos. Reemplazar por clientes reales antes del launch.
+import { useTranslations, type Locale } from '@i18n/ui';
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+
+// NOTA: logos ilustrativos. Reemplazar por clientes reales antes del launch.
 const logos = [
   'Clínica Aurora',
   'PagaFácil',
@@ -10,17 +15,17 @@ const logos = [
 ];
 
 const stats = [
-  { value: '< 200ms', label: 'Latencia promedio' },
-  { value: '99.9%', label: 'Uptime garantizado' },
-  { value: 'Padrón RENIEC', label: 'Datos oficiales' },
-  { value: 'Ley 29733', label: 'Cumplimiento legal' },
+  { value: '< 200ms', label: t.socialProof.stats.latency },
+  { value: '99.9%', label: t.socialProof.stats.uptime },
+  { value: 'RENIEC', label: t.socialProof.stats.official },
+  { value: 'Ley 29733', label: t.socialProof.stats.compliance },
 ];
 ---
 
-<section class="border-y border-surface-border bg-white dark:bg-surface-secondary">
+<section class="border-y border-surface-border bg-white dark:bg-surface-secondary dark:border-primary-900">
   <div class="container-page py-12">
     <p class="text-center text-xs font-medium uppercase tracking-wider text-ink-tertiary">
-      Negocios que ya verifican identidad con MAXFIND
+      {t.socialProof.heading}
     </p>
 
     <div class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
@@ -33,13 +38,11 @@ const stats = [
       }
     </div>
 
-    <div class="mt-12 grid grid-cols-2 gap-y-8 border-t border-surface-border pt-12 md:grid-cols-4">
+    <div class="mt-12 grid grid-cols-2 gap-y-8 border-t border-surface-border pt-12 md:grid-cols-4 dark:border-primary-900">
       {
         stats.map((stat) => (
           <div class="text-center">
-            <p class="font-display text-2xl font-medium text-ink-primary md:text-3xl">
-              {stat.value}
-            </p>
+            <p class="font-display text-2xl font-medium text-ink-primary md:text-3xl">{stat.value}</p>
             <p class="mt-1 text-sm text-ink-secondary">{stat.label}</p>
           </div>
         ))

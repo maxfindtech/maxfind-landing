@@ -1,7 +1,9 @@
 import type { APIRoute } from 'astro';
 import { SITE } from '@lib/constants';
 
-const ROUTES: { path: string; changefreq: 'weekly' | 'monthly'; priority: number }[] = [
+type Entry = { path: string; changefreq: 'weekly' | 'monthly'; priority: number };
+
+const ES_ROUTES: Entry[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
   { path: '/producto', changefreq: 'monthly', priority: 0.9 },
   { path: '/producto/verificacion-dni', changefreq: 'monthly', priority: 0.8 },
@@ -21,19 +23,53 @@ const ROUTES: { path: string; changefreq: 'weekly' | 'monthly'; priority: number
   { path: '/changelog', changefreq: 'weekly', priority: 0.4 },
 ];
 
+// Paths que tienen contraparte en inglés (las que duplicamos a /en/).
+const EN_ROUTES: Entry[] = [
+  { path: '/en/', changefreq: 'weekly', priority: 1.0 },
+  { path: '/en/precios', changefreq: 'monthly', priority: 0.9 },
+  { path: '/en/contacto', changefreq: 'monthly', priority: 0.5 },
+  { path: '/en/demo', changefreq: 'monthly', priority: 0.6 },
+];
+
+const ROUTES = [...ES_ROUTES, ...EN_ROUTES];
+
 export const GET: APIRoute = () => {
   const today = new Date().toISOString().split('T')[0];
-  const entries = ROUTES.map(
-    (route) => `  <url>
+
+  // Construir un mapa para hreflang alternates: clave = base sin /en
+  const pairs = new Map<string, { es?: string; en?: string }>();
+  for (const r of ROUTES) {
+    const isEn = r.path.startsWith('/en/');
+    const base = isEn ? r.path.slice(3) : r.path; // '/en/precios' -> '/precios', '/en/' -> '/'
+    const normalized = base === '' ? '/' : base;
+    const entry = pairs.get(normalized) ?? {};
+    if (isEn) entry.en = r.path;
+    else entry.es = r.path;
+    pairs.set(normalized, entry);
+  }
+
+  const entries = ROUTES.map((route) => {
+    const isEn = route.path.startsWith('/en/');
+    const base = isEn ? route.path.slice(3) : route.path;
+    const normalized = base === '' ? '/' : base;
+    const pair = pairs.get(normalized) ?? {};
+
+    const links: string[] = [];
+    if (pair.es) links.push(`    <xhtml:link rel="alternate" hreflang="es" href="${SITE.url}${pair.es}"/>`);
+    if (pair.en) links.push(`    <xhtml:link rel="alternate" hreflang="en" href="${SITE.url}${pair.en}"/>`);
+    links.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE.url}${pair.es ?? pair.en ?? normalized}"/>`);
+
+    return `  <url>
     <loc>${SITE.url}${route.path}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority.toFixed(1)}</priority>
-  </url>`,
-  ).join('\n');
+${links.join('\n')}
+  </url>`;
+  }).join('\n');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.w3.org/sitemaps/0.9">
+<urlset xmlns="http://www.w3.org/sitemaps/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries}
 </urlset>`;
 

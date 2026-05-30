@@ -1,61 +1,39 @@
 ---
-const industries = [
-  {
-    title: 'Clínicas y consultorios',
-    description:
-      'Validá la identidad de tus pacientes en admisión. Detectá DNIs falsos antes de atender.',
-    href: '/soluciones/clinicas',
-    icon: '/icons/industries/clinicas.png',
-  },
-  {
-    title: 'Edificios y condominios',
-    description: 'Identificá visitantes, controlá accesos. Conocé quién entra a tu propiedad.',
-    href: '/soluciones/edificios',
-    icon: '/icons/industries/edificios.png',
-  },
-  {
-    title: 'Fintechs',
-    description:
-      'KYC simplificado para tu producto financiero. Onboarding rápido sin sacrificar seguridad.',
-    href: '/soluciones/fintech',
-    icon: '/icons/industries/fintech.png',
-  },
-  {
-    title: 'Comercio formal',
-    description: 'Verificá compradores en operaciones de valor. Reducí fraude en tus ventas.',
-    href: '/soluciones/comercio',
-    icon: '/icons/industries/comercio.png',
-  },
+import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+
+const icons = [
+  { src: '/icons/industries/clinicas.png', href: 'soluciones/clinicas' },
+  { src: '/icons/industries/edificios.png', href: 'soluciones/edificios' },
+  { src: '/icons/industries/fintech.png', href: 'soluciones/fintech' },
+  { src: '/icons/industries/comercio.png', href: 'soluciones/comercio' },
 ];
 ---
 
 <section class="section">
   <div class="container-page">
     <div class="max-w-3xl">
-      <span class="pill">Soluciones</span>
-      <h2 class="mt-4 section-title">Para cada negocio que necesita verificar</h2>
-      <p class="section-subtitle">
-        Casos de uso reales, no plantillas genéricas. Cada solución viene con ejemplos de
-        integración específicos para tu industria.
-      </p>
+      <span class="pill">{t.industries.eyebrow}</span>
+      <h2 class="mt-4 section-title">{t.industries.title}</h2>
+      <p class="section-subtitle">{t.industries.subtitle}</p>
     </div>
 
     <div class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       {
-        industries.map((industry) => (
+        t.industries.items.map((industry, i) => (
           <a
-            href={industry.href}
+            href={localizedPath(icons[i].href, locale)}
             class="group rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-6 transition-all hover:border-primary hover:shadow-md"
           >
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-secondary">
-              <img src={industry.icon} alt="" width="30" height="30" loading="lazy" class="h-[30px] w-[30px]" />
+              <img src={icons[i].src} alt="" width="30" height="30" loading="lazy" class="h-[30px] w-[30px]" />
             </div>
-            <h3 class="mt-4 font-display text-lg font-medium text-ink-primary">
-              {industry.title}
-            </h3>
+            <h3 class="mt-4 font-display text-lg font-medium text-ink-primary">{industry.title}</h3>
             <p class="mt-2 text-sm text-ink-secondary">{industry.description}</p>
             <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-              Ver caso de uso
+              {t.industries.viewCase}
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                 <path d="M2.5 6h7m0 0L6.5 3m3 3l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
