@@ -1,0 +1,50 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { URLS } from '@lib/constants';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'Documento contra padrón',
+    description:
+      'Compará los datos del DNI físico que te muestra la persona contra el padrón oficial de RENIEC. Si no coinciden, lo sabés al instante.',
+    points: ['Match en tiempo real', 'Detección de datos alterados', 'Respuesta clara: válido o no'],
+  },
+  {
+    title: 'Frená el fraude en la puerta',
+    description:
+      'Antes de atender, abrir una cuenta o entregar un producto, confirmá que la persona es quien dice ser. Menos contracargos, menos riesgo.',
+    points: ['Previene suplantación', 'Reduce contracargos', 'Trazabilidad de cada validación'],
+  },
+  {
+    title: 'Integrable en tu flujo',
+    description:
+      'Sumá la validación física a tu admisión, onboarding o punto de venta con una llamada a la API. Sin hardware especial.',
+    points: ['Sin lector biométrico obligatorio', 'API REST simple', 'Funciona en web y mobile'],
+  },
+];
+---
+
+<Layout
+  title="Validación de identidad física"
+  description="Compará el DNI físico contra el padrón oficial de RENIEC en tiempo real. Detectá documentos alterados y frená el fraude antes de atender al cliente."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Producto', path: '/producto' },
+    { name: 'Validación de identidad', path: '/producto/validacion-identidad' },
+  ])}
+>
+  <PageHero
+    eyebrow="Producto · Validación física"
+    title="¿El DNI que te muestran es real?"
+    description="Compará el documento físico contra el padrón oficial de RENIEC en tiempo real. Detectá adulteraciones y suplantación antes de atender, abrir una cuenta o cerrar una venta."
+    secondaryCta={{ label: 'Ver documentación', href: URLS.DOCS }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <CTAFinal />
+</Layout>

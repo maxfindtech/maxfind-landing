@@ -1,0 +1,45 @@
+---
+import { URLS } from '@lib/constants';
+---
+
+<section class="section">
+  <div class="container-page">
+    <div class="relative overflow-hidden rounded-3xl bg-primary p-10 md:p-16">
+      <div class="absolute inset-0 bg-grid opacity-[0.04]" aria-hidden="true"></div>
+      <div
+        class="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-accent/30 blur-3xl"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-primary-700/40 blur-3xl"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative max-w-2xl">
+        <h2 class="text-h2-mobile md:text-h2 font-display font-medium text-white text-balance">
+          ¿Listo para empezar?
+        </h2>
+        <p class="mt-4 text-lg text-white/80 text-pretty">
+          Creá tu cuenta gratis y hacé tu primera consulta en menos de 5 minutos.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={URLS.SIGNUP}
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-primary transition-all hover:bg-white/90 active:scale-[0.98]"
+          >
+            Crear cuenta gratis
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a
+            href="/demo"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur transition-all hover:bg-white/10 active:scale-[0.98]"
+          >
+            Hablar con ventas
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

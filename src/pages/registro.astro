@@ -1,0 +1,192 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Logo from '@components/Logo.astro';
+import { URLS } from '@lib/constants';
+
+const benefits = [
+  'Sandbox profesional gratis para siempre',
+  '30 días con 500 consultas reales contra RENIEC',
+  'Sin tarjeta requerida para empezar',
+];
+---
+
+<Layout
+  title="Crear cuenta"
+  description="Creá tu cuenta gratis en MAXFIND y empezá a verificar identidad en minutos."
+  noindex
+  hideNav
+  hideFooter
+>
+  <div class="relative min-h-screen overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-radial-fade" aria-hidden="true"></div>
+
+    <div class="container-page relative grid min-h-screen items-center gap-12 py-12 lg:grid-cols-2 lg:gap-16">
+      <div class="hidden lg:block">
+        <a href="/" aria-label="Inicio MAXFIND">
+          <Logo class="h-8 w-auto" />
+        </a>
+        <h1 class="mt-10 text-h2-mobile md:text-h2 text-balance">
+          Empezá a verificar identidad en minutos
+        </h1>
+        <ul class="mt-8 space-y-4">
+          {
+            benefits.map((b) => (
+              <li class="flex items-start gap-3 text-ink-secondary">
+                <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-success/15 text-success">
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 7l2.5 2.5L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                {b}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="mx-auto w-full max-w-md">
+        <a href="/" class="mb-8 inline-block lg:hidden" aria-label="Inicio MAXFIND">
+          <Logo class="h-8 w-auto" />
+        </a>
+
+        <div class="rounded-2xl border border-surface-border bg-white p-8 shadow-sm">
+          <h2 class="font-display text-2xl font-medium text-ink-primary">Creá tu cuenta gratis</h2>
+          <p class="mt-1 text-sm text-ink-secondary">Acceso inmediato al sandbox, sin tarjeta.</p>
+
+          <div
+            data-auth-error
+            class="mt-5 hidden rounded-xl border border-error/30 bg-error/10 px-4 py-3 text-sm text-ink-primary"
+            role="alert"
+          >
+          </div>
+
+          <form data-register-form class="mt-6 space-y-4" novalidate>
+            <div>
+              <label for="name" class="block text-sm font-medium text-ink-primary">Nombre completo</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                autocomplete="name"
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="Tu nombre"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-ink-primary">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="tu@empresa.com"
+              />
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-ink-primary">
+                Empresa <span class="text-ink-tertiary">(opcional)</span>
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                autocomplete="organization"
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="Nombre de tu empresa"
+              />
+            </div>
+            <div>
+              <label for="password" class="block text-sm font-medium text-ink-primary">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                minlength="8"
+                autocomplete="new-password"
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="Mínimo 8 caracteres"
+              />
+            </div>
+            <button type="submit" data-submit class="btn-primary w-full">
+              <span data-label>Crear cuenta gratis</span>
+              <span data-spinner class="hidden">
+                <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
+                  <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </span>
+            </button>
+          </form>
+
+          <p class="mt-4 text-xs text-ink-tertiary">
+            Al crear tu cuenta aceptás los
+            <a href="/legal/terminos" class="underline">términos</a> y la
+            <a href="/legal/privacidad" class="underline">política de privacidad</a>.
+          </p>
+        </div>
+
+        <p class="mt-6 text-center text-sm text-ink-secondary">
+          ¿Ya tenés cuenta?
+          <a href={URLS.LOGIN} class="font-medium text-accent hover:underline">Iniciá sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { register, redirectAfterAuth } from '@lib/auth';
+
+  const form = document.querySelector<HTMLFormElement>('[data-register-form]');
+  const errorBox = document.querySelector<HTMLElement>('[data-auth-error]');
+  const btn = document.querySelector<HTMLButtonElement>('[data-submit]');
+  const label = btn?.querySelector<HTMLElement>('[data-label]');
+  const spinner = btn?.querySelector<HTMLElement>('[data-spinner]');
+
+  const showError = (msg: string) => {
+    if (!errorBox) return;
+    errorBox.textContent = msg;
+    errorBox.classList.remove('hidden');
+  };
+
+  const setLoading = (loading: boolean) => {
+    if (!btn) return;
+    btn.disabled = loading;
+    label?.classList.toggle('hidden', loading);
+    spinner?.classList.toggle('hidden', !loading);
+  };
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox?.classList.add('hidden');
+
+    const data = new FormData(form);
+    const name = String(data.get('name') ?? '').trim();
+    const email = String(data.get('email') ?? '').trim();
+    const company = String(data.get('company') ?? '').trim();
+    const password = String(data.get('password') ?? '');
+
+    if (!name || !email || !password) {
+      showError('Completá nombre, email y contraseña.');
+      return;
+    }
+    if (password.length < 8) {
+      showError('La contraseña debe tener al menos 8 caracteres.');
+      return;
+    }
+
+    setLoading(true);
+    const result = await register({ name, email, password, company: company || undefined });
+    if (result.ok) {
+      redirectAfterAuth();
+    } else {
+      setLoading(false);
+      showError(result.error);
+    }
+  });
+</script>

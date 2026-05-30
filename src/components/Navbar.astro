@@ -1,0 +1,82 @@
+---
+import { NAV, URLS } from '@lib/constants';
+import Logo from './Logo.astro';
+---
+
+<header class="sticky top-0 z-40 w-full border-b border-surface-border/60 bg-surface/80 backdrop-blur-md">
+  <nav class="container-page flex h-16 items-center justify-between gap-6" aria-label="Navegación principal">
+    <a href="/" class="flex items-center gap-2" aria-label="Inicio MAXFIND">
+      <Logo class="h-7 w-auto" />
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-1">
+      {
+        NAV.primary.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="px-3 py-2 text-sm text-ink-secondary transition-colors hover:text-ink-primary"
+              {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="hidden lg:flex items-center gap-2">
+      <a href={URLS.LOGIN} class="btn-ghost">Iniciar sesión</a>
+      <a href={URLS.SIGNUP} class="btn-primary">Empezar gratis</a>
+    </div>
+
+    <button
+      type="button"
+      class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg text-ink-primary hover:bg-surface-secondary"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-mobile-toggle
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+    </button>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden border-t border-surface-border bg-surface"
+    data-mobile-menu
+  >
+    <ul class="container-page flex flex-col gap-1 py-4">
+      {
+        NAV.primary.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block rounded-lg px-3 py-2.5 text-base text-ink-secondary hover:bg-surface-secondary hover:text-ink-primary"
+              {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="mt-2 flex flex-col gap-2 border-t border-surface-border pt-4">
+        <a href={URLS.LOGIN} class="btn-secondary w-full">Iniciar sesión</a>
+        <a href={URLS.SIGNUP} class="btn-primary w-full">Empezar gratis</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-mobile-toggle]');
+  const menu = document.querySelector<HTMLDivElement>('[data-mobile-menu]');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

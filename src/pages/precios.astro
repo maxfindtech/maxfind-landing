@@ -1,0 +1,302 @@
+---
+import Layout from '@layouts/Layout.astro';
+import FAQ, { type FaqItem } from '@components/FAQ.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { URLS } from '@lib/constants';
+import { breadcrumbSchema, faqSchema } from '@lib/seo';
+
+const plans = [
+  {
+    name: 'Micro',
+    price: 'S/ 19',
+    period: '/mes',
+    description: 'Para empezar a probar con bajo volumen.',
+    cta: 'Empezar gratis',
+    features: ['500 consultas/mes', 'Sandbox ilimitado', 'Validación DNI', 'Soporte por email'],
+  },
+  {
+    name: 'Starter',
+    price: 'S/ 79',
+    period: '/mes',
+    description: 'Para equipos que ya validan en producción.',
+    cta: 'Empezar gratis',
+    highlight: true,
+    features: [
+      '5,000 consultas/mes',
+      'Validación física',
+      'Red de reputación',
+      'Webhooks',
+      'Soporte priority',
+    ],
+  },
+  {
+    name: 'Pro',
+    price: 'S/ 249',
+    period: '/mes',
+    description: 'Para volumen alto y operaciones críticas.',
+    cta: 'Empezar gratis',
+    features: [
+      '25,000 consultas/mes',
+      'Todo lo de Starter',
+      'SLA 99.9%',
+      'Cuenta dedicada',
+      'Onboarding asistido',
+    ],
+  },
+  {
+    name: 'Enterprise',
+    price: 'A medida',
+    period: '',
+    description: 'Volumen ilimitado y requisitos específicos.',
+    cta: 'Hablar con ventas',
+    ctaHref: '/demo',
+    features: [
+      'Consultas ilimitadas',
+      'SLA personalizado',
+      'Infraestructura dedicada',
+      'Soporte 24/7',
+      'Contrato y facturación custom',
+    ],
+  },
+];
+
+const comparison: { label: string; values: (string | boolean)[] }[] = [
+  { label: 'Consultas reales / mes', values: ['500', '5,000', '25,000', 'Ilimitadas'] },
+  { label: 'Sandbox profesional', values: [true, true, true, true] },
+  { label: 'Verificación DNI (RENIEC)', values: [true, true, true, true] },
+  { label: 'Validación física', values: [false, true, true, true] },
+  { label: 'Red de reputación', values: [false, true, true, true] },
+  { label: 'Webhooks', values: [false, true, true, true] },
+  { label: 'SLA 99.9%', values: [false, false, true, true] },
+  { label: 'Cuenta dedicada', values: [false, false, true, true] },
+  { label: 'Soporte', values: ['Email', 'Priority', 'Priority', '24/7'] },
+];
+
+const planNames = plans.map((p) => p.name);
+
+const faqs: FaqItem[] = [
+  {
+    question: '¿El sandbox es realmente gratis?',
+    answer:
+      'Sí. El sandbox profesional con DNIs mock es gratis para siempre y no requiere tarjeta. Lo usás para desarrollar e integrar sin tocar datos reales ni gastar consultas.',
+  },
+  {
+    question: '¿Cómo funciona el trial de 30 días?',
+    answer:
+      'Al suscribirte a cualquier plan, recibís 30 días con hasta 500 consultas reales contra RENIEC sin costo. Es para que valides en producción antes de pagar. Pasados los 30 días o las 500 consultas, se activa la facturación del plan que elegiste.',
+  },
+  {
+    question: '¿Qué pasa si supero las consultas de mi plan?',
+    answer:
+      'Te avisamos antes de llegar al límite. Podés subir de plan en cualquier momento o pagar las consultas adicionales según la tarifa de tu plan. Nunca cortamos el servicio sin aviso.',
+  },
+  {
+    question: '¿Hay permanencia o contrato anual?',
+    answer:
+      'No. Todos los planes son mes a mes y los cancelás cuando quieras desde el dashboard. Solo Enterprise puede tener un contrato custom si lo necesitás.',
+  },
+  {
+    question: '¿Necesito un convenio con RENIEC?',
+    answer:
+      'No. Esa es justamente la razón de MAXFIND: te damos acceso a verificación de identidad sin que tengas que gestionar convenios, certificados ni trámites de persona jurídica.',
+  },
+  {
+    question: '¿Los datos están protegidos legalmente?',
+    answer:
+      'Sí. Operamos bajo la Ley 29733 de Protección de Datos Personales, con banco de datos inscrito en MINJUS y auditoría completa de cada consulta.',
+  },
+  {
+    question: '¿Qué métodos de pago aceptan?',
+    answer:
+      'Tarjeta de crédito o débito para los planes mensuales. Para Enterprise ofrecemos facturación y transferencia según el contrato.',
+  },
+];
+
+const tick = (v: string | boolean) => typeof v === 'boolean';
+---
+
+<Layout
+  title="Precios"
+  description="Planes desde S/ 19/mes. Sandbox profesional gratis para siempre. Trial de producción de 30 días con 500 consultas reales. Sin compromiso de permanencia."
+  jsonLd={[
+    breadcrumbSchema([
+      { name: 'Inicio', path: '/' },
+      { name: 'Precios', path: '/precios' },
+    ]),
+    faqSchema(faqs),
+  ]}
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-radial-fade" aria-hidden="true"></div>
+    <div class="container-page relative pt-16 pb-10 md:pt-24">
+      <div class="max-w-3xl">
+        <span class="pill">Precios</span>
+        <h1 class="mt-6 text-hero-mobile md:text-h2 text-balance">Planes simples, sin sorpresas</h1>
+        <p class="mt-6 text-lg text-ink-secondary text-pretty">
+          Pagás solo por lo que consumís. Sin compromisos anuales. Sandbox profesional gratis para
+          siempre y 30 días de prueba con 500 consultas reales al suscribirte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-8">
+    <div class="container-page">
+      <div class="grid gap-4 lg:grid-cols-4">
+        {
+          plans.map((plan) => (
+            <article
+              class:list={[
+                'relative flex flex-col rounded-2xl border p-6',
+                plan.highlight
+                  ? 'border-primary bg-primary text-white shadow-xl'
+                  : 'border-surface-border bg-white',
+              ]}
+            >
+              {plan.highlight && (
+                <span class="absolute -top-3 left-6 inline-flex items-center rounded-full bg-accent px-3 py-1 text-xs font-medium text-primary">
+                  Más popular
+                </span>
+              )}
+              <h2 class:list={['font-display text-xl font-medium', plan.highlight && '!text-white']}>
+                {plan.name}
+              </h2>
+              <p
+                class:list={['mt-1 text-sm', plan.highlight ? 'text-white/70' : 'text-ink-secondary']}
+              >
+                {plan.description}
+              </p>
+              <div class="mt-5 flex items-baseline gap-1">
+                <span
+                  class:list={['font-display text-3xl font-medium', plan.highlight && '!text-white']}
+                >
+                  {plan.price}
+                </span>
+                {plan.period && (
+                  <span
+                    class:list={[
+                      'text-sm',
+                      plan.highlight ? 'text-white/70' : 'text-ink-secondary',
+                    ]}
+                  >
+                    {plan.period}
+                  </span>
+                )}
+              </div>
+              <ul class="mt-6 flex-1 space-y-2.5">
+                {plan.features.map((feature) => (
+                  <li
+                    class:list={[
+                      'flex items-start gap-2 text-sm',
+                      plan.highlight ? 'text-white/90' : 'text-ink-secondary',
+                    ]}
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                      class="mt-0.5 flex-shrink-0"
+                    >
+                      <path
+                        d="M3.5 8.5l2.5 2.5L12.5 5"
+                        stroke={plan.highlight ? '#06B6D4' : '#10B981'}
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={plan.ctaHref ?? URLS.SIGNUP}
+                class:list={[
+                  'mt-6 w-full',
+                  plan.highlight
+                    ? 'inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-primary transition-all hover:bg-white/90 active:scale-[0.98]'
+                    : 'btn-secondary',
+                ]}
+              >
+                {plan.cta}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="mt-6 text-center text-sm text-ink-tertiary">
+        Todos los precios en soles (PEN), sin IGV. Cancelás cuando quieras.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page">
+      <h2 class="section-title">Compará los planes en detalle</h2>
+
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full min-w-[640px] border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-surface-border">
+              <th class="py-4 pr-4 text-left font-medium text-ink-secondary">Característica</th>
+              {
+                planNames.map((name) => (
+                  <th class="px-4 py-4 text-center font-display font-medium text-ink-primary">
+                    {name}
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparison.map((row) => (
+                <tr class="border-b border-surface-border">
+                  <td class="py-4 pr-4 text-left text-ink-secondary">{row.label}</td>
+                  {row.values.map((value) => (
+                    <td class="px-4 py-4 text-center">
+                      {tick(value) ? (
+                        value ? (
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 18 18"
+                            fill="none"
+                            class="mx-auto"
+                            aria-label="Incluido"
+                          >
+                            <path
+                              d="M4 9l3.5 3.5L14 5.5"
+                              stroke="#10B981"
+                              stroke-width="1.75"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        ) : (
+                          <span class="text-ink-tertiary" aria-label="No incluido">
+                            —
+                          </span>
+                        )
+                      ) : (
+                        <span class="font-medium text-ink-primary">{value}</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+
+  <CTAFinal />
+</Layout>

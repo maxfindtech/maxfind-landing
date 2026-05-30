@@ -1,0 +1,32 @@
+---
+import { URLS } from '@lib/constants';
+
+type Props = {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+};
+
+const { title, description, eyebrow = 'Próximamente' } = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-radial-fade" aria-hidden="true"></div>
+
+  <div class="container-page relative py-24 md:py-32">
+    <div class="max-w-2xl">
+      <span class="pill">{eyebrow}</span>
+      <h1 class="mt-6 text-hero-mobile md:text-h2 text-balance">{title}</h1>
+      {
+        description && (
+          <p class="mt-6 max-w-xl text-lg text-ink-secondary text-pretty">{description}</p>
+        )
+      }
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href={URLS.SIGNUP} class="btn-primary">Empezar gratis</a>
+        <a href="/" class="btn-secondary">Volver al inicio</a>
+      </div>
+    </div>
+  </div>
+</section>

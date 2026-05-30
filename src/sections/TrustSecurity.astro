@@ -1,0 +1,62 @@
+---
+const points = [
+  {
+    title: 'Banco de datos inscrito en MINJUS',
+    description:
+      'El banco de datos personales "maxfind_users" está formalmente registrado ante la Autoridad Nacional de Protección de Datos Personales.',
+  },
+  {
+    title: 'Cumplimiento con Ley 29733',
+    description:
+      'Procesamos datos personales bajo el marco legal peruano vigente, con base legal específica para cada operación.',
+  },
+  {
+    title: 'Auditoría completa',
+    description:
+      'Cada consulta queda registrada con timestamp, IP y propósito. Acceso completo al log desde tu dashboard.',
+  },
+  {
+    title: 'Cifrado de extremo a extremo',
+    description:
+      'TLS 1.3 en tránsito, AES-256 en reposo. Aislamiento por tenant para datos sensibles.',
+  },
+];
+---
+
+<section class="section bg-white">
+  <div class="container-page">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <div class="lg:sticky lg:top-24 lg:self-start">
+        <span class="pill">Seguridad y cumplimiento</span>
+        <h2 class="mt-4 section-title">Construido para cumplir con la Ley peruana</h2>
+        <p class="section-subtitle">
+          La protección de datos personales no es un agregado. Está en el core de cómo
+          diseñamos la API.
+        </p>
+        <a href="/legal/privacidad" class="btn-secondary mt-8">
+          Ver política de privacidad
+        </a>
+      </div>
+
+      <ul class="space-y-3">
+        {
+          points.map((point) => (
+            <li class="rounded-2xl border border-surface-border bg-surface-secondary/40 p-6">
+              <div class="flex items-start gap-4">
+                <div class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-success/15 text-success">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 7l2.5 2.5L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-display text-lg font-medium text-ink-primary">{point.title}</h3>
+                  <p class="mt-1 text-sm text-ink-secondary">{point.description}</p>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

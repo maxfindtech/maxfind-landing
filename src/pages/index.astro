@@ -1,0 +1,33 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { softwareApplicationSchema } from '@lib/seo';
+import Hero from '@sections/Hero.astro';
+import SocialProof from '@sections/SocialProof.astro';
+import Problem from '@sections/Problem.astro';
+import Solution from '@sections/Solution.astro';
+import Features from '@sections/Features.astro';
+import CodeExample from '@sections/CodeExample.astro';
+import PricingTeaser from '@sections/PricingTeaser.astro';
+import Industries from '@sections/Industries.astro';
+import TrustSecurity from '@sections/TrustSecurity.astro';
+import Testimonials from '@sections/Testimonials.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+---
+
+<Layout
+  title="MAXFIND — Verificación de identidad por DNI en Perú"
+  description="API de verificación de identidad para negocios en Perú. Consultá DNIs en milisegundos, validá identidad física, accedé a red de reputación. Sandbox gratuito."
+  jsonLd={softwareApplicationSchema()}
+>
+  <Hero />
+  <SocialProof />
+  <Problem />
+  <Solution />
+  <Features />
+  <CodeExample />
+  <PricingTeaser />
+  <Industries />
+  <TrustSecurity />
+  <Testimonials />
+  <CTAFinal />
+</Layout>

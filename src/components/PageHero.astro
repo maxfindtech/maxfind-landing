@@ -1,0 +1,53 @@
+---
+import { URLS } from '@lib/constants';
+
+type Props = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+};
+
+const {
+  eyebrow,
+  title,
+  description,
+  primaryCta = { label: 'Empezar gratis', href: URLS.SIGNUP },
+  secondaryCta,
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-radial-fade" aria-hidden="true"></div>
+  <div class="container-page relative pt-16 pb-12 md:pt-24 md:pb-16">
+    <div class="max-w-3xl">
+      <span class="pill">{eyebrow}</span>
+      <h1 class="mt-6 text-hero-mobile md:text-h2 text-balance">{title}</h1>
+      <p class="mt-6 max-w-2xl text-lg text-ink-secondary text-pretty">{description}</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={primaryCta.href}
+          class="btn-primary"
+          {...primaryCta.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+        >
+          {primaryCta.label}
+        </a>
+        {
+          secondaryCta && (
+            <a
+              href={secondaryCta.href}
+              class="btn-secondary"
+              {...(secondaryCta.href.startsWith('http')
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
+            >
+              {secondaryCta.label}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

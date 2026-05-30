@@ -1,0 +1,94 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { SITE } from '@lib/constants';
+import FormStatus from '@components/FormStatus.astro';
+---
+
+<Layout
+  title="Contacto"
+  description="Hablanos. Respondemos cualquier duda sobre la API, integraciones o pricing."
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+    <div class="container-page relative py-20 md:py-28">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+        <div>
+          <span class="pill">Contacto</span>
+          <h1 class="mt-6 text-hero-mobile md:text-h2 text-balance">Hablemos</h1>
+          <p class="mt-6 text-lg text-ink-secondary text-pretty">
+            ¿Dudas sobre la API, integración o pricing? Escribinos.
+          </p>
+          <div class="mt-8 space-y-4 text-sm">
+            <div>
+              <p class="font-medium text-ink-primary">Email</p>
+              <a href={`mailto:${SITE.contactEmail}`} class="text-accent hover:underline">
+                {SITE.contactEmail}
+              </a>
+            </div>
+            <div>
+              <p class="font-medium text-ink-primary">¿Sos developer?</p>
+              <p class="text-ink-secondary">
+                Probablemente <a href="https://docs.maxfind.app" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">la documentación</a> resuelva tu duda más rápido.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-surface-border bg-white p-8">
+          <FormStatus />
+          <form action="/api/contact" method="POST" class="mt-4 space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-ink-primary">Nombre</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="Tu nombre"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-ink-primary">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="tu@empresa.com"
+              />
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-ink-primary">
+                Empresa <span class="text-ink-tertiary">(opcional)</span>
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="Nombre de tu empresa"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-ink-primary">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                placeholder="Contanos en qué te ayudamos"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full">Enviar mensaje</button>
+            <p class="text-xs text-ink-tertiary">
+              Al enviar aceptás nuestra <a href="/legal/privacidad" class="underline">política de privacidad</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

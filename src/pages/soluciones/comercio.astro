@@ -1,0 +1,49 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'Verificá en operaciones de valor',
+    description:
+      'En ventas a crédito, entregas grandes o pagos diferidos, confirmá la identidad del comprador antes de cerrar. Menos sorpresas después.',
+    points: ['Verificación en el punto de venta', 'Ideal para ventas a crédito', 'Match contra RENIEC'],
+  },
+  {
+    title: 'Reducí el fraude',
+    description:
+      'La suplantación de identidad es una de las principales causas de pérdida en comercio. Detectala antes de que se convierta en un contracargo.',
+    points: ['Previene suplantación', 'Menos contracargos', 'Trazabilidad de cada operación'],
+  },
+  {
+    title: 'Sumate a la red',
+    description:
+      'Compartí alertas con otros comercios formales. Si un comprador generó problemas en otro lado, lo sabés antes de venderle.',
+    points: ['Red de reputación', 'Señales entre comercios', 'Participación opcional'],
+  },
+];
+---
+
+<Layout
+  title="MAXFIND para comercio formal"
+  description="Verificá compradores en operaciones de valor y reducí el fraude en tus ventas. Verificación contra RENIEC y red de reputación entre comercios."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Soluciones', path: '/soluciones' },
+    { name: 'Comercio', path: '/soluciones/comercio' },
+  ])}
+>
+  <PageHero
+    eyebrow="Soluciones · Comercio"
+    title="Vendé con la identidad confirmada"
+    description="Verificá a tus compradores en operaciones de valor, reducí contracargos por suplantación y sumate a una red de reputación entre comercios formales."
+    secondaryCta={{ label: 'Pedir demo', href: '/demo' }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <CTAFinal />
+</Layout>

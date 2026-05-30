@@ -1,0 +1,53 @@
+---
+type Row = {
+  title: string;
+  description: string;
+  points?: string[];
+};
+
+type Props = {
+  rows: Row[];
+};
+
+const { rows } = Astro.props;
+---
+
+<section class="section bg-white">
+  <div class="container-page">
+    <div class="grid gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+      {
+        rows.map((row) => (
+          <article>
+            <h3 class="text-h3-mobile md:text-h3">{row.title}</h3>
+            <p class="mt-2 text-ink-secondary text-pretty">{row.description}</p>
+            {row.points && (
+              <ul class="mt-4 space-y-2">
+                {row.points.map((point) => (
+                  <li class="flex items-start gap-2 text-sm text-ink-secondary">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                      class="mt-0.5 flex-shrink-0"
+                    >
+                      <path
+                        d="M3.5 8.5l2.5 2.5L12.5 5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

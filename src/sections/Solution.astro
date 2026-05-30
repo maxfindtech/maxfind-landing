@@ -1,0 +1,54 @@
+---
+import { URLS } from '@lib/constants';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Creá tu cuenta gratis',
+    description:
+      'Acceso inmediato al sandbox profesional, gratis para siempre. Sin tarjeta, sin trámites.',
+  },
+  {
+    number: '02',
+    title: 'Hacé tu primera consulta',
+    description: 'En menos de 5 minutos siguiendo la documentación. cURL, JS o Python.',
+  },
+  {
+    number: '03',
+    title: 'Pasá a producción',
+    description:
+      '30 días gratis con 500 consultas reales contra RENIEC. Después, pagás solo por lo que consumís.',
+  },
+];
+---
+
+<section class="section bg-white">
+  <div class="container-page">
+    <div class="max-w-3xl">
+      <span class="pill">La solución</span>
+      <h2 class="mt-4 section-title">MAXFIND lo resuelve en 3 pasos</h2>
+      <p class="section-subtitle">
+        Diseñado para que tu primer "hello world" sea con datos reales, no con horas de trámites.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {
+        steps.map((step) => (
+          <article class="relative rounded-2xl border border-surface-border bg-surface-secondary/40 p-6 transition-colors hover:bg-surface-secondary">
+            <span class="font-mono text-sm font-medium text-accent">{step.number}</span>
+            <h3 class="mt-3 text-h3-mobile md:text-h3">{step.title}</h3>
+            <p class="mt-2 text-sm text-ink-secondary">{step.description}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+      <a href={URLS.SIGNUP} class="btn-primary">Crear cuenta</a>
+      <a href={URLS.DOCS} target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        Ver guía de inicio rápido
+      </a>
+    </div>
+  </div>
+</section>

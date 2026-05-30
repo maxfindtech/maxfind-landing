@@ -1,0 +1,66 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { URLS } from '@lib/constants';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'Gratis para siempre',
+    description:
+      'El sandbox no cuesta nada y no requiere tarjeta. Desarrollá e integrá todo el tiempo que necesites antes de pasar a producción.',
+    points: ['Sin tarjeta', 'Sin límite de tiempo', 'Sin gastar consultas reales'],
+  },
+  {
+    title: 'DNIs mock predecibles',
+    description:
+      'Un set de DNIs de prueba con respuestas deterministas. Ideal para escribir tests automatizados que no dependen de datos reales.',
+    points: ['Respuestas estables', 'Casos de éxito y error', 'Perfecto para CI/CD'],
+  },
+  {
+    title: 'Misma API que producción',
+    description:
+      'El sandbox usa exactamente los mismos endpoints y formatos que producción. Lo que funciona acá, funciona allá. Solo cambiás la API key.',
+    points: ['Mismos endpoints', 'Mismo formato de respuesta', 'Migración sin cambios de código'],
+  },
+];
+---
+
+<Layout
+  title="Sandbox profesional"
+  description="Desarrollá y testeá sin tocar datos reales. DNIs mock predecibles, gratis para siempre, con la misma API que producción."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Producto', path: '/producto' },
+    { name: 'Sandbox', path: '/producto/sandbox' },
+  ])}
+>
+  <PageHero
+    eyebrow="Producto · Sandbox"
+    title="Desarrollá sin tocar datos reales"
+    description="Un sandbox profesional con DNIs mock predecibles, gratis para siempre. Integrá MAXFIND, escribí tus tests y validá tu flujo antes de gastar una sola consulta real."
+    secondaryCta={{ label: 'Ver documentación', href: URLS.DOCS }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <section class="section">
+    <div class="container-page">
+      <div class="rounded-2xl border border-surface-border bg-surface-secondary/50 p-8 md:p-10">
+        <h2 class="text-h3-mobile md:text-h3">¿Listo para datos reales?</h2>
+        <p class="mt-2 max-w-2xl text-ink-secondary text-pretty">
+          Cuando termines de integrar en sandbox, suscribite y obtené 30 días con 500 consultas
+          reales contra RENIEC sin costo. Pasado el trial, pagás solo por lo que consumís.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a href={URLS.SIGNUP} class="btn-primary">Crear cuenta</a>
+          <a href="/precios" class="btn-secondary">Ver planes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTAFinal />
+</Layout>

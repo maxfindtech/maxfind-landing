@@ -1,0 +1,88 @@
+---
+import { URLS } from '@lib/constants';
+---
+
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-radial-fade" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-surface" aria-hidden="true"></div>
+
+  <div class="container-page relative pt-16 pb-24 md:pt-24 md:pb-32 lg:pt-28">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+      <div class="max-w-2xl">
+        <span class="pill">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+          API de verificación de identidad · Perú
+        </span>
+
+        <h1 class="mt-6 text-hero-mobile md:text-hero text-balance">
+          Encuentra la identidad real detrás de cada DNI
+        </h1>
+
+        <p class="mt-6 max-w-xl text-lg text-ink-secondary text-pretty md:text-xl">
+          API de verificación de identidad para negocios serios en Perú. Datos reales en
+          milisegundos, sandbox profesional gratuito.
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href={URLS.SIGNUP} class="btn-primary">
+            Empezar gratis
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href={URLS.DOCS} target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            Ver documentación
+          </a>
+        </div>
+
+        <p class="mt-6 text-sm text-ink-tertiary">
+          Sin tarjeta requerida · Sandbox ilimitado · Trial de 30 días con 500 consultas reales
+        </p>
+      </div>
+
+      <div class="relative">
+        <img
+          src="/images/hero.jpg"
+          alt="Red abstracta de identidades conectadas, símbolo de verificación MAXFIND"
+          width="1200"
+          height="800"
+          loading="eager"
+          fetchpriority="high"
+          class="w-full h-auto"
+          style="mix-blend-mode: multiply;"
+        />
+
+        <div
+          class="absolute bottom-4 left-2 sm:bottom-8 sm:left-0 max-w-[18rem] rounded-2xl bg-white p-4 shadow-2xl ring-1 ring-surface-border"
+        >
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] font-medium uppercase tracking-wider text-ink-tertiary">
+              POST /v1/dni
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2 py-0.5 text-[11px] font-medium text-success">
+              <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+              200 OK
+            </span>
+          </div>
+          <div class="mt-3 space-y-1.5 font-mono text-[12px] leading-relaxed">
+            <div><span class="text-ink-tertiary">dni:</span> <span class="text-ink-primary">"12345678"</span></div>
+            <div><span class="text-ink-tertiary">nombres:</span> <span class="text-ink-primary">"JUAN CARLOS"</span></div>
+            <div><span class="text-ink-tertiary">paterno:</span> <span class="text-ink-primary">"PEREZ"</span></div>
+          </div>
+          <div class="mt-3 flex items-center justify-between border-t border-surface-border pt-2 text-[11px] text-ink-tertiary">
+            <span>Respuesta en</span>
+            <span class="font-mono font-medium text-ink-primary">142ms</span>
+          </div>
+        </div>
+
+        <div
+          class="absolute top-2 right-2 sm:top-6 sm:right-6 hidden sm:flex items-center gap-2 rounded-full bg-white px-3 py-1.5 shadow-lg ring-1 ring-surface-border"
+        >
+          <span class="h-2 w-2 rounded-full bg-success animate-pulse"></span>
+          <span class="text-xs font-medium text-ink-primary">Padrón RENIEC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

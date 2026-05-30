@@ -1,0 +1,31 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import Features from '@sections/Features.astro';
+import CodeExample from '@sections/CodeExample.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { URLS } from '@lib/constants';
+import { breadcrumbSchema } from '@lib/seo';
+---
+
+<Layout
+  title="Producto"
+  description="Conocé en detalle qué hace MAXFIND: verificación DNI contra RENIEC, validación física, red de reputación y sandbox profesional."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Producto', path: '/producto' },
+  ])}
+>
+  <PageHero
+    eyebrow="Producto"
+    title="Una API, todo lo que necesitás para verificar identidad"
+    description="Verificación de DNI contra RENIEC, validación física del documento, red de reputación entre negocios y un sandbox profesional gratis. Todo integrado en una sola API."
+    secondaryCta={{ label: 'Ver documentación', href: URLS.DOCS }}
+  />
+
+  <Features />
+
+  <CodeExample />
+
+  <CTAFinal />
+</Layout>

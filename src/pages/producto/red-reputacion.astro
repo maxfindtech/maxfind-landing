@@ -1,0 +1,50 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { URLS } from '@lib/constants';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'Alertas compartidas',
+    description:
+      'Si una persona generó un problema en otro negocio de tu industria, te enterás antes de atenderla. La red trabaja para todos los que participan.',
+    points: ['Señales entre pares', 'Categorías por tipo de incidente', 'Vos decidís qué hacer con la alerta'],
+  },
+  {
+    title: 'Privacidad por diseño',
+    description:
+      'No compartimos datos personales innecesarios. Las alertas se manejan bajo la Ley 29733, con base legal y auditoría de cada acceso.',
+    points: ['Cumplimiento Ley 29733', 'Acceso auditado', 'Mínimo dato necesario'],
+  },
+  {
+    title: 'Más fuerte mientras más crece',
+    description:
+      'Cada negocio que se suma aporta señales y recibe protección. Es una red de confianza entre comercios formales que se refuerza sola.',
+    points: ['Efecto de red', 'Sin costo adicional en Starter+', 'Participación opcional'],
+  },
+];
+---
+
+<Layout
+  title="Red de reputación cruzada"
+  description="Compartí alertas con otros negocios de tu industria. Si un cliente fue problemático en otro lugar, te enterás antes. Cumplimiento Ley 29733."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Producto', path: '/producto' },
+    { name: 'Red de reputación', path: '/producto/red-reputacion' },
+  ])}
+>
+  <PageHero
+    eyebrow="Producto · Red de reputación"
+    title="Enterate antes, no después"
+    description="Una red de confianza entre negocios formales. Compartí y recibí alertas sobre personas problemáticas en tu industria, con privacidad por diseño y cumplimiento legal."
+    secondaryCta={{ label: 'Ver documentación', href: URLS.DOCS }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <CTAFinal />
+</Layout>

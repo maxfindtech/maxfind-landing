@@ -1,0 +1,115 @@
+---
+const snippets = {
+  curl: `curl -H "Authorization: Bearer mfx_live_xxxxxxxxxx" \\
+  https://api.maxfind.app/v1/dni/12345678
+
+# Respuesta inmediata
+{
+  "success": true,
+  "data": {
+    "dni": "12345678",
+    "nombres": "JUAN CARLOS",
+    "apellido_paterno": "PEREZ",
+    "apellido_materno": "GARCIA"
+  }
+}`,
+  js: `import { Maxfind } from '@maxfind/sdk';
+
+const mfx = new Maxfind(process.env.MAXFIND_KEY);
+
+const persona = await mfx.dni.lookup('12345678');
+
+console.log(persona.nombres);
+// "JUAN CARLOS"`,
+  python: `from maxfind import Maxfind
+
+mfx = Maxfind(api_key=os.environ["MAXFIND_KEY"])
+
+persona = mfx.dni.lookup("12345678")
+
+print(persona.nombres)
+# "JUAN CARLOS"`,
+};
+---
+
+<section class="section bg-primary text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-[0.04]" aria-hidden="true"></div>
+  <div
+    class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-accent/20 blur-3xl"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-page relative">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur">
+        Developer experience
+      </span>
+      <h2 class="mt-4 section-title !text-white">Es así de simple</h2>
+      <p class="section-subtitle !text-white/70">
+        Una llamada HTTP. Sin SDKs obligatorios, sin OAuth complejo, sin firmas raras.
+      </p>
+    </div>
+
+    <div class="mt-12 overflow-hidden rounded-2xl border border-white/10 bg-[#0B0B2C] shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+        <div class="flex items-center gap-1.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+        </div>
+        <div class="flex items-center gap-1" role="tablist" aria-label="Lenguaje">
+          {
+            (['curl', 'js', 'python'] as const).map((lang, i) => (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                data-code-tab={lang}
+                class:list={[
+                  'rounded-md px-3 py-1 text-xs font-medium transition-colors',
+                  i === 0 ? 'bg-white/10 text-white' : 'text-white/60 hover:text-white',
+                ]}
+              >
+                {lang === 'curl' ? 'cURL' : lang === 'js' ? 'JavaScript' : 'Python'}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+      <div class="relative">
+        {
+          Object.entries(snippets).map(([lang, code], i) => (
+            <pre
+              data-code-panel={lang}
+              class:list={[
+                'overflow-x-auto p-6 font-mono text-[13px] leading-relaxed text-white/90',
+                i === 0 ? '' : 'hidden',
+              ]}
+            ><code>{code}</code></pre>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-code-tab]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-code-panel]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.codeTab;
+      tabs.forEach((t) => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', String(isActive));
+        t.classList.toggle('bg-white/10', isActive);
+        t.classList.toggle('text-white', isActive);
+        t.classList.toggle('text-white/60', !isActive);
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle('hidden', panel.dataset.codePanel !== target);
+      });
+    });
+  });
+</script>

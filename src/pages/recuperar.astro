@@ -1,0 +1,117 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Logo from '@components/Logo.astro';
+import { URLS } from '@lib/constants';
+---
+
+<Layout
+  title="Recuperar contraseña"
+  description="Recuperá el acceso a tu cuenta de MAXFIND."
+  noindex
+  hideNav
+  hideFooter
+>
+  <div class="relative min-h-screen overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-radial-fade" aria-hidden="true"></div>
+
+    <div class="container-page relative flex min-h-screen flex-col items-center justify-center py-12">
+      <a href="/" class="mb-8" aria-label="Inicio MAXFIND">
+        <Logo class="h-8 w-auto" />
+      </a>
+
+      <div class="w-full max-w-md rounded-2xl border border-surface-border bg-white p-8 shadow-sm">
+        <h1 class="font-display text-2xl font-medium text-ink-primary">Recuperar contraseña</h1>
+        <p class="mt-1 text-sm text-ink-secondary">
+          Te enviamos un enlace para crear una contraseña nueva.
+        </p>
+
+        <div
+          data-auth-ok
+          class="mt-5 hidden rounded-xl border border-success/30 bg-success/10 px-4 py-3 text-sm text-ink-primary"
+          role="status"
+        >
+          Si el email existe en MAXFIND, te enviamos un enlace de recuperación. Revisá tu bandeja.
+        </div>
+        <div
+          data-auth-error
+          class="mt-5 hidden rounded-xl border border-error/30 bg-error/10 px-4 py-3 text-sm text-ink-primary"
+          role="alert"
+        >
+        </div>
+
+        <form data-recover-form class="mt-6 space-y-4" novalidate>
+          <div>
+            <label for="email" class="block text-sm font-medium text-ink-primary">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+              class="mt-1.5 w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+              placeholder="tu@empresa.com"
+            />
+          </div>
+          <button type="submit" data-submit class="btn-primary w-full">
+            <span data-label>Enviar enlace</span>
+            <span data-spinner class="hidden">
+              <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
+                <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              </svg>
+            </span>
+          </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-ink-secondary">
+          <a href={URLS.LOGIN} class="font-medium text-accent hover:underline">Volver a iniciar sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { recover } from '@lib/auth';
+
+  const form = document.querySelector<HTMLFormElement>('[data-recover-form]');
+  const okBox = document.querySelector<HTMLElement>('[data-auth-ok]');
+  const errorBox = document.querySelector<HTMLElement>('[data-auth-error]');
+  const btn = document.querySelector<HTMLButtonElement>('[data-submit]');
+  const label = btn?.querySelector<HTMLElement>('[data-label]');
+  const spinner = btn?.querySelector<HTMLElement>('[data-spinner]');
+
+  const setLoading = (loading: boolean) => {
+    if (!btn) return;
+    btn.disabled = loading;
+    label?.classList.toggle('hidden', loading);
+    spinner?.classList.toggle('hidden', !loading);
+  };
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox?.classList.add('hidden');
+    okBox?.classList.add('hidden');
+
+    const email = String(new FormData(form).get('email') ?? '').trim();
+    if (!email) {
+      if (errorBox) {
+        errorBox.textContent = 'Ingresá tu email.';
+        errorBox.classList.remove('hidden');
+      }
+      return;
+    }
+
+    setLoading(true);
+    const result = await recover({ email });
+    setLoading(false);
+    if (result.ok) {
+      form.reset();
+      okBox?.classList.remove('hidden');
+    } else if (errorBox) {
+      errorBox.textContent = result.error;
+      errorBox.classList.remove('hidden');
+    }
+  });
+</script>

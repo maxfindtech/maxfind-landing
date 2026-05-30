@@ -1,0 +1,49 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'Sabé quién entra',
+    description:
+      'Registrá y verificá la identidad de cada visitante en la recepción. Conocé quién accede a tu edificio y cuándo, con datos reales.',
+    points: ['Verificación en recepción', 'Registro con identidad confirmada', 'Historial de visitas'],
+  },
+  {
+    title: 'Control de accesos real',
+    description:
+      'No alcanza con anotar un número de DNI en un cuaderno. Confirmá que el documento existe y corresponde a la persona que tenés enfrente.',
+    points: ['Match contra RENIEC', 'Previene ingresos con datos falsos', 'Integrable con tu sistema de acceso'],
+  },
+  {
+    title: 'Tranquilidad para residentes',
+    description:
+      'Un edificio que verifica identidades es un edificio más seguro. Dales a los residentes la certeza de que sabés quién entra.',
+    points: ['Mayor seguridad percibida', 'Respuesta rápida ante incidentes', 'Datos protegidos por ley'],
+  },
+];
+---
+
+<Layout
+  title="MAXFIND para edificios y condominios"
+  description="Identificá visitantes y controlá accesos a tu edificio. Confirmá la identidad real de cada persona que entra a tu propiedad."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Soluciones', path: '/soluciones' },
+    { name: 'Edificios', path: '/soluciones/edificios' },
+  ])}
+>
+  <PageHero
+    eyebrow="Soluciones · Edificios"
+    title="Identificá a quién entra a tu edificio"
+    description="Verificá la identidad de visitantes y proveedores en la recepción. Control de accesos con datos reales, no con un número anotado a mano."
+    secondaryCta={{ label: 'Pedir demo', href: '/demo' }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <CTAFinal />
+</Layout>

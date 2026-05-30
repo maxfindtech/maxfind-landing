@@ -1,0 +1,49 @@
+---
+// NOTA: logos y nombres ilustrativos. Reemplazar por clientes reales antes del launch.
+const logos = [
+  'Clínica Aurora',
+  'PagaFácil',
+  'Residencial Pacífico',
+  'FinPe',
+  'ComercioSeguro',
+  'VeciNet',
+];
+
+const stats = [
+  { value: '< 200ms', label: 'Latencia promedio' },
+  { value: '99.9%', label: 'Uptime garantizado' },
+  { value: 'Padrón RENIEC', label: 'Datos oficiales' },
+  { value: 'Ley 29733', label: 'Cumplimiento legal' },
+];
+---
+
+<section class="border-y border-surface-border bg-white">
+  <div class="container-page py-12">
+    <p class="text-center text-xs font-medium uppercase tracking-wider text-ink-tertiary">
+      Negocios que ya verifican identidad con MAXFIND
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+      {
+        logos.map((logo) => (
+          <span class="font-display text-lg font-medium text-ink-tertiary/80 transition-colors hover:text-ink-secondary">
+            {logo}
+          </span>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-y-8 border-t border-surface-border pt-12 md:grid-cols-4">
+      {
+        stats.map((stat) => (
+          <div class="text-center">
+            <p class="font-display text-2xl font-medium text-ink-primary md:text-3xl">
+              {stat.value}
+            </p>
+            <p class="mt-1 text-sm text-ink-secondary">{stat.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

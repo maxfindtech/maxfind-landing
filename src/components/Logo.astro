@@ -1,0 +1,19 @@
+---
+type Props = {
+  variant?: 'light' | 'dark' | 'mono';
+  class?: string;
+};
+
+const { variant = 'light', class: className = 'h-7 w-auto' } = Astro.props;
+
+const src = `/brand/logo-wordmark-${variant}.png`;
+---
+
+<img
+  src={src}
+  alt="MAXFIND"
+  width="160"
+  height="32"
+  class={className}
+  decoding="async"
+/>

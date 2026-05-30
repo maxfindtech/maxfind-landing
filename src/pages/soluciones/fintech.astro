@@ -1,0 +1,53 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CodeExample from '@sections/CodeExample.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { URLS } from '@lib/constants';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'KYC sin fricción',
+    description:
+      'Verificá la identidad de tus usuarios durante el onboarding con una llamada a la API. Menos abandono en el registro, más cuentas activadas.',
+    points: ['Onboarding más rápido', 'Menos drop-off', 'Verificación contra RENIEC'],
+  },
+  {
+    title: 'Cumplí sin fricción regulatoria',
+    description:
+      'La verificación de identidad es la base de tu compliance. MAXFIND te da datos oficiales y auditoría completa para respaldar cada alta.',
+    points: ['Trazabilidad por usuario', 'Auditoría de cada consulta', 'Cumplimiento Ley 29733'],
+  },
+  {
+    title: 'Hecho para developers',
+    description:
+      'API REST, sandbox profesional y SDKs. Tu equipo integra MAXFIND en una tarde, no en un trimestre de reuniones.',
+    points: ['Sandbox gratis', 'Docs con ejemplos', 'Webhooks para eventos'],
+  },
+];
+---
+
+<Layout
+  title="MAXFIND para fintechs"
+  description="KYC simplificado para tu producto financiero. Onboarding rápido contra el padrón RENIEC sin sacrificar seguridad ni compliance."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Soluciones', path: '/soluciones' },
+    { name: 'Fintech', path: '/soluciones/fintech' },
+  ])}
+>
+  <PageHero
+    eyebrow="Soluciones · Fintech"
+    title="KYC que no frena tu onboarding"
+    description="Verificá identidad durante el alta de usuarios con una API simple. Onboarding rápido, compliance respaldado y la velocidad de integración que tu equipo necesita."
+    secondaryCta={{ label: 'Ver documentación', href: URLS.DOCS }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <CodeExample />
+
+  <CTAFinal />
+</Layout>

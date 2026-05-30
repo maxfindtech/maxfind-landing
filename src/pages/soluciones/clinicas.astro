@@ -1,0 +1,49 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'Admisión sin fricción',
+    description:
+      'Validá la identidad del paciente en el momento de admisión con una sola consulta. Sin papeleo extra ni demoras en la cola.',
+    points: ['Verificación en segundos', 'Datos correctos en la historia clínica', 'Menos errores de tipeo'],
+  },
+  {
+    title: 'Detectá DNIs falsos',
+    description:
+      'Antes de atender, confirmá que el documento es real comparándolo contra el padrón oficial de RENIEC. Evitá suplantación y fraude a la aseguradora.',
+    points: ['Match contra RENIEC', 'Previene suplantación de cobertura', 'Trazabilidad por paciente'],
+  },
+  {
+    title: 'Cumplí con la ley',
+    description:
+      'Tratás datos sensibles de salud. MAXFIND opera bajo la Ley 29733, con banco de datos inscrito en MINJUS y auditoría completa de cada consulta.',
+    points: ['Cumplimiento Ley 29733', 'Auditoría de accesos', 'Datos cifrados'],
+  },
+];
+---
+
+<Layout
+  title="MAXFIND para clínicas y consultorios"
+  description="Validá la identidad de tus pacientes en admisión. Detectá DNIs falsos antes de atender y cumplí con la Ley 29733 de protección de datos."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Soluciones', path: '/soluciones' },
+    { name: 'Clínicas', path: '/soluciones/clinicas' },
+  ])}
+>
+  <PageHero
+    eyebrow="Soluciones · Clínicas"
+    title="Verificá la identidad de tus pacientes"
+    description="Confirmá quién es cada paciente en la admisión, detectá documentos falsos y protegé tu cobertura, sin agregar fricción a la atención."
+    secondaryCta={{ label: 'Pedir demo', href: '/demo' }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <CTAFinal />
+</Layout>

@@ -1,0 +1,53 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/PageHero.astro';
+import FeatureRows from '@components/FeatureRows.astro';
+import CodeExample from '@sections/CodeExample.astro';
+import CTAFinal from '@sections/CTAFinal.astro';
+import { URLS } from '@lib/constants';
+import { breadcrumbSchema } from '@lib/seo';
+
+const rows = [
+  {
+    title: 'Datos del padrón oficial',
+    description:
+      'Cada consulta resuelve contra el padrón oficial de RENIEC. Sin scraping, sin fuentes de dudosa procedencia.',
+    points: ['Nombres y apellidos completos', 'Respuesta estructurada en JSON', 'Datos siempre actualizados'],
+  },
+  {
+    title: 'Menos de un segundo',
+    description:
+      'Latencia promedio por debajo de 200ms. Tu flujo de onboarding no se traba esperando una verificación.',
+    points: ['p95 bajo 400ms', 'Infraestructura en la nube', 'Caché inteligente'],
+  },
+  {
+    title: 'Una sola llamada HTTP',
+    description:
+      'API REST simple con autenticación por API key. Sin OAuth complejo, sin firmas raras, sin SDKs obligatorios.',
+    points: ['Auth con Bearer token', 'Documentación con ejemplos', 'SDKs opcionales para JS y Python'],
+  },
+];
+---
+
+<Layout
+  title="Verificación de DNI rápida y confiable"
+  description="Consultá cualquier DNI peruano contra el padrón oficial RENIEC en menos de un segundo. API REST simple, documentación clara, sandbox profesional."
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Producto', path: '/producto' },
+    { name: 'Verificación DNI', path: '/producto/verificacion-dni' },
+  ])}
+>
+  <PageHero
+    eyebrow="Producto · Verificación DNI"
+    title="Verificá cualquier DNI peruano en milisegundos"
+    description="Consultá el padrón oficial de RENIEC con una sola llamada a la API. Datos reales, estructurados y al instante, para que tu producto valide identidad sin fricción."
+    secondaryCta={{ label: 'Ver documentación', href: URLS.DOCS }}
+  />
+
+  <FeatureRows rows={rows} />
+
+  <CodeExample />
+
+  <CTAFinal />
+</Layout>

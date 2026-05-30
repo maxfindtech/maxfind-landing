@@ -1,0 +1,26 @@
+{
+  "name": "MAXFIND",
+  "short_name": "MAXFIND",
+  "icons": [
+    {
+      "src": "/brand/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/icon-symbol.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1E1B4B",
+  "background_color": "#FAFAF9",
+  "display": "standalone",
+  "start_url": "/"
+}
