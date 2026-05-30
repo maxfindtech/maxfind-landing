@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { sendEmail, escapeHtml } from '@lib/resend';
+import { SITE } from '@lib/constants';
 
 export const prerender = false;
 
@@ -30,7 +31,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
   const result = await sendEmail({
     to: contactEmail,
-    from: `MAXFIND landing <noreply@${new URL(request.url).hostname}>`,
+    from: `MAXFIND landing <noreply@${SITE.domain}>`,
     subject: `[Demo] ${company} — ${name}`,
     html,
     replyTo: email,
