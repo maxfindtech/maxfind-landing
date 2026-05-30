@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import FAQ, { type FaqItem } from '@components/FAQ.astro';
+import PlanRecommender from '@components/PlanRecommender.astro';
 import CTAFinal from '@sections/CTAFinal.astro';
 import { URLS } from '@lib/constants';
 import { breadcrumbSchema, faqSchema } from '@lib/seo';
@@ -133,6 +134,8 @@ const isFlag = (v: CellValue): v is boolean => typeof v === 'boolean';
       <p class="mt-6 text-center text-sm text-ink-tertiary">{t.pricing.noteAfterCards}</p>
     </div>
   </section>
+
+  <PlanRecommender />
 
   <section class="section">
     <div class="container-page">

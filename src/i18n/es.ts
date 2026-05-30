@@ -225,6 +225,23 @@ export const es = {
       supportPriority: 'Priority',
       support247: '24/7',
     },
+    recommender: {
+      eyebrow: 'Recomendador',
+      title: '¿Cuál es tu plan ideal?',
+      subtitle:
+        'Movéle al control y te decimos qué plan te conviene según tu volumen mensual de consultas reales.',
+      sliderLabel: 'Consultas reales por mes',
+      queryWord: 'consultas',
+      youNeed: 'Te recomendamos',
+      perMonth: 'por mes',
+      enterpriseHint:
+        'Tu volumen pide un Enterprise. Hablemos para armarte un plan a medida.',
+      enterpriseCta: 'Hablar con ventas',
+      sandboxHint:
+        'Para empezar a probar te alcanza con el sandbox profesional, que es gratis.',
+      sandboxCta: 'Crear cuenta',
+      selectPlanCta: 'Elegir este plan',
+    },
     faqs: [
       {
         q: '¿El sandbox es realmente gratis?',

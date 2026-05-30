@@ -232,6 +232,22 @@ export const en: typeof es = {
       supportPriority: 'Priority',
       support247: '24/7',
     },
+    recommender: {
+      eyebrow: 'Recommender',
+      title: 'Which plan fits you?',
+      subtitle:
+        'Drag the slider and we tell you which plan suits your monthly real-query volume.',
+      sliderLabel: 'Real queries per month',
+      queryWord: 'queries',
+      youNeed: 'We recommend',
+      perMonth: 'per month',
+      enterpriseHint:
+        'Your volume calls for Enterprise. Let’s talk and build a custom plan.',
+      enterpriseCta: 'Talk to sales',
+      sandboxHint: 'To start testing, the free professional sandbox is enough.',
+      sandboxCta: 'Create account',
+      selectPlanCta: 'Choose this plan',
+    },
     faqs: [
       {
         q: 'Is the sandbox really free?',
