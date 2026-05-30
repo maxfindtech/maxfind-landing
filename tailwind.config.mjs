@@ -37,14 +37,14 @@ export default {
         warning: '#F59E0B',
         error: '#EF4444',
         ink: {
-          primary: '#0F172A',
-          secondary: '#475569',
-          tertiary: '#94A3B8',
+          primary: 'var(--color-text-primary)',
+          secondary: 'var(--color-text-secondary)',
+          tertiary: 'var(--color-text-tertiary)',
         },
         surface: {
-          DEFAULT: '#FAFAF9',
-          secondary: '#F1F5F9',
-          border: '#E2E8F0',
+          DEFAULT: 'var(--color-background)',
+          secondary: 'var(--color-background-secondary)',
+          border: 'var(--color-border)',
         },
       },
       fontFamily: {

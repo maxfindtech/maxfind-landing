@@ -1,0 +1,88 @@
+---
+type Props = {
+  class?: string;
+};
+
+const { class: className = '' } = Astro.props;
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  class={`inline-flex h-9 w-9 items-center justify-center rounded-full text-ink-secondary transition-colors hover:bg-surface-secondary hover:text-ink-primary dark:text-ink-tertiary dark:hover:bg-primary-900 dark:hover:text-white ${className}`}
+  aria-label="Cambiar tema"
+  title="Cambiar tema"
+>
+  <svg data-theme-icon-sun width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <circle cx="8" cy="8" r="3.25" stroke="currentColor" stroke-width="1.5" />
+    <path
+      d="M8 1.5v1.5M8 13v1.5M2.5 8H1M15 8h-1.5M3.7 3.7L2.7 2.7M13.3 13.3l-1-1M3.7 12.3l-1 1M13.3 2.7l-1 1"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+  </svg>
+  <svg
+    data-theme-icon-moon
+    class="hidden"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M13.5 9.5A6 6 0 016.5 2.5a6 6 0 1 0 7 7z"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</button>
+
+<script>
+  const STORAGE_KEY = 'mfx-theme';
+  type Theme = 'light' | 'dark';
+
+  function currentTheme(): Theme {
+    return (document.documentElement.dataset.theme as Theme | undefined) ?? 'light';
+  }
+
+  function applyTheme(theme: Theme) {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      // ignorar: localStorage podría estar deshabilitado
+    }
+    syncIcons();
+  }
+
+  function syncIcons() {
+    const theme = currentTheme();
+    document.querySelectorAll<HTMLElement>('[data-theme-icon-sun]').forEach((el) => {
+      el.classList.toggle('hidden', theme === 'dark');
+    });
+    document.querySelectorAll<HTMLElement>('[data-theme-icon-moon]').forEach((el) => {
+      el.classList.toggle('hidden', theme === 'light');
+    });
+  }
+
+  // Sincronizar íconos al cargar (el tema ya lo aplicó el script inline en <head>).
+  syncIcons();
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+    });
+  });
+
+  // Reaccionar a cambios del sistema si el usuario no eligió manualmente.
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+</script>

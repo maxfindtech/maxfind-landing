@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 const sections = Object.entries(NAV.footer);
 ---
 
-<footer class="border-t border-surface-border bg-white">
+<footer class="border-t border-surface-border bg-white dark:border-primary-900 dark:bg-primary-950">
   <div class="container-page py-16">
     <div class="grid grid-cols-2 gap-10 md:grid-cols-6 lg:grid-cols-12">
       <div class="col-span-2 md:col-span-6 lg:col-span-4">
@@ -21,7 +21,7 @@ const sections = Object.entries(NAV.footer);
             href={SOCIAL.x}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-ink-secondary transition-colors hover:border-ink-tertiary hover:text-ink-primary"
+            class="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-ink-secondary transition-colors hover:border-ink-tertiary hover:text-ink-primary dark:border-primary-800 dark:text-ink-tertiary dark:hover:border-primary-700 dark:hover:text-white"
             aria-label="X (Twitter)"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -32,7 +32,7 @@ const sections = Object.entries(NAV.footer);
             href={SOCIAL.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-ink-secondary transition-colors hover:border-ink-tertiary hover:text-ink-primary"
+            class="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-ink-secondary transition-colors hover:border-ink-tertiary hover:text-ink-primary dark:border-primary-800 dark:text-ink-tertiary dark:hover:border-primary-700 dark:hover:text-white"
             aria-label="LinkedIn"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -43,7 +43,7 @@ const sections = Object.entries(NAV.footer);
             href={SOCIAL.github}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-ink-secondary transition-colors hover:border-ink-tertiary hover:text-ink-primary"
+            class="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-ink-secondary transition-colors hover:border-ink-tertiary hover:text-ink-primary dark:border-primary-800 dark:text-ink-tertiary dark:hover:border-primary-700 dark:hover:text-white"
             aria-label="GitHub"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -56,7 +56,7 @@ const sections = Object.entries(NAV.footer);
       {
         sections.map(([title, links]) => (
           <div class="lg:col-span-2">
-            <h2 class="text-xs font-medium uppercase tracking-wider text-ink-tertiary">
+            <h2 class="text-xs font-medium uppercase tracking-wider text-ink-tertiary dark:text-ink-tertiary">
               {title}
             </h2>
             <ul class="mt-4 flex flex-col gap-3">
@@ -64,7 +64,7 @@ const sections = Object.entries(NAV.footer);
                 <li>
                   <a
                     href={link.href}
-                    class="text-sm text-ink-secondary transition-colors hover:text-ink-primary"
+                    class="text-sm text-ink-secondary transition-colors hover:text-ink-primary dark:text-ink-tertiary dark:hover:text-white"
                     {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   >
                     {link.label}
@@ -77,7 +77,7 @@ const sections = Object.entries(NAV.footer);
       }
     </div>
 
-    <div class="mt-14 flex flex-col gap-4 border-t border-surface-border pt-8 md:flex-row md:items-center md:justify-between">
+    <div class="mt-14 flex flex-col gap-4 border-t border-surface-border pt-8 md:flex-row md:items-center md:justify-between dark:border-primary-900">
       <p class="text-sm text-ink-tertiary">
         © {year} {SITE.name}. Todos los derechos reservados.
       </p>

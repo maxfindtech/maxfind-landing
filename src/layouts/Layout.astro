@@ -51,6 +51,19 @@ const schemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#1E1B4B" />
 
+    <script is:inline>
+      // Aplicar tema antes del primer paint (evita el flash blanco en dark mode).
+      (function () {
+        try {
+          var stored = localStorage.getItem('mfx-theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored ?? (prefersDark ? 'dark' : 'light');
+          document.documentElement.dataset.theme = theme;
+          if (theme === 'dark') document.documentElement.classList.add('dark');
+        } catch (_) {}
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -35,7 +35,7 @@ const plans = [
       </p>
     </div>
 
-    <div class="mt-10 grid gap-4 rounded-2xl border border-surface-border bg-white p-6 sm:grid-cols-3 sm:p-8">
+    <div class="mt-10 grid gap-4 rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-6 sm:grid-cols-3 sm:p-8">
       <div class="flex gap-4">
         <span class="font-mono text-sm font-medium text-accent">01</span>
         <div>
@@ -73,7 +73,7 @@ const plans = [
               'relative rounded-2xl border p-6',
               plan.highlight
                 ? 'border-primary bg-primary text-white shadow-xl md:scale-[1.02]'
-                : 'border-surface-border bg-white',
+                : 'border-surface-border bg-white dark:bg-surface-secondary',
             ]}
           >
             {plan.highlight && (

@@ -32,19 +32,26 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
   }
 
   body {
-    @apply bg-surface text-ink-primary font-sans antialiased;
+    @apply font-sans antialiased;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-ink-primary;
+    @apply font-display;
+    color: var(--color-text-primary);
   }
 
   ::selection {
-    @apply bg-accent/20 text-primary;
+    @apply bg-accent/20;
+    color: var(--color-text-primary);
   }
 
   *:focus-visible {
@@ -58,19 +65,19 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-primary-900 hover:shadow-md active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-primary-900 hover:shadow-md active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none dark:bg-accent dark:text-primary dark:hover:bg-accent-400;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-surface-border bg-white px-6 py-3 text-sm font-medium text-ink-primary transition-all hover:border-ink-tertiary hover:bg-surface-secondary active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-surface-border bg-white px-6 py-3 text-sm font-medium text-ink-primary transition-all hover:border-ink-tertiary hover:bg-surface-secondary active:scale-[0.98] dark:border-primary-800 dark:bg-primary-950 dark:text-white dark:hover:border-primary-700 dark:hover:bg-primary-900;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink-secondary transition-colors hover:text-ink-primary hover:bg-surface-secondary;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink-secondary transition-colors hover:text-ink-primary hover:bg-surface-secondary dark:text-ink-tertiary dark:hover:text-white dark:hover:bg-primary-900;
   }
 
   .pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-surface-border bg-white/60 px-3 py-1 text-xs font-medium text-ink-secondary backdrop-blur;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-surface-border bg-white/60 px-3 py-1 text-xs font-medium text-ink-secondary backdrop-blur dark:border-primary-800 dark:bg-primary-900/60 dark:text-ink-tertiary;
   }
 
   .text-balance {
