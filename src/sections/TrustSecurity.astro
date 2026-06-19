@@ -5,7 +5,7 @@ const locale = (Astro.currentLocale ?? 'es') as Locale;
 const t = useTranslations(locale);
 ---
 
-<section class="section bg-white dark:bg-surface-secondary">
+<section class="section section-ambient bg-white dark:bg-transparent overflow-hidden">
   <div class="container-page">
     <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
       <div class="lg:sticky lg:top-24 lg:self-start" data-reveal>
