@@ -55,12 +55,12 @@ export default {
         mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       fontSize: {
-        'hero-mobile': ['36px', { lineHeight: '1.1', letterSpacing: '-0.04em', fontWeight: '500' }],
-        'hero': ['64px', { lineHeight: '1.05', letterSpacing: '-0.04em', fontWeight: '500' }],
-        'h2-mobile': ['28px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '500' }],
-        'h2': ['48px', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '500' }],
-        'h3-mobile': ['20px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '500' }],
-        'h3': ['24px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '500' }],
+        'hero-mobile': ['40px', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '600' }],
+        'hero': ['68px', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '600' }],
+        'h2-mobile': ['30px', { lineHeight: '1.2', letterSpacing: '-0.025em', fontWeight: '600' }],
+        'h2': ['52px', { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '600' }],
+        'h3-mobile': ['20px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'h3': ['24px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '600' }],
       },
       maxWidth: {
         container: '1200px',
