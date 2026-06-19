@@ -44,7 +44,9 @@ export default {
         surface: {
           DEFAULT: 'var(--color-background)',
           secondary: 'var(--color-background-secondary)',
+          tertiary: 'var(--color-background-tertiary)',
           border: 'var(--color-border)',
+          input: 'var(--color-input)',
         },
       },
       fontFamily: {

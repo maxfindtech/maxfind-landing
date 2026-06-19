@@ -51,24 +51,24 @@ const a = t.auth.register;
             <div>
               <label for="name" class="block text-sm font-medium text-ink-primary">{a.name}</label>
               <input type="text" id="name" name="name" required autocomplete="name" placeholder={a.namePh}
-                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-secondary px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
             </div>
             <div>
               <label for="email" class="block text-sm font-medium text-ink-primary">{a.email}</label>
               <input type="email" id="email" name="email" required autocomplete="email" placeholder={a.emailPh}
-                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-secondary px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
             </div>
             <div>
               <label for="company" class="block text-sm font-medium text-ink-primary">
                 {a.company} <span class="text-ink-tertiary">{t.forms.contact.fieldOptional}</span>
               </label>
               <input type="text" id="company" name="company" autocomplete="organization" placeholder={a.companyPh}
-                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-secondary px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
             </div>
             <div>
               <label for="password" class="block text-sm font-medium text-ink-primary">{a.password}</label>
               <input type="password" id="password" name="password" required minlength="8" autocomplete="new-password" placeholder={a.passwordPh}
-                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-secondary px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
+                class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20" />
             </div>
             <button type="submit" data-submit class="btn-primary w-full">
               <span data-label>{a.submit}</span>

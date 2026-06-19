@@ -14,15 +14,19 @@
   --color-border: #E2E8F0;
   --color-background: #FAFAF9;
   --color-background-secondary: #F1F5F9;
+  --color-background-tertiary: #FFFFFF;
+  --color-input: #FFFFFF;
 }
 
 [data-theme='dark'] {
-  --color-text-primary: #FAFAF9;
-  --color-text-secondary: #CBD5E1;
-  --color-text-tertiary: #94A3B8;
-  --color-border: #334155;
-  --color-background: #0F172A;
-  --color-background-secondary: #1E293B;
+  --color-text-primary: #F1F5F9;        /* near-white, alto contraste */
+  --color-text-secondary: #CBD5E1;      /* slate-300 */
+  --color-text-tertiary: #94A3B8;       /* slate-400, hints */
+  --color-border: #283047;              /* slate-800 con leve tinte indigo */
+  --color-background: #0A0E1A;          /* page bg, muy oscuro */
+  --color-background-secondary: #141A2E; /* secciones/cards, ligero tinte indigo */
+  --color-background-tertiary: #1F2538;  /* elevación: cards-sobre-cards */
+  --color-input: #0A0E1A;               /* inputs hundidos, distintos a la sección */
 }
 
 @layer base {
@@ -69,15 +73,15 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-surface-border bg-white px-6 py-3 text-sm font-medium text-ink-primary transition-all hover:border-ink-tertiary hover:bg-surface-secondary active:scale-[0.98] dark:border-primary-800 dark:bg-primary-950 dark:text-white dark:hover:border-primary-700 dark:hover:bg-primary-900;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-surface-border bg-white px-6 py-3 text-sm font-medium text-ink-primary transition-all hover:border-ink-tertiary hover:bg-surface-secondary active:scale-[0.98] dark:border-surface-border dark:bg-surface-tertiary dark:text-white dark:hover:border-ink-tertiary dark:hover:bg-surface-secondary;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink-secondary transition-colors hover:text-ink-primary hover:bg-surface-secondary dark:text-ink-tertiary dark:hover:text-white dark:hover:bg-primary-900;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink-secondary transition-colors hover:text-ink-primary hover:bg-surface-secondary dark:text-ink-secondary dark:hover:text-white dark:hover:bg-surface-tertiary;
   }
 
   .pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-surface-border bg-white/60 px-3 py-1 text-xs font-medium text-ink-secondary backdrop-blur dark:border-primary-800 dark:bg-primary-900/60 dark:text-ink-tertiary;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-surface-border bg-white/60 px-3 py-1 text-xs font-medium text-ink-secondary backdrop-blur dark:border-surface-border dark:bg-surface-tertiary dark:text-ink-secondary;
   }
 
   .text-balance {
@@ -102,6 +106,17 @@
 }
 
 @layer utilities {
+  /* Hero illustration: en light usamos multiply para integrar su fondo blanco
+     con el surface. En dark eso la haría invisible, así que cambiamos a screen
+     (intensifica los trazos sobre fondo oscuro) o simplemente la dejamos opaca. */
+  .hero-blend {
+    mix-blend-mode: multiply;
+  }
+  [data-theme='dark'] .hero-blend {
+    mix-blend-mode: screen;
+    opacity: 0.85;
+  }
+
   /* Reveal-on-scroll sutil: opacity + ligero fade-up. */
   [data-reveal] {
     opacity: 0;
