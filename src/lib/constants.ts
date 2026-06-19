@@ -46,8 +46,8 @@ export const SOCIAL = {
 export const COMPANY = {
   legalName: 'MAXFIND', // TODO: confirmar nombre legal (ver nota arriba)
   ruc: '10442471911',
-  address: 'Urbanización Bolognesi, Calle José Olaya 110, Lima, Perú',
-  city: 'Lima',
+  address: 'Urbanización Bolognesi, Calle José Olaya 110, Tacna, Perú',
+  city: 'Tacna',
   country: 'Perú',
   phone: '+51 940 202 780',
   email: 'hola@maxfind.app',

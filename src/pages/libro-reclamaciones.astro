@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import FormStatus from '@components/FormStatus.astro';
+import { COMPANY } from '@lib/constants';
 ---
 
 <Layout
@@ -328,7 +329,7 @@ import FormStatus from '@components/FormStatus.astro';
         </div>
 
         <p class="mt-6 text-center text-xs text-ink-tertiary">
-          MAXFIND S.A.C. · Lima, Perú · hola@maxfind.app
+          {COMPANY.legalName} · {COMPANY.city}, {COMPANY.country} · {COMPANY.email}
         </p>
       </div>
     </div>

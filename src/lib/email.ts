@@ -123,7 +123,7 @@ export function renderEmail(opts: {
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="text-align: center;">
                 <tr>
                   <td style="font-size: 12px; line-height: 1.6; color: #94A3B8;">
-                    ${SITE.name} • Lima, Perú<br/>
+                    ${SITE.name} • Tacna, Perú<br/>
                     Notificación automática del sitio <a href="${SITE.url}" style="color: #64748B; text-decoration: underline;">${SITE.domain}</a>
                   </td>
                 </tr>
