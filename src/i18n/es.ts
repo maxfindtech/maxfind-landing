@@ -165,14 +165,14 @@ export const es = {
         name: 'Micro',
         price: 'S/ 19',
         description: 'Para empezar a probar con bajo volumen.',
-        cta: 'Empezar gratis',
+        cta: 'Suscribirme',
         features: ['500 consultas/mes', 'Sandbox ilimitado', 'Validación DNI', 'Soporte por email'],
       },
       {
         name: 'Starter',
         price: 'S/ 79',
         description: 'Para equipos que ya validan en producción.',
-        cta: 'Empezar gratis',
+        cta: 'Suscribirme',
         features: [
           '5,000 consultas/mes',
           'Validación física',
@@ -185,7 +185,7 @@ export const es = {
         name: 'Pro',
         price: 'S/ 249',
         description: 'Para volumen alto y operaciones críticas.',
-        cta: 'Empezar gratis',
+        cta: 'Suscribirme',
         features: [
           '25,000 consultas/mes',
           'Todo lo de Starter',
@@ -443,7 +443,7 @@ export const es = {
         label: '¿Tienen documentación?',
         keywords: ['documentacion', 'documentación', 'docs', 'api', 'integrar', 'endpoint'],
         answer:
-          'Sí, todo está en <a href="{docsUrl}" target="_blank" rel="noopener noreferrer" class="font-medium text-accent underline">docs.maxfind.app</a> con ejemplos en cURL, JS y Python.',
+          'Estamos terminando la documentación completa. Mientras, podés <a href="{docsUrl}" class="font-medium text-accent underline">dejar tu email para que te avisemos</a> cuando esté online, o escribirnos a hola@maxfind.app si necesitás ayuda para integrar.',
       },
     ],
   },
@@ -577,6 +577,12 @@ export const es = {
       title: 'Sin novedades por ahora',
       description:
         'Cuando lancemos nuevas features, mejoras o cambios importantes, los anunciamos acá. Dejá tu email si querés recibir el resumen mensual.',
+    },
+    docs: {
+      eyebrow: 'Documentación',
+      title: 'Documentación en construcción',
+      description:
+        'Estamos preparando la documentación completa de la API: guías, referencia de endpoints y ejemplos en cURL, JavaScript y Python. Dejá tu email y te avisamos en cuanto esté online.',
     },
     emailLabel: 'Email',
     emailPh: 'tu@empresa.com',

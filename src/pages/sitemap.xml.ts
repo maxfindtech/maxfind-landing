@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { SITE } from '@lib/constants';
 
-type Entry = { path: string; changefreq: 'weekly' | 'monthly'; priority: number };
+type Entry = { path: string; changefreq: 'weekly' | 'monthly' | 'yearly'; priority: number };
 
 const ES_ROUTES: Entry[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
@@ -21,6 +21,8 @@ const ES_ROUTES: Entry[] = [
   { path: '/demo', changefreq: 'monthly', priority: 0.6 },
   { path: '/blog', changefreq: 'weekly', priority: 0.6 },
   { path: '/changelog', changefreq: 'weekly', priority: 0.4 },
+  { path: '/docs', changefreq: 'monthly', priority: 0.5 },
+  { path: '/libro-reclamaciones', changefreq: 'yearly', priority: 0.3 },
 ];
 
 // Paths que tienen contraparte en inglés (las que duplicamos a /en/).
@@ -40,6 +42,7 @@ const EN_ROUTES: Entry[] = [
   { path: '/en/sobre', changefreq: 'monthly', priority: 0.5 },
   { path: '/en/contacto', changefreq: 'monthly', priority: 0.5 },
   { path: '/en/demo', changefreq: 'monthly', priority: 0.6 },
+  { path: '/en/docs', changefreq: 'monthly', priority: 0.5 },
 ];
 
 const ROUTES = [...ES_ROUTES, ...EN_ROUTES];

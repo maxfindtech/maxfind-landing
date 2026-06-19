@@ -1,0 +1,350 @@
+---
+import Layout from '@layouts/Layout.astro';
+import FormStatus from '@components/FormStatus.astro';
+---
+
+<Layout
+  title="Libro de reclamaciones"
+  description="Libro de reclamaciones digital de MAXFIND, conforme al Código de Protección y Defensa del Consumidor (Decreto Supremo Nº 011-2011-PCM e INDECOPI)."
+  noindex={false}
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+    <div class="container-page relative py-16 md:py-20">
+      <div class="mx-auto max-w-3xl">
+        <div class="flex items-start gap-4">
+          <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border-2 border-primary bg-primary/5 text-primary">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M4 6a2 2 0 012-2h11a2 2 0 012 2v14l-3-2-3 2-3-2-3 2V6z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M8 9h7M8 12h7M8 15h4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div>
+            <span class="pill">Libro de reclamaciones</span>
+            <h1 class="mt-3 text-h2-mobile md:text-h2 font-display font-medium text-ink-primary">
+              Hoja de reclamación
+            </h1>
+            <p class="mt-3 text-sm text-ink-secondary text-pretty">
+              Conforme a lo establecido en el Código de Protección y Defensa del Consumidor de Perú
+              (Ley Nº 29571), MAXFIND pone a disposición su libro de reclamaciones digital. Las quejas
+              y reclamos recibidos serán respondidos en un plazo máximo de <strong>30 días calendario</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-6 md:p-8">
+          <FormStatus
+            successMessage="Tu reclamo fue registrado. Te enviamos una copia con el número de hoja a tu correo y te respondemos dentro de los 30 días calendario."
+          />
+
+          <form action="/api/reclamaciones" method="POST" class="mt-4 space-y-8">
+            <!-- 1. Datos del consumidor reclamante -->
+            <fieldset class="space-y-4">
+              <legend class="font-display text-lg font-medium text-ink-primary">
+                1. Datos del consumidor
+              </legend>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="nombres" class="block text-sm font-medium text-ink-primary">
+                    Nombres <span class="text-error">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="nombres"
+                    name="nombres"
+                    required
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  />
+                </div>
+                <div>
+                  <label for="apellidos" class="block text-sm font-medium text-ink-primary">
+                    Apellidos <span class="text-error">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="apellidos"
+                    name="apellidos"
+                    required
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  />
+                </div>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="tipoDoc" class="block text-sm font-medium text-ink-primary">
+                    Tipo de documento <span class="text-error">*</span>
+                  </label>
+                  <select
+                    id="tipoDoc"
+                    name="tipoDoc"
+                    required
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  >
+                    <option value="DNI">DNI</option>
+                    <option value="CE">Carnet de extranjería</option>
+                    <option value="PAS">Pasaporte</option>
+                    <option value="RUC">RUC</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="numDoc" class="block text-sm font-medium text-ink-primary">
+                    Número de documento <span class="text-error">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="numDoc"
+                    name="numDoc"
+                    required
+                    inputmode="numeric"
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  />
+                </div>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="email" class="block text-sm font-medium text-ink-primary">
+                    Correo electrónico <span class="text-error">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  />
+                </div>
+                <div>
+                  <label for="telefono" class="block text-sm font-medium text-ink-primary">
+                    Teléfono
+                  </label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="domicilio" class="block text-sm font-medium text-ink-primary">
+                  Domicilio <span class="text-error">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="domicilio"
+                  name="domicilio"
+                  required
+                  placeholder="Av. / Jr. / Calle, número, distrito"
+                  class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                />
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="esMenor" class="block text-sm font-medium text-ink-primary">
+                    ¿Es menor de edad?
+                  </label>
+                  <select
+                    id="esMenor"
+                    name="esMenor"
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  >
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="tutor" class="block text-sm font-medium text-ink-primary">
+                    Nombre del padre/madre o tutor <span class="text-ink-tertiary">(si es menor)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="tutor"
+                    name="tutor"
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- 2. Identificación del bien contratado -->
+            <fieldset class="space-y-4">
+              <legend class="font-display text-lg font-medium text-ink-primary">
+                2. Identificación del bien contratado
+              </legend>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="tipoBien" class="block text-sm font-medium text-ink-primary">
+                    Tipo <span class="text-error">*</span>
+                  </label>
+                  <select
+                    id="tipoBien"
+                    name="tipoBien"
+                    required
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  >
+                    <option value="servicio">Servicio</option>
+                    <option value="producto">Producto</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="monto" class="block text-sm font-medium text-ink-primary">
+                    Monto reclamado (S/)
+                  </label>
+                  <input
+                    type="text"
+                    id="monto"
+                    name="monto"
+                    inputmode="decimal"
+                    class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="descripcionBien" class="block text-sm font-medium text-ink-primary">
+                  Descripción del producto o servicio <span class="text-error">*</span>
+                </label>
+                <textarea
+                  id="descripcionBien"
+                  name="descripcionBien"
+                  required
+                  rows="3"
+                  placeholder="Plan contratado, feature usada, etc."
+                  class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                ></textarea>
+              </div>
+            </fieldset>
+
+            <!-- 3. Detalle de la reclamación -->
+            <fieldset class="space-y-4">
+              <legend class="font-display text-lg font-medium text-ink-primary">
+                3. Detalle de la reclamación
+              </legend>
+
+              <div>
+                <label class="block text-sm font-medium text-ink-primary mb-2">
+                  Tipo <span class="text-error">*</span>
+                </label>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-surface-border bg-white dark:bg-surface-input p-3 hover:border-accent/50">
+                    <input type="radio" name="tipoReclamo" value="reclamo" required class="mt-0.5 accent-accent" />
+                    <span class="text-sm">
+                      <strong class="block text-ink-primary">Reclamo</strong>
+                      <span class="text-ink-secondary">
+                        Disconformidad relacionada con los productos o servicios.
+                      </span>
+                    </span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-surface-border bg-white dark:bg-surface-input p-3 hover:border-accent/50">
+                    <input type="radio" name="tipoReclamo" value="queja" required class="mt-0.5 accent-accent" />
+                    <span class="text-sm">
+                      <strong class="block text-ink-primary">Queja</strong>
+                      <span class="text-ink-secondary">
+                        Disconformidad no relacionada con los productos o servicios (atención al cliente).
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label for="detalle" class="block text-sm font-medium text-ink-primary">
+                  Detalle <span class="text-error">*</span>
+                </label>
+                <textarea
+                  id="detalle"
+                  name="detalle"
+                  required
+                  rows="5"
+                  placeholder="Describí lo que pasó con la mayor claridad posible."
+                  class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                ></textarea>
+              </div>
+
+              <div>
+                <label for="pedido" class="block text-sm font-medium text-ink-primary">
+                  Pedido del consumidor <span class="text-error">*</span>
+                </label>
+                <textarea
+                  id="pedido"
+                  name="pedido"
+                  required
+                  rows="3"
+                  placeholder="Qué solución solicitás."
+                  class="mt-1.5 w-full rounded-lg border border-surface-border bg-white dark:bg-surface-input px-3 py-2.5 text-sm placeholder:text-ink-tertiary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                ></textarea>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="acepto"
+                  required
+                  class="mt-1 accent-accent"
+                />
+                <span class="text-xs text-ink-secondary">
+                  Declaro que la información proporcionada es verdadera. Acepto que MAXFIND procese
+                  estos datos personales con la finalidad exclusiva de atender este reclamo,
+                  conforme a la Ley 29733 de Protección de Datos Personales.
+                </span>
+              </label>
+            </fieldset>
+
+            <button type="submit" data-submit-btn class="btn-primary w-full">
+              <span data-label>Enviar reclamo</span>
+              <span data-spinner class="hidden">
+                <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
+                  <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </span>
+            </button>
+
+            <p class="text-xs text-ink-tertiary">
+              <strong>Importante:</strong> conforme al D.S. Nº 011-2011-PCM, la respuesta a tu reclamo
+              se brindará en un plazo no mayor a 30 días calendario. Si no estás conforme con la
+              respuesta, podés acudir a INDECOPI a través de su sitio web
+              <a href="https://www.indecopi.gob.pe/reclamo" target="_blank" rel="noopener noreferrer" class="text-accent underline">indecopi.gob.pe/reclamo</a>.
+            </p>
+          </form>
+        </div>
+
+        <p class="mt-6 text-center text-xs text-ink-tertiary">
+          MAXFIND S.A.C. · Lima, Perú · hola@maxfind.app
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[action^="/api/"]').forEach((form) => {
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit-btn]');
+      const label = btn?.querySelector<HTMLElement>('[data-label]');
+      const spinner = btn?.querySelector<HTMLElement>('[data-spinner]');
+      if (!btn) return;
+      btn.disabled = true;
+      label?.classList.add('hidden');
+      spinner?.classList.remove('hidden');
+    });
+  });
+</script>

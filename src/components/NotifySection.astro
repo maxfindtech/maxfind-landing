@@ -3,7 +3,7 @@ import { SITE } from '@lib/constants';
 import { useTranslations, type Locale } from '@i18n/ui';
 
 type Props = {
-  topic: 'blog' | 'changelog';
+  topic: 'blog' | 'changelog' | 'docs';
 };
 
 const locale = (Astro.currentLocale ?? 'es') as Locale;

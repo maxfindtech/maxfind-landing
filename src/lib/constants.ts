@@ -13,7 +13,7 @@ export const SITE = {
 export const URLS = {
   APP: 'https://app.maxfind.app',
   API: 'https://api.maxfind.app',
-  DOCS: 'https://docs.maxfind.app',
+  DOCS: '/docs',
   STATUS: 'https://status.maxfind.app',
   // Registro y login viven en la landing (UI), consumen la API.
   SIGNUP: '/registro',
@@ -35,6 +35,18 @@ export const SOCIAL = {
   x: 'https://x.com/maxfindtech',
   linkedin: 'https://linkedin.com/company/maxfindtech',
   github: 'https://github.com/maxfindtech',
+} as const;
+
+// Datos de la empresa para INDECOPI / Culqi / pie de página.
+// ⚠️ Reemplazar cada valor por el real antes del launch comercial.
+export const COMPANY = {
+  legalName: 'MAXFIND S.A.C.',
+  ruc: '20XXXXXXXXX', // TODO: reemplazar por RUC real
+  address: 'Av. (pendiente), Lima, Perú', // TODO: dirección real
+  city: 'Lima',
+  country: 'Perú',
+  phone: '+51 999 999 999', // TODO: teléfono real
+  email: 'hola@maxfind.app',
 } as const;
 
 export type NavLink = {

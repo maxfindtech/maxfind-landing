@@ -1,5 +1,5 @@
 ---
-import { SOCIAL, SITE, URLS } from '@lib/constants';
+import { SOCIAL, SITE, URLS, COMPANY } from '@lib/constants';
 import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
 import Logo from './Logo.astro';
 
@@ -42,7 +42,7 @@ const sections: { title: string; links: Link[] }[] = [
   {
     title: t.footer.sections.Recursos,
     links: [
-      { label: locale === 'en' ? 'Documentation' : 'Documentación', href: URLS.DOCS, external: true },
+      { label: locale === 'en' ? 'Documentation' : 'Documentación', href: lp('docs') },
       { label: 'Status', href: URLS.STATUS, external: true },
       { label: 'Changelog', href: lp('changelog') },
     ],
@@ -52,6 +52,7 @@ const sections: { title: string; links: Link[] }[] = [
     links: [
       { label: locale === 'en' ? 'Terms' : 'Términos', href: lp('legal/terminos') },
       { label: locale === 'en' ? 'Privacy' : 'Privacidad', href: lp('legal/privacidad') },
+      { label: 'Libro de reclamaciones', href: '/libro-reclamaciones' },
     ],
   },
 ];
@@ -129,10 +130,32 @@ const sections: { title: string; links: Link[] }[] = [
     </div>
 
     <div
-      class="mt-14 flex flex-col gap-4 border-t border-surface-border pt-8 md:flex-row md:items-center md:justify-between dark:border-primary-900"
+      class="mt-14 grid gap-6 border-t border-surface-border pt-8 md:grid-cols-[1.4fr_1fr] dark:border-primary-900"
     >
-      <p class="text-sm text-ink-tertiary">© {year} {SITE.name}. {t.footer.copyright}</p>
-      <p class="text-sm text-ink-tertiary">{t.footer.madeIn}</p>
+      <div class="text-sm text-ink-tertiary leading-relaxed">
+        <p class="font-medium text-ink-secondary">{COMPANY.legalName}</p>
+        <p>RUC {COMPANY.ruc} · {COMPANY.address}</p>
+        <p>
+          <a href={`tel:${COMPANY.phone.replace(/\s/g, '')}`} class="hover:text-ink-primary">{COMPANY.phone}</a>
+          <span class="mx-1">·</span>
+          <a href={`mailto:${COMPANY.email}`} class="hover:text-ink-primary">{COMPANY.email}</a>
+        </p>
+      </div>
+      <div class="flex flex-col items-start gap-3 md:items-end">
+        <a
+          href="/libro-reclamaciones"
+          class="inline-flex items-center gap-2 rounded-lg border border-surface-border bg-white px-3 py-2 text-xs font-medium text-ink-primary transition-colors hover:border-ink-tertiary dark:bg-surface-tertiary dark:text-white"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6a2 2 0 012-2h11a2 2 0 012 2v14l-3-2-3 2-3-2-3 2V6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+            <path d="M8 9h7M8 12h7M8 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+          Libro de reclamaciones
+        </a>
+        <p class="text-xs text-ink-tertiary">
+          © {year} {SITE.name}. {t.footer.copyright} · {t.footer.madeIn}
+        </p>
+      </div>
     </div>
   </div>
 </footer>

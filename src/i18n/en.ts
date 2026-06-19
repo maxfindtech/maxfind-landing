@@ -172,14 +172,14 @@ export const en: typeof es = {
         name: 'Micro',
         price: 'S/ 19',
         description: 'To start testing at low volume.',
-        cta: 'Get started',
+        cta: 'Subscribe',
         features: ['500 queries/mo', 'Unlimited sandbox', 'DNI validation', 'Email support'],
       },
       {
         name: 'Starter',
         price: 'S/ 79',
         description: 'For teams already validating in production.',
-        cta: 'Get started',
+        cta: 'Subscribe',
         features: [
           '5,000 queries/mo',
           'Physical validation',
@@ -192,7 +192,7 @@ export const en: typeof es = {
         name: 'Pro',
         price: 'S/ 249',
         description: 'For high volume and critical operations.',
-        cta: 'Get started',
+        cta: 'Subscribe',
         features: [
           '25,000 queries/mo',
           'Everything in Starter',
@@ -439,7 +439,7 @@ export const en: typeof es = {
         label: 'Is there documentation?',
         keywords: ['documentation', 'docs', 'api', 'integrate', 'endpoint'],
         answer:
-          'Yes, everything is at <a href="{docsUrl}" target="_blank" rel="noopener noreferrer" class="font-medium text-accent underline">docs.maxfind.app</a> with cURL, JS, and Python examples.',
+          'We are wrapping up the full documentation. In the meantime you can <a href="{docsUrl}" class="font-medium text-accent underline">leave your email and we will let you know</a> when it is online, or write to hola@maxfind.app if you need help integrating.',
       },
     ],
   },
@@ -572,6 +572,12 @@ export const en: typeof es = {
       title: 'No updates yet',
       description:
         'When we ship new features, improvements, or important changes, we will announce them here. Drop your email if you want the monthly recap.',
+    },
+    docs: {
+      eyebrow: 'Documentation',
+      title: 'Docs in the making',
+      description:
+        'We are building the full API documentation: guides, endpoint reference, and examples in cURL, JavaScript, and Python. Drop your email and we will let you know as soon as it is online.',
     },
     emailLabel: 'Email',
     emailPh: 'you@company.com',

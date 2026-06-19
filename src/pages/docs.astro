@@ -1,0 +1,12 @@
+---
+import Layout from '@layouts/Layout.astro';
+import NotifySection from '@components/NotifySection.astro';
+import { useTranslations, type Locale } from '@i18n/ui';
+
+const locale = (Astro.currentLocale ?? 'es') as Locale;
+const t = useTranslations(locale);
+---
+
+<Layout title={t.notify.docs.title} description={t.notify.docs.description} noindex>
+  <NotifySection topic="docs" />
+</Layout>

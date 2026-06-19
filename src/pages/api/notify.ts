@@ -5,7 +5,7 @@ import { SITE } from '@lib/constants';
 
 export const prerender = false;
 
-const VALID_TOPICS = ['blog', 'changelog'] as const;
+const VALID_TOPICS = ['blog', 'changelog', 'docs'] as const;
 type Topic = (typeof VALID_TOPICS)[number];
 
 export const POST: APIRoute = async ({ request, redirect }) => {
