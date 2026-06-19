@@ -38,13 +38,12 @@ export const SOCIAL = {
 } as const;
 
 // Datos de la empresa para INDECOPI / Culqi / pie de página.
-// IMPORTANTE: el RUC 10... corresponde a Persona Natural con Negocio.
-// Si MAXFIND opera como Persona Natural, `legalName` debe ser el nombre
-// completo de la persona titular del RUC (ej. "Juan Pérez García -
-// Persona Natural con Negocio"). Si se constituye como S.A.C., cambiar
-// el RUC al 20... correspondiente y poner el nombre legal "MAXFIND S.A.C.".
+// El RUC 10... corresponde a Persona Natural con Negocio, por lo que
+// el `legalName` es el nombre completo de la persona titular del RUC.
+// Cuando se constituya MAXFIND como S.A.C., cambiar el RUC al 20...
+// correspondiente y reemplazar `legalName` por "MAXFIND S.A.C.".
 export const COMPANY = {
-  legalName: 'MAXFIND', // TODO: confirmar nombre legal (ver nota arriba)
+  legalName: 'Jonathan Joan Avila Huamolle',
   ruc: '10442471911',
   address: 'Urbanización Bolognesi, Calle José Olaya 110, Tacna, Perú',
   city: 'Tacna',
