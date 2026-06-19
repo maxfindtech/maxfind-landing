@@ -169,6 +169,13 @@ export const en: typeof es = {
       'You only pay for what you use. No annual commitments. Professional sandbox free forever and a 30-day trial with 500 real queries on signup.',
     plans: [
       {
+        name: 'Sandbox',
+        price: 'Free',
+        description: 'Build and test without touching real data.',
+        cta: 'Create account',
+        features: ['Unlimited mock queries', 'Predictable test DNIs', 'No card required', 'No expiration'],
+      },
+      {
         name: 'Micro',
         price: 'S/ 19',
         description: 'To start testing at low volume.',

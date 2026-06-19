@@ -1,0 +1,104 @@
+---
+// Sección que explica el flujo de compra: pasos + medios de pago + nota
+// de credenciales de prueba para revisores (ej. Culqi).
+---
+
+<section class="section section-ambient overflow-hidden">
+  <div class="container-page">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <div data-reveal>
+        <span class="pill">Cómo comprar</span>
+        <h2 class="mt-4 section-title">Suscribirte toma 3 pasos</h2>
+        <p class="section-subtitle">
+          Todos los planes pagos se procesan con tarjeta de crédito o débito a través de Culqi,
+          la pasarela autorizada por la SBS para procesar pagos en Perú. Sin compromiso de
+          permanencia, cancelás cuando quieras.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4 text-xs text-ink-tertiary">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.5" />
+              <path d="M3 10h18" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+            Visa · Mastercard · Amex · Diners
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Pago seguro con Culqi (procesador autorizado SBS)
+          </div>
+        </div>
+      </div>
+
+      <ol class="space-y-4">
+        <li class="rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-5">
+          <div class="flex items-start gap-4">
+            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-accent/15 font-mono text-sm font-medium text-accent">
+              1
+            </span>
+            <div>
+              <h3 class="font-display text-lg font-medium text-ink-primary">Elegí tu plan</h3>
+              <p class="mt-1 text-sm text-ink-secondary">
+                Tocá "Suscribirme" en el plan que más se ajuste a tu volumen mensual. El plan
+                Sandbox es gratis y no requiere tarjeta.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-5">
+          <div class="flex items-start gap-4">
+            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-accent/15 font-mono text-sm font-medium text-accent">
+              2
+            </span>
+            <div>
+              <h3 class="font-display text-lg font-medium text-ink-primary">Creá tu cuenta</h3>
+              <p class="mt-1 text-sm text-ink-secondary">
+                Te pedimos nombre, correo y una contraseña. En menos de un minuto tenés tu cuenta
+                activa y accedés al dashboard.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="rounded-2xl border border-surface-border bg-white dark:bg-surface-secondary p-5">
+          <div class="flex items-start gap-4">
+            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-accent/15 font-mono text-sm font-medium text-accent">
+              3
+            </span>
+            <div>
+              <h3 class="font-display text-lg font-medium text-ink-primary">Pagá con tarjeta</h3>
+              <p class="mt-1 text-sm text-ink-secondary">
+                Desde el dashboard activás la suscripción ingresando los datos de tu tarjeta. El
+                cobro lo procesa Culqi de forma segura. Recibís 30 días gratis con 500 consultas
+                reales antes del primer cobro.
+              </p>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Nota para revisores (Culqi staff): credenciales de prueba para auditar el flujo. -->
+    <div class="mt-12 rounded-2xl border border-warning/30 bg-warning/10 p-5 text-sm">
+      <div class="flex items-start gap-3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="mt-0.5 flex-shrink-0 text-warning" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+          <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+        <div class="text-ink-primary">
+          <p class="font-medium">¿Sos revisor de Culqi o de una entidad regulatoria?</p>
+          <p class="mt-1 text-ink-secondary">
+            Para auditar el flujo completo de compra sin restricciones, escribinos a
+            <a href="mailto:hola@maxfind.app?subject=Revisor%20Culqi%20-%20Credenciales%20de%20prueba" class="font-medium text-accent underline">hola@maxfind.app</a>
+            indicando "Revisor Culqi" en el asunto y te enviamos en menos de 24 horas hábiles un
+            usuario de prueba habilitado para recorrer el flujo de suscripción y pago end-to-end.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

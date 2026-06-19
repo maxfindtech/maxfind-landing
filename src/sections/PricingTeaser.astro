@@ -4,9 +4,11 @@ import { useTranslations, localizedPath, type Locale } from '@i18n/ui';
 const locale = (Astro.currentLocale ?? 'es') as Locale;
 const t = useTranslations(locale);
 
-const plans = t.pricing.plans.slice(0, 3).map((p, i) => ({
+// En el home mostramos Micro, Starter (destacado) y Pro — 3 planes pagos
+// representativos. Sandbox lo dejamos para la página /precios.
+const plans = t.pricing.plans.slice(1, 4).map((p, i) => ({
   ...p,
-  highlight: i === 1,
+  highlight: i === 1, // Starter
 }));
 ---
 

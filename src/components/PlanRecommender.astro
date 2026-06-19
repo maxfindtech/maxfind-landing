@@ -6,13 +6,14 @@ const locale = (Astro.currentLocale ?? 'es') as Locale;
 const t = useTranslations(locale);
 const r = t.pricing.recommender;
 
-// Tiers que matchean con t.pricing.plans (índice 0..3 = Micro, Starter, Pro, Enterprise).
+// Tiers que matchean con t.pricing.plans:
+// [0]=Sandbox, [1]=Micro, [2]=Starter, [3]=Pro, [4]=Enterprise.
 const tiers = [
-  { idx: 0, upTo: 500, name: t.pricing.plans[0].name, price: t.pricing.plans[0].price },
-  { idx: 1, upTo: 5000, name: t.pricing.plans[1].name, price: t.pricing.plans[1].price },
-  { idx: 2, upTo: 25000, name: t.pricing.plans[2].name, price: t.pricing.plans[2].price },
+  { idx: 1, upTo: 500, name: t.pricing.plans[1].name, price: t.pricing.plans[1].price },
+  { idx: 2, upTo: 5000, name: t.pricing.plans[2].name, price: t.pricing.plans[2].price },
+  { idx: 3, upTo: 25000, name: t.pricing.plans[3].name, price: t.pricing.plans[3].price },
 ];
-const enterpriseName = t.pricing.plans[3].name;
+const enterpriseName = t.pricing.plans[4].name;
 const sliderMax = 30000;
 const sliderInitial = 2500;
 ---

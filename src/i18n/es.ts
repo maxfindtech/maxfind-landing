@@ -162,6 +162,13 @@ export const es = {
       'Pagás solo por lo que consumís. Sin compromisos anuales. Sandbox profesional gratis para siempre y 30 días de prueba con 500 consultas reales al suscribirte.',
     plans: [
       {
+        name: 'Sandbox',
+        price: 'Gratis',
+        description: 'Para desarrollar y testear sin tocar datos reales.',
+        cta: 'Crear cuenta',
+        features: ['Consultas mock ilimitadas', 'DNIs predecibles', 'Sin tarjeta', 'Sin caducidad'],
+      },
+      {
         name: 'Micro',
         price: 'S/ 19',
         description: 'Para empezar a probar con bajo volumen.',
