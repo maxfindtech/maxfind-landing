@@ -23,6 +23,9 @@ const ES_ROUTES: Entry[] = [
   { path: '/changelog', changefreq: 'weekly', priority: 0.4 },
   { path: '/docs', changefreq: 'monthly', priority: 0.5 },
   { path: '/libro-reclamaciones', changefreq: 'yearly', priority: 0.3 },
+  { path: '/legal/terminos', changefreq: 'yearly', priority: 0.3 },
+  { path: '/legal/privacidad', changefreq: 'yearly', priority: 0.3 },
+  { path: '/legal/cancelacion', changefreq: 'yearly', priority: 0.3 },
 ];
 
 // Paths que tienen contraparte en inglés (las que duplicamos a /en/).

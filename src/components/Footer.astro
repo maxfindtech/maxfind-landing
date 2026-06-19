@@ -50,8 +50,10 @@ const sections: { title: string; links: Link[] }[] = [
   {
     title: t.footer.sections.Legal,
     links: [
-      { label: locale === 'en' ? 'Terms' : 'Términos', href: lp('legal/terminos') },
-      { label: locale === 'en' ? 'Privacy' : 'Privacidad', href: lp('legal/privacidad') },
+      // Los documentos legales viven solo en español (versión válida ante INDECOPI).
+      { label: locale === 'en' ? 'Terms' : 'Términos', href: '/legal/terminos' },
+      { label: locale === 'en' ? 'Privacy' : 'Privacidad', href: '/legal/privacidad' },
+      { label: locale === 'en' ? 'Cancellation' : 'Cancelación', href: '/legal/cancelacion' },
       { label: 'Libro de reclamaciones', href: '/libro-reclamaciones' },
     ],
   },

@@ -1,16 +1,171 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import ComingSoon from '@components/ComingSoon.astro';
+import LegalLayout from '@components/LegalLayout.astro';
+import { COMPANY, SITE } from '@lib/constants';
 ---
 
 <Layout
-  title="Política de privacidad"
-  description="Política de privacidad y tratamiento de datos personales de MAXFIND, conforme a la Ley 29733."
-  noindex
+  title="Política de Privacidad"
+  description="Política de privacidad de MAXFIND conforme a la Ley 29733 de Protección de Datos Personales del Perú y su reglamento."
 >
-  <ComingSoon
-    title="Política de privacidad"
-    description="Procesamos datos personales bajo la Ley 29733. El texto completo de la política estará publicado antes del lanzamiento oficial."
-    eyebrow="Legal"
-  />
+  <LegalLayout
+    title="Política de Privacidad"
+    intro="Esta política describe cómo MAXFIND recolecta, usa y protege los datos personales de los usuarios del sitio web y del servicio."
+  >
+    <h2>1. Responsable del tratamiento</h2>
+    <p>
+      El responsable del tratamiento de los datos personales es
+      <strong>{COMPANY.legalName}</strong>, con RUC {COMPANY.ruc}, domicilio en {COMPANY.address}, teléfono
+      {COMPANY.phone} y correo electrónico <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>.
+    </p>
+    <p>
+      Operamos bajo la <strong>Ley 29733 de Protección de Datos Personales</strong> y su
+      reglamento (D.S. 003-2013-JUS). Nuestro banco de datos personales <em>maxfind_users</em> se
+      encuentra inscrito ante la Autoridad Nacional de Protección de Datos Personales del MINJUS.
+    </p>
+
+    <h2>2. Datos que tratamos</h2>
+    <h3>2.1 De los usuarios del sitio</h3>
+    <ul>
+      <li><strong>Datos de identificación:</strong> nombres, apellidos, email, empresa, cargo
+        (cuando los completás en un formulario).</li>
+      <li><strong>Datos de contacto:</strong> teléfono, dirección (si los proveés en libro de
+        reclamaciones u otros formularios).</li>
+      <li><strong>Datos técnicos:</strong> dirección IP, navegador, sistema operativo y páginas
+        visitadas (con fines analíticos agregados).</li>
+    </ul>
+
+    <h3>2.2 De los clientes del Servicio</h3>
+    <ul>
+      <li>Datos de la cuenta (titular, email, datos de facturación).</li>
+      <li>Datos de uso (consultas realizadas, timestamps, IP de origen, propósito declarado).</li>
+      <li>Datos de pago procesados por la pasarela (los datos completos de la tarjeta no quedan
+        almacenados en nuestros servidores; los procesa la pasarela autorizada).</li>
+    </ul>
+
+    <h3>2.3 De los titulares de DNI consultados</h3>
+    <p>
+      Para cumplir con el Servicio, accedemos a datos del padrón oficial de RENIEC sobre los DNI
+      que nuestros clientes nos solicitan verificar. Esta consulta se realiza bajo la base legal
+      del interés legítimo del cliente para verificar identidad en el marco de sus operaciones
+      comerciales y bajo el principio de minimización: solo se devuelven los datos mínimos
+      necesarios para la finalidad declarada.
+    </p>
+
+    <h2>3. Finalidades</h2>
+    <ul>
+      <li>Prestar y operar el Servicio MAXFIND.</li>
+      <li>Procesar pagos y emitir comprobantes.</li>
+      <li>Brindar soporte y atender reclamos.</li>
+      <li>Cumplir con obligaciones legales (tributarias, contables, regulatorias).</li>
+      <li>Realizar análisis estadísticos agregados que no identifiquen a personas concretas.</li>
+      <li>Comunicar novedades del Servicio (con opción de baja en cualquier momento).</li>
+    </ul>
+
+    <h2>4. Base legal</h2>
+    <p>
+      Tratamos los datos personales bajo las siguientes bases legales reconocidas por la Ley 29733:
+    </p>
+    <ul>
+      <li><strong>Ejecución de un contrato:</strong> para los datos necesarios para prestar el
+        Servicio a quienes son nuestros clientes.</li>
+      <li><strong>Cumplimiento de obligación legal:</strong> para datos exigidos por SUNAT,
+        SBS, INDECOPI u otra autoridad competente.</li>
+      <li><strong>Interés legítimo:</strong> para verificar identidades en el marco de
+        operaciones comerciales lícitas y para mejorar la seguridad del Servicio.</li>
+      <li><strong>Consentimiento:</strong> para comunicaciones de marketing y para las
+        finalidades adicionales que no resulten necesarias para prestar el Servicio.</li>
+    </ul>
+
+    <h2>5. Encargados del tratamiento</h2>
+    <p>
+      Para operar el Servicio compartimos datos con proveedores que actúan como encargados del
+      tratamiento bajo nuestras instrucciones y con cláusulas de protección de datos:
+    </p>
+    <ul>
+      <li><strong>Vercel</strong> (hosting del sitio web).</li>
+      <li><strong>Cloudflare</strong> (DNS y reenvío de correo de <em>hola@maxfind.app</em>).</li>
+      <li><strong>Resend</strong> (envío de correos transaccionales).</li>
+      <li><strong>Culqi</strong> u otra pasarela autorizada (procesamiento de pagos).</li>
+      <li>Proveedores de servicios analíticos respetuosos de la privacidad.</li>
+    </ul>
+    <p>
+      Algunos de estos proveedores pueden almacenar datos fuera del Perú. En ese caso adoptamos
+      garantías contractuales para preservar el nivel de protección exigido por la Ley 29733.
+    </p>
+
+    <h2>6. Plazo de conservación</h2>
+    <ul>
+      <li><strong>Datos de cuenta:</strong> mientras la cuenta esté activa y hasta 10 años
+        después de su cierre, conforme al plazo de prescripción tributaria.</li>
+      <li><strong>Logs de consultas:</strong> mínimo 1 año para auditoría; máximo el plazo legal
+        aplicable.</li>
+      <li><strong>Datos de formularios de contacto:</strong> hasta 24 meses tras la última
+        interacción.</li>
+      <li><strong>Datos del libro de reclamaciones:</strong> mínimo 2 años desde la presentación
+        del reclamo, conforme al D.S. 011-2011-PCM.</li>
+    </ul>
+
+    <h2>7. Derechos del titular</h2>
+    <p>
+      Como titular de datos personales tenés los siguientes derechos reconocidos por la Ley 29733:
+    </p>
+    <ul>
+      <li><strong>Acceso (ARCO-Acceso):</strong> conocer qué datos tuyos tratamos.</li>
+      <li><strong>Rectificación:</strong> corregir datos inexactos o desactualizados.</li>
+      <li><strong>Cancelación:</strong> solicitar la supresión de tus datos cuando ya no sean
+        necesarios.</li>
+      <li><strong>Oposición:</strong> oponerte al tratamiento por razones legítimas.</li>
+      <li><strong>Revocación:</strong> revocar el consentimiento prestado.</li>
+      <li><strong>Información:</strong> recibir información sobre el tratamiento de tus datos.</li>
+    </ul>
+    <p>
+      Para ejercer estos derechos escribinos a
+      <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a> con el asunto "Derecho ARCO" e
+      incluyendo copia de tu DNI. Tenemos un plazo de 20 días hábiles para responder. Si no
+      estás conforme con la respuesta, podés acudir a la Autoridad Nacional de Protección de
+      Datos Personales del MINJUS.
+    </p>
+
+    <h2>8. Seguridad de la información</h2>
+    <ul>
+      <li>Comunicaciones cifradas en tránsito mediante TLS 1.3.</li>
+      <li>Cifrado de datos sensibles en reposo (AES-256).</li>
+      <li>Acceso interno limitado al personal autorizado y registrado.</li>
+      <li>Auditoría completa de cada consulta y acceso a datos.</li>
+      <li>Procedimiento de gestión de incidentes y notificación oportuna.</li>
+    </ul>
+
+    <h2>9. Cookies y tecnologías similares</h2>
+    <p>
+      Este sitio web utiliza tecnologías estrictamente necesarias para su funcionamiento (por
+      ejemplo, almacenamiento local para recordar el idioma y el tema visual elegidos). No
+      utilizamos cookies de seguimiento publicitario ni rastreadores de terceros para crear
+      perfiles. Si en el futuro habilitamos analítica, será respetuosa de la privacidad y se
+      describirá en esta política.
+    </p>
+
+    <h2>10. Menores de edad</h2>
+    <p>
+      El Servicio MAXFIND está dirigido a personas mayores de 18 años. No recolectamos
+      intencionalmente datos personales de menores. Si tomamos conocimiento de haberlo hecho,
+      procedemos a su supresión.
+    </p>
+
+    <h2>11. Cambios en esta política</h2>
+    <p>
+      Esta política puede ser actualizada para reflejar cambios legales, técnicos u
+      organizativos. Las modificaciones se publican en esta misma URL y, si son relevantes, se
+      notifican al correo registrado.
+    </p>
+
+    <h2>12. Contacto</h2>
+    <p>
+      Para cualquier consulta sobre el tratamiento de tus datos personales podés escribirnos a
+      <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>, llamarnos al
+      {COMPANY.phone} o visitarnos en {COMPANY.address}. También podés acudir a la Autoridad
+      Nacional de Protección de Datos Personales del MINJUS si considerás que no respondimos
+      adecuadamente a tu solicitud.
+    </p>
+  </LegalLayout>
 </Layout>

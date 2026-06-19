@@ -47,6 +47,9 @@ export const COMPANY = {
   country: 'Perú',
   phone: '+51 999 999 999', // TODO: teléfono real
   email: 'hola@maxfind.app',
+  // Fecha de última actualización de los documentos legales (terminos,
+  // privacidad, cancelación). Actualizar cuando se hagan revisiones.
+  legalLastUpdated: '18 de junio de 2026',
 } as const;
 
 export type NavLink = {

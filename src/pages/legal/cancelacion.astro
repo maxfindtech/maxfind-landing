@@ -1,0 +1,116 @@
+---
+import Layout from '@layouts/Layout.astro';
+import LegalLayout from '@components/LegalLayout.astro';
+import { COMPANY } from '@lib/constants';
+---
+
+<Layout
+  title="Política de Cancelación"
+  description="Política de cancelación de suscripciones y devoluciones del servicio MAXFIND."
+>
+  <LegalLayout
+    title="Política de Cancelación"
+    intro="Esta política describe cómo cancelar una suscripción a MAXFIND, qué pasa con la facturación pendiente y en qué casos corresponde devolución."
+  >
+    <h2>1. Naturaleza del servicio</h2>
+    <p>
+      MAXFIND es un servicio digital de suscripción mensual sin permanencia mínima. El Cliente
+      puede cancelar en cualquier momento, sin penalidad. Por tratarse de un servicio digital de
+      consumo inmediato y continuo, no aplica el derecho de arrepentimiento típico de bienes
+      físicos.
+    </p>
+
+    <h2>2. Cómo cancelar</h2>
+    <p>
+      El Cliente puede cancelar su suscripción de dos formas:
+    </p>
+    <ol>
+      <li>Desde el dashboard, en la sección <em>Facturación → Cancelar suscripción</em>.</li>
+      <li>Enviando un correo a <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a> desde la
+        cuenta de correo asociada a la cuenta, indicando la solicitud de cancelación.</li>
+    </ol>
+    <p>
+      La cancelación queda registrada en el momento de la solicitud y se confirma por correo
+      electrónico.
+    </p>
+
+    <h2>3. Vigencia de la cancelación</h2>
+    <p>
+      La cancelación surte efecto al final del período facturado vigente. El Cliente conserva
+      acceso al Servicio hasta esa fecha y puede agotar las consultas correspondientes al ciclo.
+      No se realizan cobros recurrentes posteriores.
+    </p>
+
+    <h2>4. Trial gratuito</h2>
+    <p>
+      Si el Cliente cancela durante el período de prueba de 30 días sin haber consumido cargo
+      alguno, la cancelación es inmediata y no se efectúa cobro. El acceso al sandbox profesional
+      permanece disponible aún tras la cancelación, dado que es un servicio gratuito.
+    </p>
+
+    <h2>5. Devoluciones</h2>
+    <p>
+      Por la naturaleza digital y continua del Servicio, <strong>no se realizan devoluciones de
+      períodos parciales ya pagados</strong>. La excepción son los siguientes casos:
+    </p>
+    <ul>
+      <li><strong>Cobro duplicado:</strong> si se generó un cobro duplicado por error técnico
+        o de la pasarela, se devuelve íntegramente.</li>
+      <li><strong>Cobro tras cancelación efectiva:</strong> si se cobra un período posterior a
+        una cancelación correctamente registrada, se devuelve.</li>
+      <li><strong>Interrupción prolongada:</strong> si MAXFIND incurre en una interrupción del
+        Servicio superior al SLA contratado, se aplica la compensación prevista en el SLA del
+        plan correspondiente.</li>
+    </ul>
+    <p>
+      Las devoluciones se procesan al mismo medio de pago utilizado, en un plazo máximo de 15
+      días hábiles desde la solicitud, salvo casos excepcionales que se notifican por correo.
+    </p>
+
+    <h2>6. Cambio de plan</h2>
+    <p>
+      El Cliente puede subir o bajar de plan en cualquier momento desde el dashboard:
+    </p>
+    <ul>
+      <li><strong>Upgrade:</strong> entra en vigor inmediatamente. Se cobra el prorrateado del
+        período restante.</li>
+      <li><strong>Downgrade:</strong> entra en vigor al inicio del próximo período de
+        facturación.</li>
+    </ul>
+
+    <h2>7. Conservación de datos tras la cancelación</h2>
+    <p>
+      Tras la cancelación:
+    </p>
+    <ul>
+      <li>El acceso al dashboard se mantiene en modo de solo lectura durante 30 días para que
+        el Cliente pueda descargar sus reportes y logs.</li>
+      <li>Las API keys quedan revocadas a la fecha de fin del período facturado.</li>
+      <li>Los datos de la cuenta y los logs de consultas se conservan por los plazos
+        establecidos en la <a href="/legal/privacidad">Política de Privacidad</a> y luego se
+        suprimen.</li>
+    </ul>
+
+    <h2>8. Reactivación</h2>
+    <p>
+      El Cliente puede reactivar una cuenta cancelada dentro de los 12 meses posteriores
+      escribiéndonos a <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>. Tras ese plazo,
+      la cuenta se elimina definitivamente y se requiere crear una nueva.
+    </p>
+
+    <h2>9. Reclamos</h2>
+    <p>
+      Si no estás conforme con un cobro, una cancelación o cualquier aspecto de la facturación,
+      podés presentar tu reclamo en nuestro
+      <a href="/libro-reclamaciones">Libro de Reclamaciones</a> y respondemos en un plazo
+      máximo de 30 días calendario. También podés acudir a INDECOPI a través de
+      <a href="https://www.indecopi.gob.pe/reclamo" target="_blank" rel="noopener noreferrer">indecopi.gob.pe/reclamo</a>.
+    </p>
+
+    <h2>10. Contacto</h2>
+    <p>
+      Para cualquier consulta sobre cancelaciones, cambios o devoluciones escribinos a
+      <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a> o llamanos al {COMPANY.phone}.
+    </p>
+  </LegalLayout>
+</Layout>

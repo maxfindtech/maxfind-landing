@@ -1,0 +1,96 @@
+---
+import { COMPANY } from '@lib/constants';
+
+type Props = {
+  title: string;
+  intro?: string;
+};
+
+const { title, intro } = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-30" aria-hidden="true"></div>
+  <div class="container-page relative py-16 md:py-20">
+    <div class="mx-auto max-w-3xl">
+      <span class="pill">Legal</span>
+      <h1 class="mt-4 text-h2-mobile md:text-h2 font-display font-medium text-ink-primary">
+        {title}
+      </h1>
+      <p class="mt-2 text-sm text-ink-tertiary">
+        Última actualización: {COMPANY.legalLastUpdated}
+      </p>
+      {intro && <p class="mt-6 text-lg text-ink-secondary text-pretty">{intro}</p>}
+
+      <div class="prose-content mt-10 text-ink-secondary leading-relaxed text-pretty">
+        <slot />
+      </div>
+
+      <hr class="my-12 border-surface-border" />
+
+      <div class="text-sm text-ink-tertiary leading-relaxed">
+        <p class="font-medium text-ink-secondary">{COMPANY.legalName}</p>
+        <p>RUC {COMPANY.ruc} · {COMPANY.address}</p>
+        <p>
+          <a href={`tel:${COMPANY.phone.replace(/\s/g, '')}`} class="hover:text-ink-primary">{COMPANY.phone}</a>
+          <span class="mx-1">·</span>
+          <a href={`mailto:${COMPANY.email}`} class="hover:text-ink-primary">{COMPANY.email}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .prose-content h2 {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .prose-content h2:first-child {
+    margin-top: 0;
+  }
+  .prose-content h3 {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--color-text-primary);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-content p {
+    margin: 1rem 0;
+  }
+  .prose-content ul,
+  .prose-content ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    list-style: disc;
+  }
+  .prose-content ol {
+    list-style: decimal;
+  }
+  .prose-content li {
+    margin: 0.5rem 0;
+  }
+  .prose-content a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-content strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  .prose-content blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: var(--color-text-tertiary);
+    font-style: italic;
+  }
+</style>

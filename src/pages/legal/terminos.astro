@@ -1,16 +1,233 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import ComingSoon from '@components/ComingSoon.astro';
+import LegalLayout from '@components/LegalLayout.astro';
+import { COMPANY } from '@lib/constants';
 ---
 
 <Layout
-  title="Términos de servicio"
-  description="Términos y condiciones de uso de MAXFIND."
-  noindex
+  title="Términos y Condiciones"
+  description="Términos y condiciones de uso del servicio MAXFIND. Documento conforme a la Ley 29571 del Código de Protección y Defensa del Consumidor del Perú."
 >
-  <ComingSoon
-    title="Términos de servicio"
-    description="El contenido legal estará disponible antes del lanzamiento oficial. Si necesitás los términos para una integración, escribinos a hola@maxfind.app."
-    eyebrow="Legal"
-  />
+  <LegalLayout
+    title="Términos y Condiciones"
+    intro="Estos términos rigen el uso del servicio MAXFIND. Al crear una cuenta o utilizar la API, aceptás cumplir con todo lo establecido a continuación."
+  >
+    <h2>1. Identificación del proveedor</h2>
+    <p>
+      El servicio MAXFIND es operado por <strong>{COMPANY.legalName}</strong>, con RUC {COMPANY.ruc},
+      domicilio en {COMPANY.address}, teléfono {COMPANY.phone} y correo electrónico
+      <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a> (en adelante, "MAXFIND", "nosotros").
+    </p>
+
+    <h2>2. Definiciones</h2>
+    <ul>
+      <li><strong>Servicio:</strong> API de verificación de identidad y herramientas asociadas (sandbox, dashboard, webhooks, red de reputación).</li>
+      <li><strong>Cuenta:</strong> registro electrónico que crea el Cliente para acceder al Servicio.</li>
+      <li><strong>Cliente:</strong> persona natural o jurídica que contrata el Servicio.</li>
+      <li><strong>API Key:</strong> credencial única que identifica al Cliente al consumir la API.</li>
+      <li><strong>Consulta real:</strong> verificación contra el padrón oficial de RENIEC.</li>
+      <li><strong>Sandbox:</strong> entorno de prueba con DNIs ficticios, sin costo.</li>
+    </ul>
+
+    <h2>3. Aceptación y modificaciones</h2>
+    <p>
+      Al crear una Cuenta, el Cliente declara haber leído y aceptado estos Términos. MAXFIND puede
+      modificarlos en cualquier momento; las modificaciones se notifican al correo registrado y
+      entran en vigor 15 días calendario después de comunicadas. El uso continuado del Servicio
+      tras ese plazo implica aceptación de los nuevos términos.
+    </p>
+
+    <h2>4. Capacidad legal y registro</h2>
+    <p>
+      El Cliente declara contar con capacidad legal para contratar conforme al Código Civil
+      peruano. Si actúa en representación de una persona jurídica, declara contar con poder
+      vigente. La información proporcionada al registrarse debe ser veraz, completa y actualizada.
+      MAXFIND se reserva el derecho de suspender Cuentas con información falsa o que no cumpla
+      con los presentes Términos.
+    </p>
+
+    <h2>5. Descripción del Servicio</h2>
+    <p>
+      MAXFIND ofrece una API REST que permite verificar la identidad de personas naturales en el
+      Perú mediante consulta del padrón oficial de RENIEC, validación física del documento,
+      acceso a una red de reputación entre comercios y un sandbox profesional para desarrollo.
+      Los detalles técnicos de cada endpoint, los límites de uso y las respuestas esperadas se
+      describen en la documentación pública disponible en el sitio.
+    </p>
+
+    <h2>6. Planes, precios y facturación</h2>
+    <h3>6.1 Planes</h3>
+    <p>
+      MAXFIND ofrece distintos planes con diferentes volúmenes mensuales de consultas reales.
+      Los precios vigentes se publican en la página <a href="/precios">/precios</a> y están
+      expresados en soles peruanos (PEN), sin IGV salvo indicación contraria.
+    </p>
+
+    <h3>6.2 Trial gratuito</h3>
+    <p>
+      Al suscribirse a cualquier plan, el Cliente recibe un período de prueba de 30 días
+      calendario con hasta 500 consultas reales sin costo. Vencido el período (lo que ocurra
+      primero entre el plazo y las consultas), se activa el cobro del plan seleccionado.
+    </p>
+
+    <h3>6.3 Cobros</h3>
+    <p>
+      Los cobros se realizan por adelantado, en forma mensual recurrente, en la fecha en que se
+      activa la facturación. Las consultas excedentes se cobran según la tarifa publicada del
+      plan contratado.
+    </p>
+
+    <h3>6.4 Medios de pago</h3>
+    <p>
+      Los pagos se procesan a través de la pasarela <strong>Culqi</strong> u otra que MAXFIND
+      designe. Se aceptan tarjetas de crédito y débito Visa, Mastercard, American Express y
+      Diners Club. Para el plan Enterprise se pueden coordinar otros medios de pago según
+      contrato.
+    </p>
+
+    <h3>6.5 Comprobantes</h3>
+    <p>
+      MAXFIND emite comprobantes electrónicos (boleta o factura, según corresponda) conforme a
+      las normas de SUNAT.
+    </p>
+
+    <h2>7. Cancelación y devoluciones</h2>
+    <p>
+      El Cliente puede cancelar su suscripción en cualquier momento desde el dashboard. La
+      cancelación surte efecto al final del período facturado. No se realizan devoluciones de
+      períodos parciales ya pagados. Los detalles se desarrollan en la
+      <a href="/legal/cancelacion">Política de Cancelación</a>.
+    </p>
+
+    <h2>8. Obligaciones del Cliente</h2>
+    <ul>
+      <li>Mantener la confidencialidad de sus API Keys; toda consulta realizada con sus
+        credenciales se considera realizada por el Cliente.</li>
+      <li>Utilizar el Servicio únicamente con fines lícitos y para verificar identidades en el
+        marco de operaciones comerciales legítimas.</li>
+      <li>Contar con base legal válida bajo la Ley 29733 para procesar los datos personales de
+        los titulares cuyos DNI consulta.</li>
+      <li>Informar a los titulares, cuando corresponda, sobre la verificación de su identidad.</li>
+      <li>No utilizar el Servicio para construir bases de datos de terceros, hacer scraping
+        masivo, ni revender los datos consultados.</li>
+      <li>Cumplir con las normas peruanas vigentes en materia de protección al consumidor,
+        protección de datos personales y prevención del lavado de activos.</li>
+    </ul>
+
+    <h2>9. Conducta prohibida</h2>
+    <p>El Cliente no podrá:</p>
+    <ul>
+      <li>Acceder al Servicio mediante métodos no autorizados.</li>
+      <li>Compartir su API Key con terceros no vinculados a su organización.</li>
+      <li>Realizar ingeniería inversa, descompilación o intento de descubrir el código fuente.</li>
+      <li>Sobrecargar la infraestructura mediante consultas no relacionadas con su operación
+        legítima.</li>
+      <li>Utilizar el Servicio para actos discriminatorios, ilegales o que vulneren derechos
+        fundamentales.</li>
+    </ul>
+
+    <h2>10. Disponibilidad y SLA</h2>
+    <p>
+      MAXFIND se esfuerza por mantener una disponibilidad de 99.9% del Servicio en planes de
+      producción (Pro y superiores). El detalle del SLA, las exclusiones por mantenimiento
+      programado o causas de fuerza mayor, y las compensaciones aplicables se describen en el
+      contrato del plan correspondiente.
+    </p>
+
+    <h2>11. Propiedad intelectual</h2>
+    <p>
+      El Servicio, la marca, los logotipos, la documentación y el software son propiedad
+      exclusiva de MAXFIND. Estos Términos otorgan al Cliente una licencia no exclusiva,
+      intransferible y limitada para utilizar el Servicio durante la vigencia de su Cuenta. No
+      se transfiere ningún derecho de propiedad intelectual.
+    </p>
+
+    <h2>12. Confidencialidad</h2>
+    <p>
+      Ambas partes se comprometen a mantener la confidencialidad de la información comercial,
+      técnica y financiera intercambiada con motivo de la prestación del Servicio. Esta
+      obligación subsiste durante 5 años posteriores a la terminación de la relación.
+    </p>
+
+    <h2>13. Protección de datos personales</h2>
+    <p>
+      MAXFIND trata datos personales de acuerdo con la
+      <strong>Ley 29733 de Protección de Datos Personales</strong> y su reglamento. El detalle
+      de las finalidades, bases legales, derechos del titular y medidas de seguridad se describe
+      en la <a href="/legal/privacidad">Política de Privacidad</a>.
+    </p>
+
+    <h2>14. Limitación de responsabilidad</h2>
+    <p>
+      MAXFIND no será responsable por daños indirectos, lucro cesante o pérdida de oportunidad
+      derivados del uso o imposibilidad de uso del Servicio. La responsabilidad total agregada
+      de MAXFIND en cualquier reclamación derivada de estos Términos no excederá el monto
+      pagado por el Cliente en los últimos 12 meses.
+    </p>
+    <p>
+      MAXFIND no garantiza la veracidad o vigencia absoluta de los datos provenientes de
+      fuentes oficiales y no será responsable por decisiones del Cliente basadas en los
+      resultados de las consultas; la decisión final sobre cómo actuar con base en la
+      información recibida corresponde al Cliente.
+    </p>
+
+    <h2>15. Indemnidad</h2>
+    <p>
+      El Cliente se obliga a mantener indemne a MAXFIND frente a reclamos, multas o daños
+      derivados de un uso del Servicio en infracción de estos Términos, en particular por
+      violación de la Ley 29733 o uso indebido de los datos consultados.
+    </p>
+
+    <h2>16. Suspensión y terminación</h2>
+    <p>
+      MAXFIND podrá suspender o terminar el Servicio en caso de:
+    </p>
+    <ul>
+      <li>Falta de pago superior a 7 días calendario.</li>
+      <li>Incumplimiento grave de estos Términos.</li>
+      <li>Uso fraudulento o abusivo del Servicio.</li>
+      <li>Requerimiento judicial o administrativo.</li>
+    </ul>
+    <p>
+      El Cliente puede dar de baja su Cuenta en cualquier momento. Tras la terminación, MAXFIND
+      conservará los datos por los plazos legales aplicables y luego los suprimirá.
+    </p>
+
+    <h2>17. Cesión</h2>
+    <p>
+      El Cliente no podrá ceder estos Términos sin consentimiento previo y por escrito de
+      MAXFIND. MAXFIND podrá ceder estos Términos a una entidad sucesora en caso de reorganización
+      societaria, dando aviso al Cliente.
+    </p>
+
+    <h2>18. Comunicaciones</h2>
+    <p>
+      Las comunicaciones formales se dirigirán al correo registrado por cada parte. El Cliente
+      autoriza expresamente a MAXFIND a remitirle por esta vía notificaciones operativas, de
+      facturación y de modificación de estos Términos.
+    </p>
+
+    <h2>19. Solución de controversias</h2>
+    <p>
+      Estos Términos se rigen por las leyes de la República del Perú. Ante reclamos de
+      consumo, el Cliente puede acudir a INDECOPI a través de su sitio
+      <a href="https://www.indecopi.gob.pe/reclamo" target="_blank" rel="noopener noreferrer">indecopi.gob.pe/reclamo</a>
+      o presentar su queja directamente en nuestro
+      <a href="/libro-reclamaciones">Libro de Reclamaciones</a>. Las controversias no resueltas en
+      sede administrativa serán sometidas a los jueces y tribunales del Distrito Judicial de Lima
+      Cercado, con renuncia expresa a cualquier otro fuero.
+    </p>
+
+    <h2>20. Disposiciones generales</h2>
+    <p>
+      Si alguna disposición de estos Términos fuera declarada nula o inaplicable, las demás
+      mantendrán plena validez. La no exigencia de un derecho no implica renuncia al mismo.
+    </p>
+
+    <h2>21. Contacto</h2>
+    <p>
+      Para cualquier consulta sobre estos Términos podés escribirnos a
+      <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a> o al teléfono {COMPANY.phone}.
+    </p>
+  </LegalLayout>
 </Layout>
