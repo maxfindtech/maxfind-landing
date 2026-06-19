@@ -1,19 +1,41 @@
 ---
 type Props = {
-  variant?: 'light' | 'dark' | 'mono';
+  variant?: 'light' | 'dark' | 'mono' | 'auto';
   class?: string;
 };
 
-const { variant = 'light', class: className = 'h-7 w-auto' } = Astro.props;
-
-const src = `/brand/logo-wordmark-${variant}.png`;
+const { variant = 'auto', class: className = 'h-7 w-auto' } = Astro.props;
 ---
 
-<img
-  src={src}
-  alt="MAXFIND"
-  width="160"
-  height="32"
-  class={className}
-  decoding="async"
-/>
+{
+  variant === 'auto' ? (
+    <>
+      {/* En light mode: wordmark indigo. En dark mode: wordmark blanco. */}
+      <img
+        src="/brand/logo-wordmark-light.png"
+        alt="MAXFIND"
+        width="160"
+        height="32"
+        class={`${className} block dark:hidden`}
+        decoding="async"
+      />
+      <img
+        src="/brand/logo-wordmark-dark.png"
+        alt="MAXFIND"
+        width="160"
+        height="32"
+        class={`${className} hidden dark:block`}
+        decoding="async"
+      />
+    </>
+  ) : (
+    <img
+      src={`/brand/logo-wordmark-${variant}.png`}
+      alt="MAXFIND"
+      width="160"
+      height="32"
+      class={className}
+      decoding="async"
+    />
+  )
+}
