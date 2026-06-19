@@ -73,11 +73,11 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-surface-border bg-white px-6 py-3 text-sm font-medium text-ink-primary transition-all hover:border-ink-tertiary hover:bg-surface-secondary active:scale-[0.98] dark:border-surface-border dark:bg-surface-tertiary dark:text-white dark:hover:border-ink-tertiary dark:hover:bg-surface-secondary;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-surface-border bg-white px-6 py-3 text-sm font-medium text-ink-primary transition-all hover:border-ink-tertiary hover:bg-surface-secondary active:scale-[0.98] dark:border-surface-border dark:bg-surface-tertiary dark:text-ink-primary dark:hover:border-ink-tertiary dark:hover:bg-surface-secondary;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink-secondary transition-colors hover:text-ink-primary hover:bg-surface-secondary dark:text-ink-secondary dark:hover:text-white dark:hover:bg-surface-tertiary;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink-secondary transition-colors hover:text-ink-primary hover:bg-surface-secondary dark:text-ink-primary dark:hover:bg-surface-tertiary;
   }
 
   .pill {

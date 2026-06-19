@@ -16,7 +16,7 @@ const items = LOCALES.map((loc) => ({
   <button
     type="button"
     data-lang-toggle
-    class="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-medium text-ink-secondary transition-colors hover:bg-surface-secondary hover:text-ink-primary dark:text-ink-tertiary dark:hover:bg-primary-900 dark:hover:text-white"
+    class="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-medium text-ink-secondary transition-colors hover:bg-surface-secondary hover:text-ink-primary dark:text-ink-tertiary dark:hover:bg-surface-tertiary dark:hover:text-white"
     aria-label={t.nav.changeLanguage}
     aria-haspopup="menu"
     aria-expanded="false"
@@ -39,7 +39,7 @@ const items = LOCALES.map((loc) => ({
   <div
     id="lang-menu"
     data-lang-menu
-    class="absolute right-0 top-full mt-1 hidden min-w-[7rem] overflow-hidden rounded-xl border border-surface-border bg-surface-secondary shadow-lg dark:border-primary-800 dark:bg-primary-900"
+    class="absolute right-0 top-full mt-1 hidden min-w-[7rem] overflow-hidden rounded-xl border border-surface-border bg-surface-secondary shadow-lg dark:border-surface-border dark:bg-surface-tertiary"
     role="menu"
   >
     {
@@ -48,7 +48,7 @@ const items = LOCALES.map((loc) => ({
           href={item.href}
           role="menuitem"
           class:list={[
-            'block px-3 py-2 text-sm transition-colors hover:bg-surface dark:hover:bg-primary-800',
+            'block px-3 py-2 text-sm transition-colors hover:bg-surface dark:hover:bg-surface-tertiary',
             item.current
               ? 'font-medium text-ink-primary'
               : 'text-ink-secondary dark:text-ink-tertiary',
